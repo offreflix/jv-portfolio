@@ -1,38 +1,82 @@
-.App {
+.sidebarContainer {
+  color: #fff;
+}
+
+.sidebar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 12rem;
+  background-color: black;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3rem;
+  height: 100vh;
+}
+
+.sidebar .sidebarMain {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1rem;
+}
+
+.sidebar .sidebarMain .name {
+  font-weight: bold;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.sidebar .sidebarMain .name:hover {
+  color: red;
+  -webkit-transition: color 0.2s ease;
+  transition: color 0.2s ease;
+}
+
+.sidebar .sidebarMain .role {
+  font-size: 0.9rem;
+}
+
+.sidebar ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sidebar li {
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  line-height: 2.5em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.sidebar li:nth-child(1), .sidebar li:nth-child(2), .sidebar li:nth-child(3) {
+  border-bottom: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.sidebar li:hover {
+  color: red;
+  -webkit-transition: color 0.2s ease;
+  transition: color 0.2s ease;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/*# sourceMappingURL=App.css.map */
