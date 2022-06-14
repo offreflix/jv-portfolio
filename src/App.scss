@@ -1,65 +1,88 @@
-.sidebarContainer {
-    color: #fff;
+* {
+    --main-bg-color: #151b22;
+    --secondary-bg-color: #0d1017;
+    --main-text-color: #f0f6fc;
+    --secondary-text-color: #c9d1d9;
+    --third-text-color: #afbac5;
+
 }
 
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    width: 12rem;
-    background-color: black;
-    align-items: center;
-    gap: 3rem;
-    height: 100vh;
+.sidebarContainer {
+    color: var(--main-text-color);
 
-    .sidebarMain {
+    .sidebar {
         display: flex;
         flex-direction: column;
+        width: 12rem;
+        background-color: var(--main-bg-color);
         align-items: center;
-        margin-top: 1rem;
+        height: 100vh;
 
+        .sidebarMain {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 1rem;
+            padding-bottom: 3rem;
+            background-color: var(--secondary-bg-color);
+            width: 100%;
 
-        .name {
+            .name {
+                font-weight: bold;
+                font-size: 1.5rem;
+                cursor: pointer;
+
+                &:hover {
+                    color: #0080ff;
+                    transition: color 0.2s ease;
+                }
+            }
+
+            .role {
+                font-size: 0.9rem;
+                color: var(--secondary-text-color);
+            }
+
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        li {
             font-weight: bold;
-            font-size: 1.4rem;
+            text-transform: uppercase;
             cursor: pointer;
+            border-top: 1px solid var(--third-text-color);
+            border-bottom: 1px solid var(--third-text-color);
+            line-height: 3em;
+            color: var(--third-text-color);
+
+            &:nth-child(1),
+            &:nth-child(2),
+            &:nth-child(3) {
+                border-bottom: none;
+            }
 
             &:hover {
-                color: red;
+                color: #0080ff;
                 transition: color 0.2s ease;
             }
         }
 
-        .role {
-            font-size: 0.9rem;
-        }
+        .iconsLink {
+            padding: 3rem 1rem;
+            fill: var(--third-text-color);
 
-    }
+            &:hover {
+                fill: #0080ff;
+            }
 
-    ul {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-    }
-
-    li {
-        font-weight: bold;
-        text-transform: uppercase;
-        cursor: pointer;
-        border-top: 1px solid white;
-        border-bottom: 1px solid white;
-        line-height: 2.5em;
-
-        &:nth-child(1),
-        &:nth-child(2),
-        &:nth-child(3) {
-            border-bottom: none;
-        }
-
-        &:hover {
-            color: red;
-            transition: color 0.2s ease;
         }
     }
-
 }
