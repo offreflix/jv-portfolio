@@ -6,6 +6,32 @@
   --third-text-color: #afbac5;
 }
 
+.App {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: var(--secondary-bg-color);
+  width: 100vw;
+  height: 100vh;
+}
+
+.App button {
+  position: fixed;
+  border: none;
+  text-decoration: none;
+  background: none;
+  color: white;
+  right: 1rem;
+  top: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: +1;
+}
+
 .sidebarContainer {
   color: var(--main-text-color);
 }
@@ -24,6 +50,13 @@
       -ms-flex-align: center;
           align-items: center;
   height: 100vh;
+  position: fixed;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebarContainer .sidebar {
+    width: 100vw;
+  }
 }
 
 .sidebarContainer .sidebar .sidebarMain {
@@ -43,6 +76,21 @@
   width: 100%;
 }
 
+.sidebarContainer .sidebar .sidebarMain .nameAndLogo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.sidebarContainer .sidebar .sidebarMain .logo {
+  text-decoration: none;
+  color: var(--main-text-color);
+}
+
 .sidebarContainer .sidebar .sidebarMain .name {
   font-weight: bold;
   font-size: 1.5rem;
@@ -60,7 +108,7 @@
   color: var(--secondary-text-color);
 }
 
-.sidebarContainer .sidebar ul {
+.sidebarContainer .sidebar .sidebarLinksContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -74,7 +122,7 @@
   margin-bottom: 2rem;
 }
 
-.sidebarContainer .sidebar li {
+.sidebarContainer .sidebar .sidebarLinks {
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
@@ -82,13 +130,14 @@
   border-bottom: 1px solid var(--third-text-color);
   line-height: 3em;
   color: var(--third-text-color);
+  text-decoration: none;
 }
 
-.sidebarContainer .sidebar li:nth-child(1), .sidebarContainer .sidebar li:nth-child(2), .sidebarContainer .sidebar li:nth-child(3) {
+.sidebarContainer .sidebar .sidebarLinks:nth-child(1), .sidebarContainer .sidebar .sidebarLinks:nth-child(2), .sidebarContainer .sidebar .sidebarLinks:nth-child(3) {
   border-bottom: none;
 }
 
-.sidebarContainer .sidebar li:hover {
+.sidebarContainer .sidebar .sidebarLinks:hover {
   color: #0080ff;
   -webkit-transition: color 0.2s ease;
   transition: color 0.2s ease;

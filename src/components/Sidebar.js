@@ -1,20 +1,37 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Sidebar() {
   return (
-    <div className="sidebarContainer">
+    <nav className="sidebarContainer">
       <div className="sidebar">
         <div className="sidebarMain">
-          <span className="name">João Victor</span>
-          <span className="role">Desenvolvedor Web</span>
+          <div className="nameAndLogo">
+            <NavLink className="logo" to="/">
+              <span className="name">João Victor</span>
+            </NavLink>
+            <span className="role">Desenvolvedor Web</span>
+          </div>
         </div>
         <div className="sidebarNav"></div>
-        <ul>
-          <li>Sobre</li>
-          <li>Habilidades</li>
-          <li>Projetos</li>
-          <li>Contato</li>
-        </ul>
+        <div className="sidebarLinksContainer">
+          <NavLink
+            onClick={() => setMenu(false)}
+            className="sidebarLinks"
+            to="/about"
+          >
+            Sobre
+          </NavLink>
+          <NavLink className="sidebarLinks" to="/skills">
+            Habilidades
+          </NavLink>
+          <NavLink className="sidebarLinks" to="/projects">
+            Projetos
+          </NavLink>
+          <NavLink className="sidebarLinks" to="/contact">
+            Contato
+          </NavLink>
+        </div>
         <div>
           <a
             className="iconsLink"
@@ -48,7 +65,7 @@ function Sidebar() {
           </a>
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
 

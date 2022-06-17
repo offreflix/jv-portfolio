@@ -4,11 +4,37 @@
     --main-text-color: #f0f6fc;
     --secondary-text-color: #c9d1d9;
     --third-text-color: #afbac5;
+}
 
+.App {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--secondary-bg-color);
+    width: 100vw;
+    height: 100vh;
+
+    button {
+        position: fixed;
+        border: none;
+        text-decoration: none;
+        background: none;
+        color: white;
+        right: 1rem;
+        top: 1rem;
+        font-size: 2rem;
+        cursor: pointer;
+        z-index: +1;
+    }
+}
+
+.Routes {
+    // display: none;
 }
 
 .sidebarContainer {
     color: var(--main-text-color);
+
+
 
     .sidebar {
         display: flex;
@@ -17,6 +43,11 @@
         background-color: var(--main-bg-color);
         align-items: center;
         height: 100vh;
+        position: fixed;
+
+        @media screen and (max-width: 768px) {
+            width: 100vw;
+        }
 
         .sidebarMain {
             display: flex;
@@ -26,6 +57,17 @@
             padding-bottom: 3rem;
             background-color: var(--secondary-bg-color);
             width: 100%;
+
+            .nameAndLogo {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .logo {
+                text-decoration: none;
+                color: var(--main-text-color);
+
+            }
 
             .name {
                 font-weight: bold;
@@ -45,7 +87,7 @@
 
         }
 
-        ul {
+        .sidebarLinksContainer {
             display: flex;
             flex-direction: column;
             width: 100%;
@@ -54,7 +96,7 @@
             margin-bottom: 2rem;
         }
 
-        li {
+        .sidebarLinks {
             font-weight: bold;
             text-transform: uppercase;
             cursor: pointer;
@@ -62,6 +104,7 @@
             border-bottom: 1px solid var(--third-text-color);
             line-height: 3em;
             color: var(--third-text-color);
+            text-decoration: none;
 
             &:nth-child(1),
             &:nth-child(2),
