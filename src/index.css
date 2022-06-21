@@ -11,3 +11,12 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+a,
+button {
+  text-decoration: none;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 1rem;
+}

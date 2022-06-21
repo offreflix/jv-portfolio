@@ -1,20 +1,66 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { useStateContext } from '../context/ContextProvider';
 
 function Sidebar() {
+  const { setMenu, width, setWidth } = useStateContext();
+
+  function closeMenu() {
+    if (width < 768) {
+      console.log('O Menu fechou!');
+      setMenu(false);
+    } else {
+      console.log('O Menu não fechou!');
+      return;
+    }
+  }
+
+  window.addEventListener('resize', function (event) {
+    setWidth(window.innerWidth);
+  });
+
   return (
-    <div className="sidebarContainer">
+    <nav className="sidebarContainer">
       <div className="sidebar">
         <div className="sidebarMain">
-          <span className="name">João Victor</span>
-          <span className="role">Desenvolvedor Web</span>
+          <div className="nameAndLogo">
+            <NavLink onClick={() => closeMenu(false)} className="logo" to="/">
+              <span className="name">João Victor</span>
+            </NavLink>
+            <span className="role">Desenvolvedor Web</span>
+          </div>
         </div>
         <div className="sidebarNav"></div>
-        <ul>
-          <li>Sobre</li>
-          <li>Habilidades</li>
-          <li>Projetos</li>
-          <li>Contato</li>
-        </ul>
+        <div className="sidebarLinksContainer">
+          <NavLink
+            onClick={() => closeMenu()}
+            className="sidebarLinks"
+            to="/about"
+          >
+            Sobre
+          </NavLink>
+          <NavLink
+            onClick={() => closeMenu()}
+            className="sidebarLinks"
+            to="/skills"
+          >
+            Habilidades
+          </NavLink>
+          <NavLink
+            onClick={() => closeMenu()}
+            className="sidebarLinks"
+            to="/projects"
+          >
+            Projetos
+          </NavLink>
+          <NavLink
+            onClick={() => closeMenu()}
+            className="sidebarLinks"
+            to="/contact"
+          >
+            Contato
+          </NavLink>
+        </div>
         <div>
           <a
             className="iconsLink"
@@ -48,7 +94,7 @@ function Sidebar() {
           </a>
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
 
