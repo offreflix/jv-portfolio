@@ -1,38 +1,61 @@
-* {
-    --main-bg-color: #151b22;
-    --secondary-bg-color: #0d1017;
-    --main-text-color: #f0f6fc;
-    --secondary-text-color: #c9d1d9;
-    --third-text-color: #afbac5;
-}
+// * {
+//     --main-bg-color: #151b22;
+//     --secondary-bg-color: #0d1017;
+//     --main-text-color: #f0f6fc;
+//     --secondary-text-color: #c9d1d9;
+//     --third-text-color: #afbac5;
+
+// }
+
+$mainBgColor: #151b22;
+$secondaryBgColor: #0d1017;
+$mainTextColor: #f0f6fc;
+$secondaryTextColor: #c9d1d9;
+$thirdTextColor: #afbac5;
+$thirdTextColor: #afbac5;
+$vividColor:#0080ff;
 
 .App {
     display: flex;
     flex-direction: row;
-    background-color: var(--secondary-bg-color);
+    background-color: $secondaryBgColor;
     width: 100vw;
     height: 100vh;
+    color: $mainTextColor;
+    font-family: 'Roboto', sans-serif;
 
-    button {
+
+    .navButton {
         position: fixed;
+        display: flex;
         border: none;
         text-decoration: none;
         background: none;
-        color: white;
         right: 1rem;
         top: 1rem;
-        font-size: 2rem;
+
         cursor: pointer;
-        z-index: +1;
+        z-index: +2;
+
+        .test {
+            background: darken(#fff, 90%);
+            color: white;
+            font-size: 2rem;
+            padding: .2rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+
+            &:hover {
+                color: $vividColor;
+            }
+        }
+
+
     }
 }
 
-.Routes {
-    // display: none;
-}
-
 .sidebarContainer {
-    color: var(--main-text-color);
+    color: $mainTextColor;
 
 
 
@@ -40,10 +63,12 @@
         display: flex;
         flex-direction: column;
         width: 12rem;
-        background-color: var(--main-bg-color);
+        background-color: $mainBgColor;
         align-items: center;
         height: 100vh;
         position: fixed;
+        z-index: 1;
+
 
         @media screen and (max-width: 768px) {
             width: 100vw;
@@ -55,7 +80,7 @@
             align-items: center;
             padding-top: 1rem;
             padding-bottom: 3rem;
-            background-color: var(--secondary-bg-color);
+            background-color: $secondaryBgColor;
             width: 100%;
 
             .nameAndLogo {
@@ -65,7 +90,7 @@
 
             .logo {
                 text-decoration: none;
-                color: var(--main-text-color);
+                color: $mainTextColor;
 
             }
 
@@ -73,16 +98,16 @@
                 font-weight: bold;
                 font-size: 1.5rem;
                 cursor: pointer;
+                transition: color 0.2s ease;
 
                 &:hover {
-                    color: #0080ff;
-                    transition: color 0.2s ease;
+                    color: $vividColor;
                 }
             }
 
             .role {
                 font-size: 0.9rem;
-                color: var(--secondary-text-color);
+                color: $secondaryTextColor;
             }
 
         }
@@ -100,11 +125,12 @@
             font-weight: bold;
             text-transform: uppercase;
             cursor: pointer;
-            border-top: 1px solid var(--third-text-color);
-            border-bottom: 1px solid var(--third-text-color);
+            border-top: 1px solid darken($thirdTextColor, 40%);
+            border-bottom: 1px solid darken($thirdTextColor, 40%);
             line-height: 3em;
-            color: var(--third-text-color);
+            color: $thirdTextColor;
             text-decoration: none;
+            transition: color 0.2s ease;
 
             &:nth-child(1),
             &:nth-child(2),
@@ -112,20 +138,185 @@
                 border-bottom: none;
             }
 
+            &:last-child {
+                color: lighten($vividColor, 30%);
+            }
+
             &:hover {
-                color: #0080ff;
-                transition: color 0.2s ease;
+                color: $vividColor;
             }
         }
 
         .iconsLink {
             padding: 3rem 1rem;
-            fill: var(--third-text-color);
+            fill: $thirdTextColor;
+            transition: all .2s ease;
 
             &:hover {
-                fill: #0080ff;
+                fill: $vividColor;
             }
 
+        }
+    }
+}
+
+.Routes {
+    @media screen and (min-width: 768px) {
+        margin-left: 12rem;
+    }
+
+}
+
+.pages {
+    margin: 3rem 1.5rem;
+
+    @media screen and (min-width: 768px) {
+        margin: 3rem 3rem;
+    }
+
+    h1 {
+        font-size: calc(1.5rem + 9px);
+    }
+}
+
+.main {
+    margin: 1rem;
+    color: $secondaryTextColor;
+    line-height: 2rem;
+}
+
+.Home {
+    h1 {
+        display: inline;
+        font-weight: 900;
+        color: $mainTextColor;
+    }
+
+    h2 {
+        display: inline;
+    }
+
+    .content {
+        display: inline;
+        margin-left: .4rem;
+        font-weight: 900;
+
+        h2 {
+            color: $vividColor;
+            font-size: calc(1.5rem + 9px);
+            position: absolute;
+            transform: translate(0%, -69%);
+            display: inline;
+            z-index: 0;
+        }
+
+        h2:nth-child(1) {
+            color: transparent;
+            -webkit-text-stroke: 0.1rem $vividColor;
+        }
+
+        h2:nth-child(2) {
+            color: $vividColor;
+            animation: animate 4s ease-in-out infinite;
+        }
+
+        span {
+            color: $mainTextColor;
+            -webkit-text-stroke: $mainTextColor;
+        }
+
+        @keyframes animate {
+
+            0%,
+            100% {
+                clip-path: polygon(0% 45%,
+                        16% 44%,
+                        33% 50%,
+                        54% 60%,
+                        70% 61%,
+                        84% 59%,
+                        100% 52%,
+                        100% 100%,
+                        0% 100%);
+            }
+
+            50% {
+                clip-path: polygon(0% 60%,
+                        15% 65%,
+                        34% 66%,
+                        51% 62%,
+                        67% 50%,
+                        84% 45%,
+                        100% 46%,
+                        100% 100%,
+                        0% 100%);
+            }
+        }
+    }
+
+    main {
+        .mainButton {
+            border: 0;
+            border-radius: .2rem;
+            padding: .3rem .5rem;
+            cursor: pointer;
+            background-color: darken($vividColor, 43%);
+            color: scale-color($secondaryTextColor, $lightness: 30%);
+            font-family: inherit;
+            font-weight: bold;
+            font-size: 1em;
+            text-decoration: none;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background-color: darken($vividColor, 20%);
+            }
+        }
+
+        .contactButton {
+            border: 0;
+            cursor: pointer;
+            color: $vividColor;
+            font-family: inherit;
+            font-size: 1em;
+            text-decoration: none;
+            transition: all 0.2s ease;
+
+            &:hover {
+                color: darken($vividColor, 20%);
+            }
+        }
+    }
+
+
+}
+
+
+.Contact {
+    h2 {
+        font-size: calc(1.5rem + 9px);
+    }
+
+    .main {
+        .links {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+
+            a,
+            button {
+                padding: 0;
+                margin: 0;
+                line-height: 2rem;
+                color: $vividColor;
+                cursor: pointer;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    padding-left: 1rem;
+                }
+            }
         }
     }
 }

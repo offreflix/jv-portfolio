@@ -1,13 +1,30 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useStateContext } from '../context/ContextProvider';
 
 function Sidebar() {
+  const { setMenu, width, setWidth } = useStateContext();
+
+  function closeMenu() {
+    if (width < 768) {
+      console.log('O Menu fechou!');
+      setMenu(false);
+    } else {
+      console.log('O Menu não fechou!');
+      return;
+    }
+  }
+
+  window.addEventListener('resize', function (event) {
+    setWidth(window.innerWidth);
+  });
+
   return (
     <nav className="sidebarContainer">
       <div className="sidebar">
         <div className="sidebarMain">
           <div className="nameAndLogo">
-            <NavLink className="logo" to="/">
+            <NavLink onClick={() => closeMenu(false)} className="logo" to="/">
               <span className="name">João Victor</span>
             </NavLink>
             <span className="role">Desenvolvedor Web</span>
@@ -16,19 +33,31 @@ function Sidebar() {
         <div className="sidebarNav"></div>
         <div className="sidebarLinksContainer">
           <NavLink
-            onClick={() => setMenu(false)}
+            onClick={() => closeMenu()}
             className="sidebarLinks"
             to="/about"
           >
             Sobre
           </NavLink>
-          <NavLink className="sidebarLinks" to="/skills">
+          <NavLink
+            onClick={() => closeMenu()}
+            className="sidebarLinks"
+            to="/skills"
+          >
             Habilidades
           </NavLink>
-          <NavLink className="sidebarLinks" to="/projects">
+          <NavLink
+            onClick={() => closeMenu()}
+            className="sidebarLinks"
+            to="/projects"
+          >
             Projetos
           </NavLink>
-          <NavLink className="sidebarLinks" to="/contact">
+          <NavLink
+            onClick={() => closeMenu()}
+            className="sidebarLinks"
+            to="/contact"
+          >
             Contato
           </NavLink>
         </div>
