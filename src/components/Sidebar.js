@@ -56,6 +56,13 @@ function Sidebar() {
           <NavLink
             onClick={() => closeMenu()}
             className="sidebarLinks"
+            to="/resume"
+          >
+            Currículo
+          </NavLink>
+          <NavLink
+            onClick={() => closeMenu()}
+            className="sidebarLinks"
             to="/contact"
           >
             Contato
