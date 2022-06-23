@@ -1,7 +1,8 @@
 import './App.css';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { About, Contact, Projects, Sidebar, Skills, Home } from './components';
+import { Sidebar } from './components';
+import { About, Contact, Projects, Skills, Home, Resume } from './pages';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import React from 'react';
 
@@ -10,7 +11,7 @@ import { useStateContext } from './context/ContextProvider';
 function App() {
   const { menu, setMenu, width } = useStateContext();
 
-  const isPC = width >= 768;
+  const isPC = width >= 769;
 
   return (
     <div className="App">
@@ -36,6 +37,7 @@ function App() {
             <Route path="/skills" element={<Skills />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/resume" element={<Resume />} />
           </Routes>
         </div>
       </BrowserRouter>
