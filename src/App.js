@@ -19,9 +19,9 @@ function App() {
         {width <= 768 ? (
           <button className="navButton" onClick={() => setMenu(!menu)}>
             {menu ? (
-              <AiOutlineClose className="test" />
+              <AiOutlineClose className="menuButton" />
             ) : (
-              <AiOutlineMenu className="test" />
+              <AiOutlineMenu className="menuButton" />
             )}
           </button>
         ) : (

@@ -8,7 +8,7 @@ function Resume() {
     'https://drive.google.com/u/0/uc?id=1q9zMsHptYlXArTuTfuSNS41pFG0jKX4W&export=download';
 
   return (
-    <div className="test">
+    <div>
       <div className="Resume pages">
         <h2>Currículo</h2>
         <main className="main">
