@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { ContactForm } from '../components';
 
 function Contact() {
   const initialText = 'realjvictor@gmail.com';
@@ -45,6 +46,7 @@ function Contact() {
           </a>
         </div>
       </main>
+      <ContactForm />
     </div>
   );
 }
