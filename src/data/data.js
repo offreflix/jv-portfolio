@@ -6,9 +6,11 @@ export const projects = [
     technologies: ['Next.Js', 'React.Js', 'GraphQl', 'Tailwind CSS'],
     description:
       'Um blog com posts recentes, categorias, comentários, informação do autor e artigos usando Markdown.',
-    about: '',
+    about:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
     image:
       'https://media.discordapp.net/attachments/958055531774361630/989601811637895198/unknown.png',
+    id: 1,
   },
   {
     name: 'JM Store',
@@ -16,9 +18,11 @@ export const projects = [
     githubSlug: 'https://github.com/Reflixzinhu/ecommerce-stripe',
     technologies: ['Next.Js', 'React.Js', 'Sanity', 'Stripe', 'ContextAPI'],
     description: 'Um aplicação de E-commerce com pagamentos utilizando Stripe.',
-    about: '',
+    about:
+      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
     image:
       'https://cdn.discordapp.com/attachments/958055531774361630/989563861315248218/unknown.png',
+    id: 2,
   },
   {
     name: 'JunkBlog',
@@ -30,6 +34,7 @@ export const projects = [
     about: '',
     image:
       'https://media.discordapp.net/attachments/958055531774361630/989601811637895198/unknown.png',
+    id: 3,
   },
   {
     name: 'JM Store',
@@ -40,6 +45,7 @@ export const projects = [
     about: '',
     image:
       'https://cdn.discordapp.com/attachments/958055531774361630/989563861315248218/unknown.png',
+    id: 4,
   },
   {
     name: 'JunkBlog',
@@ -51,9 +57,10 @@ export const projects = [
     about: '',
     image:
       'https://media.discordapp.net/attachments/958055531774361630/989601811637895198/unknown.png',
+    id: 5,
   },
   {
-    name: 'JM Store',
+    name: 'Peres Hub',
     slug: 'https://jm-store.vercel.app/',
     githubSlug: 'https://github.com/Reflixzinhu/ecommerce-stripe',
     technologies: [
@@ -67,9 +74,11 @@ export const projects = [
       'Next.Js',
       'Next.Js',
     ],
-    description: 'Um aplicação de E-commerce com pagamentos utilizando Stripe.',
-    about: '',
+    description: 'Uma plataforma de publicação de porno gay.',
+    about:
+      'Uma evolução do PornHub, conheça PeresHub, o melhor site pornográfico que existe no mundo inteiro!!!! ENTRE AGORA NO PERESHUB.',
     image:
-      'https://cdn.discordapp.com/attachments/958055531774361630/989563861315248218/unknown.png',
+      'https://cdn.discordapp.com/attachments/583723239600291851/990292912195637338/WhatsApp_Image_2022-06-25_at_13.30.15.jpeg',
+    id: 6,
   },
 ];
