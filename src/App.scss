@@ -400,12 +400,14 @@ $vividColor: #0080ff;
     @media screen and (min-width: 768px) {
         width: 40%;
         // right: -40%;
+
     }
 
 
 
     .projectMain {
         margin: 2rem;
+
 
         .projectFooter {
             position: fixed;
@@ -430,6 +432,7 @@ $vividColor: #0080ff;
         display: flex;
         justify-content: space-between;
         align-items: center;
+
 
         button {
             color: $mainTextColor;

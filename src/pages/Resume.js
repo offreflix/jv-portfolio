@@ -24,7 +24,10 @@ function Resume() {
             meu currículo.
           </p>
 
-          <iframe src="https://drive.google.com/file/d/1q9zMsHptYlXArTuTfuSNS41pFG0jKX4W/preview" />
+          <iframe
+            title="resume"
+            src="https://drive.google.com/file/d/1q9zMsHptYlXArTuTfuSNS41pFG0jKX4W/preview"
+          />
         </main>
       </div>
     </div>
