@@ -1,9 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Roboto+Condensed&family=Roboto:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Roboto+Condensed&family=Roboto:wght@400;700&display=swap');
+@import "utilities/variables";
+
 body {
   margin: 0 0 0 0;
   padding: 0 0 0 0;
   font-family: 'Roboto', sans-serif;
-  background-color: #0d1017;
+  background-color: $secondaryBgColor;
 }
 
 ul {
@@ -25,8 +27,8 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   max-width: 100vw;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
+  // position: absolute;
 }
 
 .hideScrollbar {
@@ -36,7 +38,6 @@ body {
 input:-webkit-autofill,
 textarea:-webkit-autofill,
 select:-webkit-autofill {
-  -webkit-text-fill-color: #afbac5;
-  -webkit-box-shadow: 0 0 0px 1000px #151b22 inset;
+  -webkit-text-fill-color: $thirdTextColor;
+  -webkit-box-shadow: 0 0 0px 1000px $mainBgColor inset;
 }
-/*# sourceMappingURL=index.css.map */

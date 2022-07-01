@@ -1,18 +1,4 @@
-// * {
-//     --main-bg-color: #151b22;
-//     --secondary-bg-color: #0d1017;
-//     --main-text-color: #f0f6fc;
-//     --secondary-text-color: #c9d1d9;
-//     --third-text-color: #afbac5;
-
-// }
-
-$mainBgColor: #151b22;
-$secondaryBgColor: #0d1017;
-$mainTextColor: #f0f6fc;
-$secondaryTextColor: #c9d1d9;
-$thirdTextColor: #afbac5;
-$vividColor: #0080ff;
+@import 'utilities/variables';
 
 .App {
     display: flex;
@@ -80,11 +66,13 @@ $vividColor: #0080ff;
             .nameAndLogo {
                 display: flex;
                 flex-direction: column;
+
             }
 
             .logo {
                 text-decoration: none;
                 color: $mainTextColor;
+
             }
 
             .name {
@@ -92,6 +80,7 @@ $vividColor: #0080ff;
                 font-size: 1.5rem;
                 cursor: pointer;
                 transition: color 0.2s ease;
+
 
                 &:hover {
                     color: $vividColor;
@@ -329,7 +318,6 @@ $vividColor: #0080ff;
             filter: brightness(50%);
             transition: all 0.4s ease;
 
-
             @media screen and (min-width: 768px) {
                 filter: brightness(100%);
             }
@@ -343,9 +331,6 @@ $vividColor: #0080ff;
             margin: 2rem;
             line-height: 1rem;
             transition: all 0.2s ease;
-
-
-
 
             @media screen and (min-width: 768px) {
                 opacity: 0;
@@ -373,8 +358,6 @@ $vividColor: #0080ff;
             }
         }
     }
-
-
 }
 
 .backgroundProjectInfo {
@@ -400,14 +383,10 @@ $vividColor: #0080ff;
     @media screen and (min-width: 768px) {
         width: 40%;
         // right: -40%;
-
     }
-
-
 
     .projectMain {
         margin: 2rem;
-
 
         .projectFooter {
             position: fixed;
@@ -432,7 +411,6 @@ $vividColor: #0080ff;
         display: flex;
         justify-content: space-between;
         align-items: center;
-
 
         button {
             color: $mainTextColor;
@@ -521,6 +499,18 @@ $vividColor: #0080ff;
 }
 
 .Contact {
+
+    .flexContact {
+        display: flex;
+        flex-direction: column;
+
+        @media screen and (min-width: 768px) {
+            flex-direction: row;
+
+
+        }
+    }
+
     h2 {
         font-size: calc(1.5rem + 9px);
     }
@@ -544,6 +534,92 @@ $vividColor: #0080ff;
                     padding-left: 1rem;
                 }
             }
+        }
+    }
+}
+
+.ContactForm {
+    width: 100%;
+
+    .send {
+        display: flex;
+        justify-content: flex-end;
+        margin: 1rem;
+
+        input {
+            color: $mainTextColor;
+            background: $mainBgColor;
+            font-weight: bold;
+            font-size: .9rem;
+            padding: .7rem 1.5rem;
+            border: none;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Kdam Thmor Pro';
+
+            &:hover {
+                color: $mainBgColor;
+                background: $vividColor;
+                transform: scale(1.05);
+            }
+
+            &:active {
+                color: white;
+                background: red;
+            }
+        }
+    }
+
+    .ContactFormGrid {
+        display: grid;
+        grid: 'name email'auto 'subject subject'auto 'message message'auto / auto auto;
+        margin: 1rem;
+        gap: 1rem;
+        // width: 20rem;
+        max-width: 100%;
+
+        .name {
+            grid-area: name;
+        }
+
+        .email {
+            grid-area: email;
+        }
+
+        .subject {
+            grid-area: subject;
+        }
+
+        .message {
+            grid-area: message;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            border: 0;
+            font-size: 1rem;
+            height: 50px;
+            box-sizing: border-box;
+            font-family: inherit;
+            background: $mainBgColor;
+            color: $thirdTextColor;
+
+            &:focus {
+                outline: none;
+                color: $vividColor;
+            }
+        }
+
+        input {
+            padding: 0 20px;
+        }
+
+        textarea {
+            padding: 20px;
+            min-height: 150px;
+            resize: vertical;
         }
     }
 }
