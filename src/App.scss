@@ -259,19 +259,20 @@
             }
         }
 
-        .contactButton {
-            border: 0;
-            cursor: pointer;
-            color: $vividColor;
-            font-family: inherit;
-            font-size: 1em;
-            text-decoration: none;
-            transition: all 0.2s ease;
+    }
+}
 
-            &:hover {
-                color: darken($vividColor, 20%);
-            }
-        }
+.contactButton {
+    border: 0;
+    cursor: pointer;
+    color: $vividColor;
+    font-family: inherit;
+    font-size: 1em;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+        color: darken($vividColor, 20%);
     }
 }
 
@@ -579,8 +580,10 @@
         // width: 20rem;
         max-width: 100%;
 
+
         .name {
             grid-area: name;
+
         }
 
         .email {
@@ -605,6 +608,8 @@
             font-family: inherit;
             background: $mainBgColor;
             color: $thirdTextColor;
+            border-radius: 0.3rem;
+
 
             &:focus {
                 outline: none;

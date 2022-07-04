@@ -39,13 +39,14 @@ function Sidebar() {
           >
             Sobre
           </NavLink>
-          <NavLink
+          {/* I will implement skills in future. */}
+          {/* <NavLink
             onClick={() => closeMenu()}
             className="sidebarLinks"
             to="/skills"
           >
             Habilidades
-          </NavLink>
+          </NavLink> */}
           <NavLink
             onClick={() => closeMenu()}
             className="sidebarLinks"

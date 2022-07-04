@@ -18,24 +18,17 @@ function Home() {
         <h1>Desenvolvedor Web</h1>
       </div>
       <main className="main">
-        <p>
-          Desenvolvedor Front-End, atualmente estou focado em React Js, porém
-          estudo para me tornar um Desenvolvedor Fullstack.
-        </p>
+        <p>Desenvolvedor Front-End, atualmente estou focado em React Js.</p>
         <p>
           Veja meus{' '}
           <NavLink className="mainButton" to="/projects">
             Projetos
           </NavLink>
           ,{' '}
-          <NavLink className="mainButton" to="/skills">
-            Habilidades
-          </NavLink>
-          ,{' '}
           <NavLink className="mainButton" to="/cv">
             Currículo
           </NavLink>{' '}
-          e veja mais no{' '}
+          e mais no{' '}
           <NavLink className="mainButton" to="/about">
             Sobre Mim
           </NavLink>

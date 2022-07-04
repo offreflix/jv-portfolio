@@ -60,3 +60,5 @@ export const projects = [
     id: 5,
   },
 ];
+
+export const pages = ['about', 'contact', 'projects', 'resume', 'skills'];

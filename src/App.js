@@ -1,10 +1,12 @@
+import React from 'react';
 import './App.css';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Sidebar } from './components';
-import { About, Contact, Projects, Skills, Home, Resume } from './pages';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-import React from 'react';
+
+// I'll implement Skills in future
+import { About, Contact, Projects, Home, Resume } from './pages';
+import { Sidebar } from './components';
 
 import { useStateContext } from './context/ContextProvider';
 
@@ -34,7 +36,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/skills" element={<Skills />} />
+            {/* <Route path="/skills" element={<Skills />} /> */}
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/resume" element={<Resume />} />
