@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ProjectInfo from '../components/ProjectInfo';
 import { useStateContext } from '../context/ContextProvider';
-import { projects } from '../data/data';
+import { projects } from '../data';
 
 function Projects() {
   const [currentProject, setCurrentProject] = useState([]);

@@ -61,4 +61,4 @@ export const projects = [
   },
 ];
 
-export const pages = ['about', 'contact', 'projects', 'resume', 'skills'];
+// export const pages = ['about', 'contact', 'projects', 'resume', 'skills'];
