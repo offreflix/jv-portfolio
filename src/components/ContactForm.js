@@ -1,78 +1,72 @@
+import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import React from 'react';
+import { toast } from 'react-toastify';
 
-export default function ContactForm() {
-  function sendEmail(e) {
+const ContactForm = () => {
+  const form = useRef();
+  const {
+    REACT_APP_EMAILJS_SERVICE_ID,
+    REACT_APP_EMAILJS_TEMPLATE_ID,
+    REACT_APP_EMAILJS_PUBLIC_ID,
+  } = process.env;
+
+  const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
       .sendForm(
-        'gmailteste',
-        'template_lat4php',
-        e.target,
-        'user_BLg80uyyFXNabuj2m8IGP'
+        REACT_APP_EMAILJS_SERVICE_ID,
+        REACT_APP_EMAILJS_TEMPLATE_ID,
+        form.current,
+        REACT_APP_EMAILJS_PUBLIC_ID
       )
-
       .then(
         (result) => {
-          alert('Mensagem enviada com sucesso! 👍');
+          console.log(result);
+          toast.success('Mensagem enviada com Sucesso');
         },
         (error) => {
-          alert(error.message);
+          alert(error.text);
         }
       );
-    e.target.reset();
-  }
-  return (
-    <div>
-      <div className="container">
-        <h2>Contato</h2>
-        <form onSubmit={sendEmail}>
-          <div className="row pt-5 mx-auto">
-            <div className="col-lg-8 col-sm-12 form-group mx-auto">
-              <label>Nome</label>
-              <input
-                type="text"
-                autoFocus
-                className="form-control"
-                required
-                placeholder="Nome"
-                name="name"
-              />
-            </div>
-            <div className="col-lg-8 col-sm-12 form-group pt-1 mx-auto">
-              <label>Email</label>
-              <input
-                type="email"
-                className="form-control"
-                required
-                placeholder="Seu email"
-                name="email"
-              />
-            </div>
+  };
 
-            <div className="col-lg-8 col-sm-12 form-group pt-1 mx-auto">
-              <label>Mensagem</label>
-              <textarea
-                className="form-control"
-                id=""
-                cols="30"
-                rows="8"
-                required
-                placeholder="Sua mensagem"
-                name="message"
-              ></textarea>
-            </div>
-            <div className="col-lg-8 col-sm-12 pt-3 mx-auto">
-              <input
-                type="submit"
-                className="btn btn-info"
-                value="Enviar mensagem"
-              ></input>
-            </div>
-          </div>
-        </form>
+  return (
+    <form className="ContactForm" ref={form} onSubmit={sendEmail}>
+      <div className="ContactFormGrid">
+        <input
+          className="name"
+          type="text"
+          name="name"
+          required
+          placeholder="Nome"
+        />
+        <input
+          className="email"
+          type="email"
+          name="email"
+          required
+          placeholder="Email"
+        />
+        <input
+          className="subject"
+          type="subject"
+          name="subject"
+          required
+          placeholder="Assunto"
+        />
+        <textarea
+          className="message"
+          name="message"
+          placeholder="Mensagem"
+          required
+        />
       </div>
-    </div>
+      <div className="send">
+        <input type="submit" value="Enviar Mensagem!" />
+      </div>
+    </form>
   );
-}
+};
+
+export default ContactForm;

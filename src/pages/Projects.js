@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ProjectInfo from '../components/ProjectInfo';
 import { useStateContext } from '../context/ContextProvider';
-import { projects } from '../data/data';
+import { projects } from '../data';
 
 function Projects() {
   const [currentProject, setCurrentProject] = useState([]);
@@ -10,6 +10,7 @@ function Projects() {
   return (
     <>
       <div className="Projects pages">
+        <h2>Projetos</h2>
         <div className="container">
           {projects.map((project) => (
             <div

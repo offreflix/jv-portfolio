@@ -288,7 +288,7 @@
   background-color: #004d99;
 }
 
-.Home main .contactButton {
+.contactButton {
   border: 0;
   cursor: pointer;
   color: #0080ff;
@@ -299,7 +299,7 @@
   transition: all 0.2s ease;
 }
 
-.Home main .contactButton:hover {
+.contactButton:hover {
   color: #004d99;
 }
 
@@ -563,6 +563,25 @@
   }
 }
 
+.Contact .flexContact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .Contact .flexContact {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
 .Contact h2 {
   font-size: calc(1.5rem + 9px);
 }
@@ -594,5 +613,100 @@
 .Contact .main .links a:hover,
 .Contact .main .links button:hover {
   padding-left: 1rem;
+}
+
+.ContactForm {
+  width: 100%;
+}
+
+.ContactForm .send {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin: 1rem;
+}
+
+.ContactForm .send input {
+  color: #f0f6fc;
+  background: #151b22;
+  font-weight: bold;
+  font-size: .9rem;
+  padding: .7rem 1.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  font-family: 'Kdam Thmor Pro';
+}
+
+.ContactForm .send input:hover {
+  color: #151b22;
+  background: #0080ff;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.ContactForm .send input:active {
+  color: white;
+  background: red;
+}
+
+.ContactForm .ContactFormGrid {
+  display: -ms-grid;
+  display: grid;
+  grid: "name email" auto "subject subject" auto "message message" auto/auto auto;
+  margin: 1rem;
+  gap: 1rem;
+  max-width: 100%;
+}
+
+.ContactForm .ContactFormGrid .name {
+  grid-area: name;
+}
+
+.ContactForm .ContactFormGrid .email {
+  grid-area: email;
+}
+
+.ContactForm .ContactFormGrid .subject {
+  grid-area: subject;
+}
+
+.ContactForm .ContactFormGrid .message {
+  grid-area: message;
+}
+
+.ContactForm .ContactFormGrid input,
+.ContactForm .ContactFormGrid textarea {
+  width: 100%;
+  border: 0;
+  font-size: 1rem;
+  height: 50px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: inherit;
+  background: #151b22;
+  color: #afbac5;
+  border-radius: 0.3rem;
+}
+
+.ContactForm .ContactFormGrid input:focus,
+.ContactForm .ContactFormGrid textarea:focus {
+  outline: none;
+  color: #0080ff;
+}
+
+.ContactForm .ContactFormGrid input {
+  padding: 0 20px;
+}
+
+.ContactForm .ContactFormGrid textarea {
+  padding: 20px;
+  min-height: 150px;
+  resize: vertical;
 }
 /*# sourceMappingURL=App.css.map */
