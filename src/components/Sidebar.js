@@ -1,9 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useStateContext } from '../context/ContextProvider';
+import { useTranslation } from 'react-i18next';
 
 function Sidebar() {
   const { setMenu, width, setWidth } = useStateContext();
+
+  const { t } = useTranslation();
 
   function closeMenu() {
     if (width < 768) {
@@ -27,7 +30,7 @@ function Sidebar() {
             <NavLink onClick={() => closeMenu(false)} className="logo" to="/">
               <span className="name">João Victor</span>
             </NavLink>
-            <span className="role">Desenvolvedor Web</span>
+            <span className="role">{t('Desenvolvedor Web')}</span>
           </div>
         </div>
         <div className="sidebarNav"></div>
@@ -37,7 +40,7 @@ function Sidebar() {
             className="sidebarLinks"
             to="/about"
           >
-            Sobre
+            {t('Sobre')}
           </NavLink>
           {/* I will implement skills in future. */}
           {/* <NavLink
@@ -52,21 +55,21 @@ function Sidebar() {
             className="sidebarLinks"
             to="/projects"
           >
-            Projetos
+            {t('Projetos')}
           </NavLink>
           <NavLink
             onClick={() => closeMenu()}
             className="sidebarLinks"
             to="/resume"
           >
-            Currículo
+            {t('Currículo')}
           </NavLink>
           <NavLink
             onClick={() => closeMenu()}
             className="sidebarLinks"
             to="/contact"
           >
-            Contato
+            {t('Contato')}
           </NavLink>
         </div>
         <div>

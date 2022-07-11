@@ -1,32 +1,35 @@
 import React, { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { useTranslation } from 'react-i18next';
 import { ContactForm } from '../components';
 
 function Contact() {
   const initialText = 'realjvictor@gmail.com';
   const [emailText, setEmailText] = useState(initialText);
 
+  const { t } = useTranslation();
+
   return (
     <div className="Contact pages">
-      <h2>Entre em Contato</h2>
+      <h2>{t('Entre em Contato')}</h2>
       <div className="flexContact">
         <div>
           <main className="main">
             <p>
-              Estou interessado em oportunidades de empregos. Não só para
-              trabalhar, mas também para adquirir experiencia e ajudar à
-              resolver problemas.
+              {t(
+                'Estou interessado em oportunidades de emprego Não só para trabalhar, mas também para adquirir experiencia e ajudar à resolver problemas'
+              )}
             </p>
-            <p>Mas também estou aceitando trabalhos como freelancer.</p>
-            <p>Pode entrar em contato por qualquer meio:</p>
+            <p>{t('Também estou aceitando trabalhos como freelancer')}</p>
+            <p>{t('Pode entrar em contato por qualquer meio')}</p>
 
             <div className="links">
               <CopyToClipboard text="realjvictor@gmail.com">
                 <button
-                  onMouseOver={() => setEmailText('Copie para o Clipboard')}
+                  onMouseOver={() => setEmailText(t('Copie para o Clipboard'))}
                   onMouseLeave={() => setEmailText(initialText)}
                   onClick={() => {
-                    setEmailText('Copiado!');
+                    setEmailText(t('Copiado'));
                     setTimeout(() => setEmailText(initialText), 1000);
                   }}
                 >

@@ -1,0 +1,40 @@
+{
+  "translation": {
+    "Desenvolvedor Web": "Web Developer",
+    "Currículo": "Resume",
+    "Projetos": "Projects",
+    "Contato": "Contact",
+    "Sobre": "About",
+    "Nome": "Name",
+    "Assunto": "Subject",
+    "Mensagem": "Message",
+
+    "JunkBlog": "JunkBlog",
+
+    "Oi, sou o": "Hi, I'm",
+    "Desenvolvedor Front-End, atualmente estou focado em React Js": "Front-End Developer, Currently focused on React JS.",
+    "Veja meus": "See my",
+    "e mais no": "and more in",
+    "Entre em contato comigo!": "Contact me!",
+
+    "Sobre Mim": "About me",
+
+    "Eu sou um Desenvolvedor Front-End apaixonado em React, Next e fazer Designs Responsivos": "I'm a Web Developer passionate about React, Next and Responsive Design.",
+    "Tento melhorar minhas habilidades em cada projeto, principalmente a organização e velocidade": "I try to improve my skills in each project, mainly organization and speed.",
+    "Caso esteja interessado, entre em contato!": "If interested, contact me!",
+
+    "Entre em contato": "<contactLink>Contact</contactLink> me. <linkView>View</linkView> or <linkDownload>Download</linkDownload> my resume.",
+
+    "Entre em Contato": "Contact me",
+    "Estou interessado em oportunidades de emprego Não só para trabalhar, mas também para adquirir experiencia e ajudar à resolver problemas": "I am interested in job opportunities. Not just to work, but also to gain experience and help solve problems.",
+    "Também estou aceitando trabalhos como freelancer": "I am also accepting jobs as a freelancer.",
+    "Pode entrar em contato por qualquer meio": "You can contact me by any means:",
+    "Copie para o Clipboard": "Copy to Clipboard",
+    "Copiado": "Copied!",
+    "Enviar Mensagem!": "Send Message!",
+
+    "Abrir Projeto": "Open Project",
+    "Voltar aos Projetos": "Back to Projects.",
+    "Tecnologias": "Technologies"
+  }
+}

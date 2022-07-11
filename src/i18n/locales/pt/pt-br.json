@@ -1,0 +1,40 @@
+{
+  "translation": {
+    "Desenvolvedor Web": "Desenvolvedor Web",
+    "Currículo": "Currículo",
+    "Projetos": "Projetos",
+    "Contato": "Contato",
+    "Sobre": "Sobre",
+    "Nome": "Nome",
+    "Assunto": "Assunto",
+    "Mensagem": "Mensagem",
+
+    "JunkBlog": "JunkBlog",
+
+    "Oi, sou o": "Oi, sou o",
+    "Desenvolvedor Front-End, atualmente estou focado em React Js": "Desenvolvedor Front-End, atualmente estou focado em React Js.",
+    "Veja meus": "Veja meus",
+    "e mais no": "e mais no",
+    "Entre em contato comigo!": "Entre em contato comigo!",
+
+    "Sobre Mim": "Sobre Mim",
+
+    "Eu sou um Desenvolvedor Front-End apaixonado em React, Next e fazer Designs Responsivos": "Eu sou um Desenvolvedor Front-End apaixonado em React, Next e fazer Designs Responsivos.",
+    "Tento melhorar minhas habilidades em cada projeto, principalmente a organização e velocidade": "Tento melhorar minhas habilidades em cada projeto, principalmente a organização e velocidade.",
+    "Caso esteja interessado, entre em contato!": "Caso esteja interessado, entre em contato!",
+
+    "Entre em contato": "Entre em <contactLink>Contato</contactLink> comigo. <linkView>Veja</linkView> ou <linkDownload>Baixe</linkDownload> meu currículo.",
+
+    "Entre em Contato": "Entre em Contato",
+    "Estou interessado em oportunidades de emprego Não só para trabalhar, mas também para adquirir experiencia e ajudar à resolver problemas": "Estou interessado em oportunidades de emprego. Não só para trabalhar, mas também para adquirir experiencia e ajudar à resolver problemas.",
+    "Também estou aceitando trabalhos como freelancer": "Também estou aceitando trabalhos como freelancer.",
+    "Pode entrar em contato por qualquer meio": "Pode entrar em contato por qualquer meio:",
+    "Copie para o Clipboard": "Copie pra o Clipboard",
+    "Copiado": "Copiado!",
+    "Enviar Mensagem!": "Enviar Mensagem!",
+
+    "Abrir Projeto": "Abrir Projeto",
+    "Voltar aos Projetos": "Voltar aos Projetos.",
+    "Tecnologias": "Tecnologias"
+  }
+}
