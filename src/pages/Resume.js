@@ -1,27 +1,39 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
+import { resumeViewLink, resumeDownloadLink } from '../data/index';
+import { Trans } from 'react-i18next';
 
 function Resume() {
-  const resumeViewLink =
-    'https://drive.google.com/file/d/1q9zMsHptYlXArTuTfuSNS41pFG0jKX4W/view?usp=sharing';
-  const resumeDownloadLink =
-    'https://drive.google.com/u/0/uc?id=1q9zMsHptYlXArTuTfuSNS41pFG0jKX4W&export=download';
+  const { t } = useTranslation();
 
   return (
     <div>
       <div className="Resume pages">
-        <h2>Currículo</h2>
+        <h2>{t('Currículo')}</h2>
         <main className="main">
           <p>
-            Entre em <NavLink to="/contact">Contato</NavLink>.{' '}
-            <a href={resumeViewLink} target="_blank" rel="noreferrer">
-              Veja
-            </a>{' '}
-            ou{' '}
-            <a href={resumeDownloadLink} target="_blank" rel="noreferrer">
-              Baixe
-            </a>{' '}
-            meu currículo.
+            <Trans
+              t={t}
+              components={{
+                linkView: (
+                  // eslint-disable-next-line jsx-a11y/anchor-has-content
+                  <a href={resumeViewLink} target="_blank" rel="noreferrer" />
+                ),
+                linkDownload: (
+                  // eslint-disable-next-line jsx-a11y/anchor-has-content
+                  <a
+                    href={resumeDownloadLink}
+                    target="_blank"
+                    rel="noreferrer"
+                  />
+                ),
+                contactLink: <NavLink to="/contact" />,
+              }}
+            >
+              Entre em contato
+            </Trans>
           </p>
 
           <iframe

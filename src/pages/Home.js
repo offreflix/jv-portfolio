@@ -1,11 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function Home() {
+  const { t } = useTranslation();
+
   return (
     <div className="Home pages">
       <div>
-        <h1>Oi, sou o</h1>
+        <h1>{t('Oi, sou o')}</h1>
         <div className="content">
           <h2>
             Victor<span>,</span>
@@ -15,28 +18,30 @@ function Home() {
           </h2>
         </div>
         <br />
-        <h1>Desenvolvedor Web</h1>
+        <h1>{t('Desenvolvedor Web')}</h1>
       </div>
       <main className="main">
-        <p>Desenvolvedor Front-End, atualmente estou focado em React Js.</p>
         <p>
-          Veja meus{' '}
+          {t('Desenvolvedor Front-End, atualmente estou focado em React Js')}
+        </p>
+        <p>
+          {t('Veja meus')}{' '}
           <NavLink className="mainButton" to="/projects">
-            Projetos
+            {t('Projetos')}
           </NavLink>
           ,{' '}
           <NavLink className="mainButton" to="/cv">
-            Currículo
+            {t('Currículo')}
           </NavLink>{' '}
-          e mais no{' '}
+          {t('e mais no')}{' '}
           <NavLink className="mainButton" to="/about">
-            Sobre Mim
+            {t('Sobre Mim')}
           </NavLink>
           .
         </p>
 
         <NavLink className="contactButton" to="/contact">
-          Entre em contato comigo!
+          {t('Entre em contato comigo!')}
         </NavLink>
       </main>
     </div>

@@ -5,6 +5,7 @@ import App from './App';
 import { ContextProvider } from './context/ContextProvider';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import './i18n';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

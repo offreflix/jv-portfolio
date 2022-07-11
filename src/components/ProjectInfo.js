@@ -2,10 +2,25 @@ import React from 'react';
 import { IoChevronBackCircleOutline } from 'react-icons/io5';
 import { useStateContext } from '../context/ContextProvider';
 
+import { useTranslation } from 'react-i18next';
+
 function ProjectInfo({
-  project: { name, description, image, about, technologies, slug, githubSlug },
+  project: {
+    name,
+    description,
+    image,
+    about,
+    technologies,
+    slug,
+    githubSlug,
+    english,
+  },
 }) {
   const { showProjectFunction } = useStateContext();
+
+  const { t } = useTranslation();
+
+  const lngIsPt = localStorage.getItem('lng') === 'pt';
 
   return (
     <aside className="ProjectInfo">
@@ -19,16 +34,17 @@ function ProjectInfo({
             <IoChevronBackCircleOutline className="icon" />
           </button>
           <span onClick={() => showProjectFunction(false)}>
-            Voltar aos Projetos.
+            {t('Voltar aos Projetos')}
           </span>
         </div>
         <div className="projectContent">
           <h2>{name}</h2>
-          <p>{description}</p>
+          {lngIsPt ? <p>{description}</p> : <p>{english.description}</p>}
+
           <img src={image} alt="" height="150px" />
-          <h3>Sobre</h3>
-          <p>{about}</p>
-          <h3>Tecnologias</h3>
+          <h3>{t('Sobre')}</h3>
+          {lngIsPt ? <p>{about}</p> : <p>{english.about}</p>}
+          <h3>{t('Tecnologias')}</h3>
           <ul>
             {technologies.map((technology) => (
               <li>{technology}</li>
@@ -67,7 +83,7 @@ function ProjectInfo({
           target="_blank"
           rel="noreferrer"
         >
-          Abrir Projeto
+          {t('Abrir Projeto')}
         </a>
       </div>
     </aside>

@@ -10,6 +10,43 @@
     font-family: 'Roboto', sans-serif;
     max-width: 100%;
 
+    .changeLngButton {
+        position: fixed;
+        border: none;
+        text-decoration: none;
+        background: none;
+        top: 1rem;
+        left: 1rem;
+        z-index: 2;
+
+        @media screen and (min-width: 768px) {
+            left: inherit;
+            right: 1rem;
+        }
+
+        button {
+            background: rgba(30, 30, 30, 0.53);
+            // background-color: red;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.2rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            height: 2rem;
+            width: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: all 0.2s ease;
+
+            &:hover {
+                color: $vividColor;
+            }
+        }
+    }
+
     .navButton {
         position: fixed;
         display: flex;
@@ -20,10 +57,10 @@
         top: 1rem;
 
         cursor: pointer;
-        z-index: +2;
+        z-index: 2;
 
         .menuButton {
-            background: darken(#fff, 90%);
+            background: rgba(30, 30, 30, 0.53);
             color: white;
             font-size: 2rem;
             padding: 0.2rem;
@@ -66,13 +103,11 @@
             .nameAndLogo {
                 display: flex;
                 flex-direction: column;
-
             }
 
             .logo {
                 text-decoration: none;
                 color: $mainTextColor;
-
             }
 
             .name {
@@ -80,7 +115,7 @@
                 font-size: 1.5rem;
                 cursor: pointer;
                 transition: color 0.2s ease;
-
+                text-align: center;
 
                 &:hover {
                     color: $vividColor;
@@ -90,6 +125,7 @@
             .role {
                 font-size: 0.9rem;
                 color: $secondaryTextColor;
+                text-align: center;
             }
         }
 
@@ -258,7 +294,6 @@
                 background-color: darken($vividColor, 20%);
             }
         }
-
     }
 }
 
@@ -500,15 +535,16 @@
 }
 
 .Contact {
-
     .flexContact {
         display: flex;
         flex-direction: column;
 
         @media screen and (min-width: 768px) {
             flex-direction: row;
+        }
 
-
+        @media screen and (max-width: 1000px) {
+            flex-direction: column;
         }
     }
 
@@ -551,8 +587,8 @@
             color: $mainTextColor;
             background: $mainBgColor;
             font-weight: bold;
-            font-size: .9rem;
-            padding: .7rem 1.5rem;
+            font-size: 0.9rem;
+            padding: 0.7rem 1.5rem;
             border: none;
             border-radius: 0.3rem;
             cursor: pointer;
@@ -580,10 +616,8 @@
         // width: 20rem;
         max-width: 100%;
 
-
         .name {
             grid-area: name;
-
         }
 
         .email {
@@ -609,7 +643,6 @@
             background: $mainBgColor;
             color: $thirdTextColor;
             border-radius: 0.3rem;
-
 
             &:focus {
                 outline: none;

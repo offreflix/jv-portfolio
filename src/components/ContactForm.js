@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
 
+import { useTranslation } from 'react-i18next';
+
 const ContactForm = () => {
   const form = useRef();
   const {
@@ -31,6 +33,8 @@ const ContactForm = () => {
       );
   };
 
+  const { t } = useTranslation();
+
   return (
     <form className="ContactForm" ref={form} onSubmit={sendEmail}>
       <div className="ContactFormGrid">
@@ -39,7 +43,7 @@ const ContactForm = () => {
           type="text"
           name="name"
           required
-          placeholder="Nome"
+          placeholder={t('Nome')}
         />
         <input
           className="email"
@@ -53,17 +57,17 @@ const ContactForm = () => {
           type="subject"
           name="subject"
           required
-          placeholder="Assunto"
+          placeholder={t('Assunto')}
         />
         <textarea
           className="message"
           name="message"
-          placeholder="Mensagem"
+          placeholder={t('Mensagem')}
           required
         />
       </div>
       <div className="send">
-        <input type="submit" value="Enviar Mensagem!" />
+        <input type="submit" value={t('Enviar Mensagem!')} />
       </div>
     </form>
   );
