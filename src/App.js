@@ -48,7 +48,7 @@ function App() {
                 changeLng();
               }}
             >
-              {'pt-BR' ? currentLng : 'pt'}
+              {currentLng === 'pt-BR' ? 'pt' : currentLng}
             </button>
           </div>
           {width <= 768 ? (
