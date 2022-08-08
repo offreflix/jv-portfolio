@@ -80,7 +80,7 @@
     .sidebar {
         display: flex;
         flex-direction: column;
-        width: 12rem;
+        width: 10rem;
         background-color: $mainBgColor;
         align-items: center;
         height: 100vh;
@@ -181,7 +181,7 @@
     width: 100vw;
 
     @media screen and (min-width: 768px) {
-        margin-left: 12rem;
+        margin-left: 10rem;
     }
 }
 
@@ -662,114 +662,137 @@
     }
 }
 
-// .Skills {
-//     .skillsArea {
-//         display: flex;
-//         flex-direction: column;
-//         // padding: 0 20%;
-
-//         @media only screen and (max-width: 750px) {
-//             // padding: 0 5%;
-//         }
-
-//         .skill {
-//             position: relative;
-//             margin-bottom: 40px;
-
-//             .skillTitle {
-//                 font-size: 40px;
-//                 margin-bottom: 10px;
-//             }
-
-//             .skillBar {
-//                 width: 100%;
-//                 background-color: transparentize($mainBgColor, 0.6);
-//                 height: 40px;
-//                 border-radius: 100px;
-//                 position: absolute;
-//                 // z-index: 1;
-//             }
-
-//             .skillFill {
-//                 background-color: $vividColor;
-//                 height: 40px;
-//                 border-radius: 100px;
-//                 display: flex;
-//                 justify-content: flex-end;
-//                 align-items: center;
-//                 // padding-right: 30px;
-//                 overflow: hidden;
+.Skills {
+    .main {
+        display: flex;
+        flex-direction: column;
 
 
 
-//                 .skillPercent {
-//                     font-size: 30px;
-//                 }
-//             }
+        .techsContainer {
+            background: $mainBgColor;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
 
-//             .frontend {
-//                 animation: frontend 2s;
-//                 width: 90%;
-//             }
+            @media screen and (min-width: 768px) {
+                font-size: 1rem;
+                line-height: 1.5rem;
 
-//             .backend {
-//                 animation: backend 2s;
-//                 width: 60%;
-//             }
+                h3 {
+                    font-size: 1rem;
+                }
+            }
 
-//             .fullstack {
-//                 animation: fullstack 2s;
-//                 width: 70%;
-//             }
+            @media screen and (min-width: 990px) {
+                flex-direction: row;
+                font-size: 12px;
+                line-height: 1.5rem;
 
-//             @keyframes frontend {
-//                 from {
-//                     width: 0;
-//                 }
+            }
 
-//                 to {
-//                     width: 90%;
-//                 }
-//             }
-
-//             @keyframes backend {
-//                 from {
-//                     width: 0;
-//                 }
-
-//                 to {
-//                     width: 60%;
-//                 }
-//             }
-
-//             @keyframes fullstack {
-//                 from {
-//                     width: 0;
-//                 }
-
-//                 to {
-//                     width: 70%;
-//                 }
-//             }
+            @media screen and (min-width: 1200px) {
+                font-size: 16px;
+                line-height: 2rem;
+            }
 
 
+        }
 
+        .techs {
+            padding: 25px 30px;
 
-//         }
+            &:nth-child(1),
+            &:nth-child(2),
+            &:nth-child(3) {
 
-//         h1 {
-//             text-align: center;
-//             margin-top: 40px;
-//             font-size: 80px;
-//         }
+                border-bottom: 1rem $secondaryBgColor solid;
 
-//     }
-// }
+                @media screen and (min-width: 990px) {
+                    border-bottom: none;
+                    border-left: 0.3rem $secondaryBgColor solid;
+                }
 
+            }
+
+            &:nth-child(1),
+            &:nth-child(2) {
+
+                @media screen and (min-width: 990px) {
+
+                    border-right: 0.8rem $secondaryBgColor solid;
+                }
+
+            }
+
+            p,
+            h2,
+            h3 {
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+                color: $mainTextColor;
+            }
+
+            h3 {
+                color: $vividColor;
+            }
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .bottom {
+            display: flex;
+            gap: 1rem;
+
+            .skillsContainer {
+                flex-grow: 3;
+            }
+
+            .techs {
+                flex-grow: 0;
+                background: $mainBgColor;
+                box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+                margin-bottom: 1rem;
+                width: 30%;
+                border: none;
+
+                @media screen and (min-width: 768px) {
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+
+                    h3 {
+                        font-size: 1rem;
+                    }
+                }
+
+                @media screen and (min-width: 900px) {
+                    flex-direction: row;
+                    font-size: 12px;
+                    line-height: 1.5rem;
+
+                }
+
+                @media screen and (min-width: 1200px) {
+                    font-size: 16px;
+                    line-height: 2rem;
+                }
+            }
+        }
+    }
+}
 
 .skill-bars {
     padding: 25px 30px;
-    // width: 600px;
     background: $mainBgColor;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
@@ -810,10 +833,10 @@
     border-radius: 10px;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05),
         0 1px rgba(255, 255, 255, 0.8);
-    animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+    animation: animateSkills 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 
-@keyframes animate {
+@keyframes animateSkills {
     100% {
         transform: scaleX(1);
     }
@@ -826,16 +849,16 @@
     transform: scaleX(0);
     transform-origin: left;
     background: $vividColor;
-    animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+    animation: animateSkills 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 
-.bar .progress-line.html span {
-    width: 90%;
-}
+// .bar .progress-line.html span {
+//     width: 90%;
+// }
 
-.bar .progress-line.css span {
-    width: 60%;
-}
+// .bar .progress-line.css span {
+//     width: 60%;
+// }
 
 .bar .progress-line.jquery span {
     width: 85%;
@@ -852,13 +875,13 @@
 .progress-line span::before {
     position: absolute;
     content: "";
-    top: -10px;
+    top: -0.625rem;
     right: 0;
     height: 0;
     width: 0;
-    border: 7px solid transparent;
-    border-bottom-width: 0px;
-    border-right-width: 0px;
+    border: 0.4375rem solid transparent;
+    border-bottom-width: 0rem;
+    border-right-width: 0rem;
     border-top-color: #000;
     opacity: 0;
     animation: showText2 0.5s 1.5s linear forwards;
@@ -866,14 +889,14 @@
 
 .progress-line span::after {
     position: absolute;
-    top: -28px;
+    top: -1.75rem;
     right: 0;
     font-weight: 500;
     background: $secondaryBgColor;
     color: $mainTextColor;
-    padding: 1px 8px;
+    padding: 0.0625rem 0.5rem;
     font-size: 12px;
-    border-radius: 1rem 1rem 3px 1rem;
+    border-radius: 1rem 1rem 0.1875rem 1rem;
     opacity: 0;
     animation: showText2 0.5s 1.5s linear forwards;
 }
@@ -884,13 +907,13 @@
     }
 }
 
-.progress-line.html span::after {
-    content: "90%";
-}
+// .progress-line.html span::after {
+//     content: "90%";
+// }
 
-.progress-line.css span::after {
-    content: "60%";
-}
+// .progress-line.css span::after {
+//     content: "60%";
+// }
 
 .progress-line.jquery span::after {
     content: "85%";

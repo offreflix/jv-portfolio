@@ -15,8 +15,6 @@ function App() {
   const { menu, setMenu, width } = useStateContext();
   const [currentLng, setCurrentLng] = useState('');
 
-  const localStorageLng = localStorage.getItem('lng');
-
   useEffect(() => {
     if (localStorage.getItem('lng'))
       return setCurrentLng(localStorage.getItem('lng'));
