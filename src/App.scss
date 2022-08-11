@@ -667,8 +667,6 @@
         display: flex;
         flex-direction: column;
 
-
-
         .techsContainer {
             background: $mainBgColor;
             box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
@@ -691,6 +689,17 @@
                 font-size: 12px;
                 line-height: 1.5rem;
 
+                .mobile {
+                    flex-basis: 30%;
+                }
+
+                .backEnd {
+                    flex-basis: 30%;
+                }
+
+                .frontEnd {
+                    flex-basis: 30%;
+                }
             }
 
             @media screen and (min-width: 1200px) {
@@ -746,6 +755,11 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+
+                li {
+
+                    line-height: 1.8rem;
+                }
             }
         }
 
@@ -852,26 +866,6 @@
     animation: animateSkills 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 
-// .bar .progress-line.html span {
-//     width: 90%;
-// }
-
-// .bar .progress-line.css span {
-//     width: 60%;
-// }
-
-.bar .progress-line.jquery span {
-    width: 85%;
-}
-
-.bar .progress-line.python span {
-    width: 50%;
-}
-
-.bar .progress-line.mysql span {
-    width: 75%;
-}
-
 .progress-line span::before {
     position: absolute;
     content: "";
@@ -905,24 +899,4 @@
     100% {
         opacity: 1;
     }
-}
-
-// .progress-line.html span::after {
-//     content: "90%";
-// }
-
-// .progress-line.css span::after {
-//     content: "60%";
-// }
-
-.progress-line.jquery span::after {
-    content: "85%";
-}
-
-.progress-line.python span::after {
-    content: "50%";
-}
-
-.progress-line.mysql span::after {
-    content: "75%";
 }

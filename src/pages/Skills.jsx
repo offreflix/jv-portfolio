@@ -14,7 +14,7 @@ function Skills() {
       <div className="main">
         <div className="techsContainer">
           <div className="frontEnd techs">
-            <h2>Desenvolvedor Frontend</h2>
+            <h2>Frontend</h2>
             <p>
               Adoro o Frontend, eu gosto de criar códigos do zero, e transformar
               Designs em coisas funcionais.
@@ -28,59 +28,52 @@ function Skills() {
               <li>Git/Github</li>
               <li>SASS</li>
               <li>React</li>
+              <li>Next</li>
+              <li>GraphQL</li>
+              <li>Typescript</li>
+              <li>Styled-Components</li>
             </ul>
           </div>
           <div className="backEnd techs">
-            <h2>Desenvolvedor Backend</h2>
+            <h2>Backend</h2>
             <p>
-              Adoro o Frontend, eu gosto de criar códigos do zero, e transformar
-              Designs em coisas funcionais.
+              Não sou muito fã de Backend, mas consigo lidar bem, quando é
+              preciso eu faço o Backend, mas realmente prefiro o Frontend.
             </p>
             <h3>Tecnologias/Linguagens</h3>
             <ul>
-              <li>React</li>
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-              <li>Git/Github</li>
-              <li>SASS</li>
-              <li>React</li>
+              <li>Javascript</li>
+              <li>Typescript</li>
+              <li>MongoDB</li>
+              <li>GraphQL</li>
+              <li>MySQL</li>
+              <li>NodeJS</li>
+              <li>Express.js</li>
             </ul>
           </div>
-          <div className="Fullstack techs">
-            <h2>Fullstack</h2>
+          <div className="mobile techs">
+            <h2>Mobile</h2>
             <p>
-              Adoro o Frontend, eu gosto de criar códigos do zero, e transformar
-              Designs em coisas funcionais.
+              Estou iniciando no Desenvolvimento Mobile, porém com meus
+              conhecimentos de React.js já aprendi o básico.
             </p>
             <h3>Tecnologias/Linguagens</h3>
             <ul>
-              <li>React</li>
-              <li>HTML</li>
-              <li>CSS</li>
+              <li>React Native</li>
               <li>JavaScript</li>
               <li>Git/Github</li>
               <li>SASS</li>
-              <li>React</li>
+              <li>Styled-Components</li>
+              <li>Typescript</li>
             </ul>
           </div>
           {width <= 768 ? (
-            <div className="Mobile techs">
-              <h2>Mobile</h2>
+            <div className="fullstack techs">
+              <h2>Fullstack</h2>
               <p>
-                Adoro o Frontend, eu gosto de criar códigos do zero, e
-                transformar Designs em coisas funcionais.
+                Fiz curso de Fullstack, apesar de não gostar de backend, eu lido
+                bem e consigo trabalhar como Fullstack.
               </p>
-              <h3>Tecnologias/Linguagens</h3>
-              <ul>
-                <li>React</li>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>Git/Github</li>
-                <li>SASS</li>
-                <li>React</li>
-              </ul>
             </div>
           ) : (
             ''
@@ -89,22 +82,12 @@ function Skills() {
         <div className="bottom">
           <SkillBar skills={skillsData} />
           {width >= 768 ? (
-            <div className="Mobile techs">
-              <h2>Mobile</h2>
+            <div className="fullstack techs">
+              <h2>Fullstack</h2>
               <p>
-                Adoro o Frontend, eu gosto de criar códigos do zero, e
-                transformar Designs em coisas funcionais.
+                Fiz curso de Fullstack, apesar de não gostar de backend, eu lido
+                bem e consigo trabalhar como Fullstack.
               </p>
-              <h3>Tecnologias/Linguagens</h3>
-              <ul>
-                <li>React</li>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>Git/Github</li>
-                <li>SASS</li>
-                <li>React</li>
-              </ul>
             </div>
           ) : (
             ''

@@ -810,6 +810,18 @@
     font-size: 12px;
     line-height: 1.5rem;
   }
+  .Skills .main .techsContainer .mobile {
+    -ms-flex-preferred-size: 30%;
+        flex-basis: 30%;
+  }
+  .Skills .main .techsContainer .backEnd {
+    -ms-flex-preferred-size: 30%;
+        flex-basis: 30%;
+  }
+  .Skills .main .techsContainer .frontEnd {
+    -ms-flex-preferred-size: 30%;
+        flex-basis: 30%;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -866,6 +878,10 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.Skills .main .techs ul li {
+  line-height: 1.8rem;
 }
 
 .Skills .main .bottom {
@@ -1005,18 +1021,6 @@
           animation: animateSkills 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 
-.bar .progress-line.jquery span {
-  width: 85%;
-}
-
-.bar .progress-line.python span {
-  width: 50%;
-}
-
-.bar .progress-line.mysql span {
-  width: 75%;
-}
-
 .progress-line span::before {
   position: absolute;
   content: "";
@@ -1058,17 +1062,5 @@
   100% {
     opacity: 1;
   }
-}
-
-.progress-line.jquery span::after {
-  content: "85%";
-}
-
-.progress-line.python span::after {
-  content: "50%";
-}
-
-.progress-line.mysql span::after {
-  content: "75%";
 }
 /*# sourceMappingURL=App.css.map */
