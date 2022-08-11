@@ -16,10 +16,11 @@ function Skills() {
           <div className="frontEnd techs">
             <h2>Frontend</h2>
             <p>
-              Adoro o Frontend, eu gosto de criar códigos do zero, e transformar
-              Designs em coisas funcionais.
+              {t(
+                'Adoro o Frontend, eu gosto de criar códigos do zero, e transformar Designs em coisas funcionais'
+              )}
             </p>
-            <h3>Tecnologias/Linguagens</h3>
+            <h3>{t('Tecnologias/Linguagens')}</h3>
             <ul>
               <li>React</li>
               <li>HTML</li>
@@ -37,10 +38,11 @@ function Skills() {
           <div className="backEnd techs">
             <h2>Backend</h2>
             <p>
-              Não sou muito fã de Backend, mas consigo lidar bem, quando é
-              preciso eu faço o Backend, mas realmente prefiro o Frontend.
+              {t(
+                'Não sou muito fã de Backend, mas consigo lidar tão bem, quando é preciso eu faço o Backend mas realmente prefiro o Frontend'
+              )}
             </p>
-            <h3>Tecnologias/Linguagens</h3>
+            <h3>{t('Tecnologias/Linguagens')}</h3>
             <ul>
               <li>Javascript</li>
               <li>Typescript</li>
@@ -54,10 +56,11 @@ function Skills() {
           <div className="mobile techs">
             <h2>Mobile</h2>
             <p>
-              Estou iniciando no Desenvolvimento Mobile, porém com meus
-              conhecimentos de React.js já aprendi o básico.
+              {t(
+                'Estou iniciando no Desenvolvimento Mobile, porém com meus conhecimentos de Reactjs já aprendi o básico'
+              )}
             </p>
-            <h3>Tecnologias/Linguagens</h3>
+            <h3>{t('Tecnologias/Linguagens')}</h3>
             <ul>
               <li>React Native</li>
               <li>JavaScript</li>
@@ -71,8 +74,9 @@ function Skills() {
             <div className="fullstack techs">
               <h2>Fullstack</h2>
               <p>
-                Fiz curso de Fullstack, apesar de não gostar de backend, eu lido
-                bem e consigo trabalhar como Fullstack.
+                {t(
+                  'Fiz curso de Fullstack, apesar de não gostar de backend, eu lido bem e consigo trabalhar como Fullstack'
+                )}
               </p>
             </div>
           ) : (
@@ -85,8 +89,9 @@ function Skills() {
             <div className="fullstack techs">
               <h2>Fullstack</h2>
               <p>
-                Fiz curso de Fullstack, apesar de não gostar de backend, eu lido
-                bem e consigo trabalhar como Fullstack.
+                {t(
+                  'Fiz curso de Fullstack, apesar de não gostar de backend, eu lido bem e consigo trabalhar como Fullstack'
+                )}
               </p>
             </div>
           ) : (
