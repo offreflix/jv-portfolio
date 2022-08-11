@@ -39,3 +39,36 @@ export const resumeViewLink =
   'https://drive.google.com/file/d/1q9zMsHptYlXArTuTfuSNS41pFG0jKX4W/view?usp=sharing';
 export const resumeDownloadLink =
   'https://drive.google.com/u/0/uc?id=1q9zMsHptYlXArTuTfuSNS41pFG0jKX4W&export=download';
+
+export const skillsData = [
+  {
+    title: 'React',
+    name: 'react',
+    percent: '85%',
+  },
+  {
+    title: 'HTML',
+    name: 'html',
+    percent: '90%',
+  },
+  {
+    title: 'CSS',
+    name: 'css',
+    percent: '80%',
+  },
+  {
+    title: 'JavaScript',
+    name: 'javascript',
+    percent: '70%',
+  },
+  {
+    title: 'TypeScript',
+    name: 'typescript',
+    percent: '50%',
+  },
+  {
+    title: 'NextJS',
+    name: 'nextjs',
+    percent: '65%',
+  },
+];

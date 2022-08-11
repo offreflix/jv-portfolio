@@ -80,7 +80,7 @@
     .sidebar {
         display: flex;
         flex-direction: column;
-        width: 12rem;
+        width: 10rem;
         background-color: $mainBgColor;
         align-items: center;
         height: 100vh;
@@ -181,7 +181,7 @@
     width: 100vw;
 
     @media screen and (min-width: 768px) {
-        margin-left: 12rem;
+        margin-left: 10rem;
     }
 }
 
@@ -659,5 +659,244 @@
             min-height: 150px;
             resize: vertical;
         }
+    }
+}
+
+.Skills {
+    .main {
+        display: flex;
+        flex-direction: column;
+
+        .techsContainer {
+            background: $mainBgColor;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+
+            @media screen and (min-width: 768px) {
+                font-size: 1rem;
+                line-height: 1.5rem;
+
+                h3 {
+                    font-size: 1rem;
+                }
+            }
+
+            @media screen and (min-width: 990px) {
+                flex-direction: row;
+                font-size: 12px;
+                line-height: 1.5rem;
+
+                .mobile {
+                    flex-basis: 30%;
+                }
+
+                .backEnd {
+                    flex-basis: 30%;
+                }
+
+                .frontEnd {
+                    flex-basis: 30%;
+                }
+            }
+
+            @media screen and (min-width: 1200px) {
+                font-size: 16px;
+                line-height: 2rem;
+            }
+
+
+        }
+
+        .techs {
+            padding: 25px 30px;
+
+            &:nth-child(1),
+            &:nth-child(2),
+            &:nth-child(3) {
+
+                border-bottom: 1rem $secondaryBgColor solid;
+
+                @media screen and (min-width: 990px) {
+                    border-bottom: none;
+                    border-left: 0.3rem $secondaryBgColor solid;
+                }
+
+            }
+
+            &:nth-child(1),
+            &:nth-child(2) {
+
+                @media screen and (min-width: 990px) {
+
+                    border-right: 0.8rem $secondaryBgColor solid;
+                }
+
+            }
+
+            p,
+            h2,
+            h3 {
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+                color: $mainTextColor;
+            }
+
+            h3 {
+                color: $vividColor;
+            }
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                li {
+
+                    line-height: 1.8rem;
+                }
+            }
+        }
+
+        .bottom {
+            display: flex;
+            gap: 1rem;
+
+            .skillsContainer {
+                flex-grow: 3;
+            }
+
+            .techs {
+                flex-grow: 0;
+                background: $mainBgColor;
+                box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+                margin-bottom: 1rem;
+                width: 30%;
+                border: none;
+
+                @media screen and (min-width: 768px) {
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+
+                    h3 {
+                        font-size: 1rem;
+                    }
+                }
+
+                @media screen and (min-width: 900px) {
+                    flex-direction: row;
+                    font-size: 12px;
+                    line-height: 1.5rem;
+
+                }
+
+                @media screen and (min-width: 1200px) {
+                    font-size: 16px;
+                    line-height: 2rem;
+                }
+            }
+        }
+    }
+}
+
+.skill-bars {
+    padding: 25px 30px;
+    background: $mainBgColor;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.skill-bars .bar {
+    margin: 6px 0;
+}
+
+.skill-bars .bar:first-child {
+    margin-top: 0px;
+}
+
+.skill-bars .bar .info {
+    margin-bottom: 5px;
+}
+
+.skill-bars .bar .info span {
+    font-weight: 500;
+    font-size: 17px;
+    opacity: 0;
+    animation: showText 0.5s 1s linear forwards;
+}
+
+@keyframes showText {
+    100% {
+        opacity: 1;
+    }
+}
+
+.skill-bars .bar .progress-line {
+    height: 20px;
+    width: 100%;
+    background: $thirdTextColor;
+    position: relative;
+    transform: scaleX(0);
+    transform-origin: left;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05),
+        0 1px rgba(255, 255, 255, 0.8);
+    animation: animateSkills 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+}
+
+@keyframes animateSkills {
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.bar .progress-line span {
+    height: 100%;
+    position: absolute;
+    border-radius: 10px;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: $vividColor;
+    animation: animateSkills 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+}
+
+.progress-line span::before {
+    position: absolute;
+    content: "";
+    top: -0.625rem;
+    right: 0;
+    height: 0;
+    width: 0;
+    border: 0.4375rem solid transparent;
+    border-bottom-width: 0rem;
+    border-right-width: 0rem;
+    border-top-color: #000;
+    opacity: 0;
+    animation: showText2 0.5s 1.5s linear forwards;
+}
+
+.progress-line span::after {
+    position: absolute;
+    top: -1.75rem;
+    right: 0;
+    font-weight: 500;
+    background: $secondaryBgColor;
+    color: $mainTextColor;
+    padding: 0.0625rem 0.5rem;
+    font-size: 12px;
+    border-radius: 1rem 1rem 0.1875rem 1rem;
+    opacity: 0;
+    animation: showText2 0.5s 1.5s linear forwards;
+}
+
+@keyframes showText2 {
+    100% {
+        opacity: 1;
     }
 }
