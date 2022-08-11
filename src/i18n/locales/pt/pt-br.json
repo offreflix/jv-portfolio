@@ -35,6 +35,12 @@
 
     "Abrir Projeto": "Abrir Projeto",
     "Voltar aos Projetos": "Voltar aos Projetos.",
-    "Tecnologias": "Tecnologias"
+    "Tecnologias": "Tecnologias",
+
+    "Adoro o Frontend, eu gosto de criar códigos do zero, e transformar Designs em coisas funcionais": "Adoro o Frontend, eu gosto de criar códigos do zero, e transformar Designs em coisas funcionais.",
+    "Tecnologias/Linguagens": "Tecnologias/Linguagens",
+    "Não sou muito fã de Backend, mas consigo lidar tão bem, quando é preciso eu faço o Backend mas realmente prefiro o Frontend": "Não sou muito fã de Backend, mas consigo lidar tão bem, quando é preciso eu faço o Backend mas realmente prefiro o Frontend.",
+    "Estou iniciando no Desenvolvimento Mobile, porém com meus conhecimentos de Reactjs já aprendi o básico": "Estou iniciando no Desenvolvimento Mobile, porém com meus conhecimentos de React.js já aprendi o básico e estou estudando cada vez mais.",
+    "Fiz curso de Fullstack, apesar de não gostar de backend, eu lido bem e consigo trabalhar como Fullstack": "Fiz curso de Fullstack, apesar de não gostar de backend, eu lido bem e consigo trabalhar como Fullstack."
   }
 }
