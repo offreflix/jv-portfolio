@@ -8,6 +8,7 @@
     "Nome": "Name",
     "Assunto": "Subject",
     "Mensagem": "Message",
+    "Habilidades": "Skills",
 
     "JunkBlog": "JunkBlog",
 
@@ -41,6 +42,6 @@
     "Tecnologias/Linguagens": "Techs/Languages",
     "Não sou muito fã de Backend, mas consigo lidar tão bem, quando é preciso eu faço o Backend mas realmente prefiro o Frontend": "I'm not a big fan of Backend, but when I need to do Backend I can handle well.",
     "Estou iniciando no Desenvolvimento Mobile, porém com meus conhecimentos de Reactjs já aprendi o básico": "I'm starting in Mobile Development, with my knowledge of React.js I've already learned the basics. And I'm studying more and more.",
-    "Fiz curso de Fullstack, apesar de não gostar de backend, eu lido bem e consigo trabalhar como Fullstack": "I finished a Fullstack course, even though I don't like the backend, I deal well and I can work as a Fullstack"
+    "Fiz curso de Fullstack, apesar de não gostar de backend, eu lido bem e consigo trabalhar como Fullstack": "I finished a Fullstack course, even though I don't like the backend, I deal well and I can work as a Fullstack."
   }
 }

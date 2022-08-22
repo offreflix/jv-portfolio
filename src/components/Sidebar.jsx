@@ -48,7 +48,7 @@ function Sidebar() {
             className="sidebarLinks"
             to="/skills"
           >
-            Habilidades
+            {t('Habilidades')}
           </NavLink>
           <NavLink
             onClick={() => closeMenu()}
@@ -90,7 +90,7 @@ function Sidebar() {
           </a>
           <a
             className="iconsLink"
-            href="https://github.com/Reflixzinhu"
+            href="https://github.com/offreflix"
             target="_blank"
             rel="noreferrer"
           >
