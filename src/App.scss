@@ -1210,27 +1210,43 @@
     justify-content: flex-end;
     margin-top: 0.75rem;
 
-    input {
-      background: $gradientBlue;
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.875rem;
-      padding: 0.7rem 2rem;
-      border: none !important;
-      border-radius: $radiusFull;
+    button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: $radiusLg !important;
+      border: 1px solid $glassBorder !important;
       cursor: pointer;
-      transition: $transition;
       font-family: inherit;
-      letter-spacing: 0.01em;
-      box-shadow: 0 4px 18px rgba($vividColor, 0.3);
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.02em;
+      color: $thirdTextColor;
+      background: rgba(255, 255, 255, 0.04);
+      transition: $transition;
+      overflow: hidden;
 
       &:hover {
+        border-color: rgba($vividColor, 0.35) !important;
+        color: $vividColor;
+        box-shadow: 0 0 16px rgba($vividColor, 0.2);
         transform: translateY(-2px);
-        box-shadow: 0 8px 28px rgba($vividColor, 0.4);
+
+        .sendIcon {
+          transform: translate(3px, -2px);
+        }
       }
 
       &:active {
         transform: translateY(0);
+      }
+
+      .sendIcon {
+        font-size: 0.85rem;
+        transition: transform $transition;
+        flex-shrink: 0;
       }
     }
   }

@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
+import { IoSend } from 'react-icons/io5';
 
 import { useTranslation } from 'react-i18next';
 
@@ -67,7 +68,10 @@ const ContactForm = () => {
         />
       </div>
       <div className="send">
-        <input type="submit" value={t('contact.form.submit')} />
+        <button type="submit">
+          <span>{t('contact.form.submit')}</span>
+          <IoSend className="sendIcon" />
+        </button>
       </div>
     </form>
   );
