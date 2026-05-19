@@ -1478,3 +1478,242 @@
     opacity: 1;
   }
 }
+
+// ─── EXPERIENCE PAGE ─────────────────────────────────────────────────────────────
+
+.Experience {
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    margin: 0 0 3rem;
+    background: linear-gradient(135deg, $mainTextColor 60%, $thirdTextColor 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .sectionDivider {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $thirdTextColor;
+    margin: 3rem 0 2rem 2.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: $glassBorder;
+    }
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    padding-left: 2.25rem;
+  }
+
+  .timelineItem {
+    position: relative;
+    padding-bottom: 2.5rem;
+
+    &:last-child {
+      padding-bottom: 0;
+
+      .timelineLine {
+        display: none;
+      }
+    }
+
+    .timelineLine {
+      position: absolute;
+      left: -1.525rem;
+      top: 0.6rem;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba($vividColor, 0.3), rgba($glassBorder, 0.3));
+    }
+
+    .timelineDot {
+      position: absolute;
+      left: -1.875rem;
+      top: 0.35rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: $glassBorder;
+      border: 2px solid rgba($thirdTextColor, 0.4);
+      transition: $transition;
+      z-index: 1;
+    }
+
+    &.current .timelineDot {
+      background: $gradientBlue;
+      border-color: transparent;
+      box-shadow: 0 0 0 3px rgba($vividColor, 0.15), 0 0 14px rgba($vividColor, 0.4);
+    }
+
+    &:hover .timelineDot {
+      border-color: rgba($vividColor, 0.6);
+    }
+  }
+
+  .timelineCard {
+    background: $glassBg;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid $glassBorder;
+    border-radius: $radiusLg;
+    padding: 1.5rem;
+    transition: $transition;
+
+    &:hover {
+      border-color: rgba($vividColor, 0.18);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  .current .timelineCard {
+    border-color: rgba($vividColor, 0.15);
+    border-top: 2px solid $vividColor;
+  }
+
+  .timelineHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+
+    @media screen and (min-width: 640px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  .timelineTitle {
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: $mainTextColor;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.2rem;
+    }
+
+    h3 {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: $vividColor;
+      margin: 0;
+    }
+  }
+
+  .timelineMeta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+
+    @media screen and (min-width: 640px) {
+      align-items: flex-end;
+    }
+  }
+
+  .currentBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $greenColor;
+    background: rgba($greenColor, 0.08);
+    border: 1px solid rgba($greenColor, 0.2);
+    padding: 0.2rem 0.6rem;
+    border-radius: $radiusFull;
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: $greenColor;
+      box-shadow: 0 0 6px $greenColor;
+      animation: pulseDot 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+  }
+
+  .timelinePeriod {
+    font-size: 0.78rem;
+    color: $thirdTextColor;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .timelineLocation {
+    font-size: 0.75rem;
+    color: rgba($thirdTextColor, 0.7);
+  }
+
+  .timelineBullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+
+    li {
+      font-size: 0.865rem;
+      color: $secondaryTextColor;
+      line-height: 1.65;
+      padding-left: 1rem;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.6em;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: rgba($vividColor, 0.6);
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .timelineTechs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.25rem;
+  }
+
+  .techTag {
+    padding: 0.22rem 0.65rem;
+    background: rgba($vividColor, 0.07);
+    border: 1px solid rgba($vividColor, 0.12);
+    border-radius: $radiusFull;
+    font-size: 0.72rem;
+    color: $secondaryTextColor;
+    font-weight: 500;
+    transition: $transitionFast;
+
+    &:hover {
+      background: rgba($vividColor, 0.14);
+      color: $mainTextColor;
+      border-color: rgba($vividColor, 0.25);
+    }
+  }
+}

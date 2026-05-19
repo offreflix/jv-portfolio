@@ -3,6 +3,7 @@
     "nav": {
       "about": "About",
       "skills": "Skills",
+      "experience": "Experience",
       "projects": "Projects",
       "resume": "Resume",
       "contact": "Contact"
@@ -68,6 +69,12 @@
     "resume": {
       "title": "Resume",
       "cta": "<contactLink>Contact</contactLink> me. <linkView>View</linkView> or <linkDownload>Download</linkDownload> my resume."
+    },
+
+    "experience": {
+      "title": "Experience",
+      "present": "Present",
+      "education": "Education"
     },
 
     "projects": {

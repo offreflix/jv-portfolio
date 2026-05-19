@@ -50,6 +50,13 @@ function Sidebar() {
           <NavLink
             onClick={() => closeMenu()}
             className="sidebarLinks"
+            to="/experience"
+          >
+            {t('nav.experience')}
+          </NavLink>
+          <NavLink
+            onClick={() => closeMenu()}
+            className="sidebarLinks"
             to="/projects"
           >
             {t('nav.projects')}
