@@ -2,12 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-const stats = [
-  { number: '10+', label: 'Tecnologias' },
-  { number: '5+', label: 'Projetos' },
-  { number: '2+', label: 'Anos' },
-];
-
 const values = [
   {
     icon: '⚡',
@@ -48,15 +42,6 @@ function About() {
           <NavLink className="aboutCta" to="/contact">
             {t('Caso esteja interessado, entre em contato!')}
           </NavLink>
-        </div>
-
-        <div className="aboutStats">
-          {stats.map((s) => (
-            <div key={s.label} className="statCard">
-              <span className="statNumber">{s.number}</span>
-              <span className="statLabel">{s.label}</span>
-            </div>
-          ))}
         </div>
 
         <div className="valueCards">

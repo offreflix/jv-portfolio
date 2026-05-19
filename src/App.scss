@@ -623,10 +623,6 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.25rem;
-
-    @media screen and (min-width: 768px) {
-      grid-template-columns: 1fr 1fr;
-    }
   }
 
   .aboutBio {
@@ -636,12 +632,6 @@
     border: 1px solid $glassBorder;
     border-radius: $radiusLg;
     padding: 2rem;
-    grid-column: 1 / -1;
-
-    @media screen and (min-width: 768px) {
-      grid-column: 1 / 2;
-      grid-row: 1;
-    }
 
     p {
       color: $secondaryTextColor;
@@ -651,71 +641,6 @@
 
       &:last-of-type {
         margin-bottom: 1.5rem;
-      }
-    }
-  }
-
-  .aboutStats {
-    display: flex;
-    flex-direction: row;
-    gap: 0.75rem;
-
-    @media screen and (min-width: 768px) {
-      flex-direction: column;
-      grid-column: 2 / 3;
-      grid-row: 1;
-    }
-
-    .statCard {
-      flex: 1;
-      background: $glassBg;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid $glassBorder;
-      border-radius: $radiusLg;
-      padding: 1.25rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: $transition;
-      border-top: 2px solid transparent;
-      background-clip: padding-box;
-      position: relative;
-
-      &:nth-child(1) {
-        border-top-color: $vividColor;
-      }
-      &:nth-child(2) {
-        border-top-color: $cyanColor;
-      }
-      &:nth-child(3) {
-        border-top-color: $purpleColor;
-      }
-
-      &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
-      }
-
-      .statNumber {
-        font-size: 2rem;
-        font-weight: 800;
-        letter-spacing: -0.04em;
-        background: $gradientBlue;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        line-height: 1;
-        margin-bottom: 0.4rem;
-      }
-
-      .statLabel {
-        font-size: 0.72rem;
-        color: $thirdTextColor;
-        font-weight: 500;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
       }
     }
   }
