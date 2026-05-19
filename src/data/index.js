@@ -27,7 +27,7 @@ export const experiences = [
     id: 2,
     company: 'Fractal',
     role: { en: 'Full Stack Developer', pt: 'Desenvolvedor Full Stack' },
-    location: '',
+    location: 'Santos, SP',
     start: { en: 'Dec 2024', pt: 'Dez 2024' },
     end: { en: 'Apr 2025', pt: 'Abr 2025' },
     current: false,
@@ -49,7 +49,7 @@ export const experiences = [
     id: 3,
     company: 'Solinski Corp',
     role: { en: 'Full Stack Developer', pt: 'Desenvolvedor Full Stack' },
-    location: '',
+    location: 'Campinas, SP',
     start: { en: 'Aug 2024', pt: 'Ago 2024' },
     end: { en: 'Dec 2024', pt: 'Dez 2024' },
     current: false,
@@ -71,7 +71,7 @@ export const experiences = [
     id: 4,
     company: 'Solinski Corp',
     role: { en: 'Frontend Developer', pt: 'Desenvolvedor Front-End' },
-    location: '',
+    location: 'Campinas, SP',
     start: { en: 'Aug 2022', pt: 'Ago 2022' },
     end: { en: 'Aug 2024', pt: 'Ago 2024' },
     current: false,
@@ -91,19 +91,22 @@ export const experiences = [
       ],
     },
   },
-];
+]
 
 export const education = [
   {
     id: 1,
     institution: 'FIAP',
     degree: { en: "Associate's Degree", pt: 'Tecnólogo' },
-    field: { en: 'Systems Analysis & Development', pt: 'Análise e Desenvolvimento de Sistemas' },
+    field: {
+      en: 'Systems Analysis & Development',
+      pt: 'Análise e Desenvolvimento de Sistemas',
+    },
     start: { en: 'Aug 2024', pt: 'Ago 2024' },
     end: { en: 'Aug 2026', pt: 'Ago 2026' },
     current: true,
   },
-];
+]
 
 export const projects = [
   {
@@ -111,13 +114,15 @@ export const projects = [
     slug: null,
     githubSlug: 'https://github.com/offreflix/jv-portfolio',
     technologies: ['React', 'SCSS', 'i18next', 'React Router', 'EmailJS'],
-    description: 'Este portfólio — desenvolvido do zero com React, SCSS e suporte a dois idiomas.',
+    description:
+      'Este portfólio — desenvolvido do zero com React, SCSS e suporte a dois idiomas.',
     about:
       'Site de portfólio pessoal construído com React e SCSS puro, sem frameworks de UI. Conta com internacionalização (PT/EN) via i18next, roteamento com React Router, formulário de contato integrado ao EmailJS e design responsivo com tema escuro. Cada seção — Home, About, Skills, Experience, Projects, Resume e Contact — foi desenvolvida com atenção a performance, acessibilidade e consistência visual.',
     image: '/images/portfolio.png',
     id: 1,
     english: {
-      description: 'This portfolio — built from scratch with React, SCSS and bilingual support.',
+      description:
+        'This portfolio — built from scratch with React, SCSS and bilingual support.',
       about:
         'Personal portfolio site built with React and plain SCSS, no UI frameworks. Features internationalization (PT/EN) via i18next, routing with React Router, contact form integrated with EmailJS, and responsive dark-theme design. Each section — Home, About, Skills, Experience, Projects, Resume and Contact — was crafted with attention to performance, accessibility and visual consistency.',
     },
@@ -127,13 +132,15 @@ export const projects = [
     slug: 'https://graphql-nextjs-blog.vercel.app/',
     githubSlug: 'https://github.com/Reflixzinhu/graphql-nextjs-blog',
     technologies: ['Next.js', 'React', 'GraphQL', 'Tailwind CSS'],
-    description: 'Um blog com posts recentes, categorias, comentários e artigos em Markdown.',
+    description:
+      'Um blog com posts recentes, categorias, comentários e artigos em Markdown.',
     about:
       'Aplicação de blog construída com Next.js e GraphQL. Conta com posts recentes, categorias, comentários, informações do autor e artigos escritos em Markdown. Design responsivo com Tailwind CSS.',
     image: '/images/junkblog.png',
     id: 2,
     english: {
-      description: 'A blog with recent posts, categories, comments, and Markdown articles.',
+      description:
+        'A blog with recent posts, categories, comments, and Markdown articles.',
       about:
         'Blog application built with Next.js and GraphQL. Features recent posts, categories, comments, author information and Markdown articles. Responsive design with Tailwind CSS.',
     },
@@ -154,12 +161,12 @@ export const projects = [
         'E-commerce site with functional Stripe payments, built with Next.js and fully responsive. Includes product routes, related items showcase, shopping cart with price calculation and direct Stripe checkout integration.',
     },
   },
-];
+]
 
 export const resumeViewLink =
-  'https://drive.google.com/file/d/1q9zMsHptYlXArTuTfuSNS41pFG0jKX4W/view?usp=sharing';
+  'https://drive.google.com/file/d/1q9zMsHptYlXArTuTfuSNS41pFG0jKX4W/view?usp=sharing'
 export const resumeDownloadLink =
-  'https://drive.google.com/u/0/uc?id=1q9zMsHptYlXArTuTfuSNS41pFG0jKX4W&export=download';
+  'https://drive.google.com/u/0/uc?id=1q9zMsHptYlXArTuTfuSNS41pFG0jKX4W&export=download'
 
 export const skillsData = [
   { title: 'React / Next.js', name: 'react', percent: '88%' },
@@ -168,4 +175,4 @@ export const skillsData = [
   { title: 'Node.js', name: 'nodejs', percent: '72%' },
   { title: 'LangChain / RAG', name: 'langchain', percent: '75%' },
   { title: 'Docker / Kubernetes', name: 'docker', percent: '65%' },
-];
+]

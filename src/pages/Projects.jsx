@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProjectInfo from '../components/ProjectInfo';
 import { useStateContext } from '../context/ContextProvider';
 import { projects } from '../data';
@@ -6,10 +6,12 @@ import { projects } from '../data';
 import { useTranslation } from 'react-i18next';
 
 function Projects() {
-  const [currentProject, setCurrentProject] = useState([]);
+  const [currentProject, setCurrentProject] = useState(null);
   const { showProjectFunction, showProject } = useStateContext();
 
-  console.log(projects[0].english.description);
+  useEffect(() => {
+    return () => showProjectFunction(false);
+  }, []);
 
   const { t } = useTranslation();
 
@@ -52,7 +54,7 @@ function Projects() {
             </div>
           ))}
 
-          {showProject && <ProjectInfo project={currentProject} />}
+          {showProject && currentProject && <ProjectInfo project={currentProject} />}
         </div>
       </div>
       {showProject && (
