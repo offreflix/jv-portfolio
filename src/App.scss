@@ -1,902 +1,1849 @@
 @import 'utilities/variables';
 
-.App {
-    display: flex;
-    flex-direction: row;
-    background-color: $secondaryBgColor;
-    width: 100%;
-    height: 100%;
-    color: $mainTextColor;
-    font-family: 'Roboto', sans-serif;
-    max-width: 100%;
-
-    .changeLngButton {
-        position: fixed;
-        border: none;
-        text-decoration: none;
-        background: none;
-        top: 1rem;
-        left: 1rem;
-        z-index: 2;
-
-        @media screen and (min-width: 768px) {
-            left: inherit;
-            right: 1rem;
-        }
-
-        button {
-            background: rgba(30, 30, 30, 0.53);
-            // background-color: red;
-            color: white;
-            font-size: 1.2rem;
-            padding: 0.2rem;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-            height: 2rem;
-            width: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-transform: uppercase;
-            font-weight: bold;
-            transition: all 0.2s ease;
-
-            &:hover {
-                color: $vividColor;
-            }
-        }
-    }
-
-    .navButton {
-        position: fixed;
-        display: flex;
-        border: none;
-        text-decoration: none;
-        background: none;
-        right: 1rem;
-        top: 1rem;
-
-        cursor: pointer;
-        z-index: 2;
-
-        .menuButton {
-            background: rgba(30, 30, 30, 0.53);
-            color: white;
-            font-size: 2rem;
-            padding: 0.2rem;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-
-            &:hover {
-                color: $vividColor;
-            }
-        }
-    }
+:root {
+  --sidebar-width: #{$sidebarWidth};
+  --glass-bg: #{$glassBg};
+  --glass-border: #{$glassBorder};
+  --transition: #{$transition};
 }
+
+// ─── APP WRAPPER ────────────────────────────────────────────────────────────────
+
+.App {
+  display: flex;
+  flex-direction: row;
+  background-color: $secondaryBgColor;
+  width: 100%;
+  min-height: 100vh;
+  color: $mainTextColor;
+  font-family: 'Inter', system-ui, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+
+  // Ambient orbs
+  &::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    right: 5%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(
+      circle at center,
+      rgba($vividColor, 0.1) 0%,
+      transparent 65%
+    );
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: orbFloat 9s ease-in-out infinite;
+  }
+
+  &::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    left: 15%;
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(
+      circle at center,
+      rgba($cyanColor, 0.07) 0%,
+      transparent 65%
+    );
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: orbFloat 12s ease-in-out infinite reverse;
+  }
+
+  @keyframes orbFloat {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(25px, -35px) scale(1.06);
+    }
+  }
+
+  .changeLngButton {
+    position: fixed;
+    top: 1.25rem;
+    left: 1.25rem;
+    z-index: 200;
+
+    @media screen and (min-width: 769px) {
+      left: unset;
+      right: 1.25rem;
+    }
+
+    button {
+      background: rgba(13, 16, 23, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid $glassBorder !important;
+      color: $thirdTextColor;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      padding: 0.35rem 0.85rem;
+      border-radius: $radiusFull;
+      cursor: pointer;
+      transition: $transition;
+      font-weight: 700;
+      text-transform: uppercase;
+
+      &:hover {
+        color: $vividColor;
+        border-color: rgba($vividColor, 0.4) !important;
+      }
+    }
+  }
+
+  .navButton {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 1.25rem;
+    top: 1.25rem;
+    cursor: pointer;
+    z-index: 200;
+    background: rgba(13, 16, 23, 0.8) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid $glassBorder !important;
+    border-radius: $radius;
+    padding: 0.5rem;
+    transition: $transition;
+
+    &:hover {
+      border-color: rgba($vividColor, 0.35) !important;
+    }
+
+    .menuButton {
+      color: $mainTextColor;
+      font-size: 1.4rem;
+      display: block;
+    }
+  }
+}
+
+// ─── SIDEBAR ────────────────────────────────────────────────────────────────────
 
 .sidebarContainer {
-    color: $mainTextColor;
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    width: var(--sidebar-width);
+    background: rgba(11, 13, 18, 0.95);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-right: 1px solid $glassBorder;
+    height: 100vh;
+    position: fixed;
+    z-index: 50;
+    overflow: hidden;
 
-    .sidebar {
-        display: flex;
-        flex-direction: column;
-        width: 10rem;
-        background-color: $mainBgColor;
-        align-items: center;
-        height: 100vh;
-        position: fixed;
-        z-index: 1;
-
-        @media screen and (max-width: 768px) {
-            width: 100vw;
-        }
-
-        .sidebarMain {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 1rem;
-            padding-bottom: 3rem;
-            background-color: $secondaryBgColor;
-            width: 100%;
-
-            .nameAndLogo {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .logo {
-                text-decoration: none;
-                color: $mainTextColor;
-            }
-
-            .name {
-                font-weight: bold;
-                font-size: 1.5rem;
-                cursor: pointer;
-                transition: color 0.2s ease;
-                text-align: center;
-
-                &:hover {
-                    color: $vividColor;
-                }
-            }
-
-            .role {
-                font-size: 0.9rem;
-                color: $secondaryTextColor;
-                text-align: center;
-            }
-        }
-
-        .sidebarLinksContainer {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            text-align: center;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .sidebarLinks {
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            border-top: 1px solid darken($thirdTextColor, 40%);
-            border-bottom: 1px solid darken($thirdTextColor, 40%);
-            line-height: 3em;
-            color: $thirdTextColor;
-            text-decoration: none;
-            transition: color 0.2s ease;
-
-            &:nth-child(1),
-            &:nth-child(2),
-            &:nth-child(3),
-            &:nth-child(4) {
-                border-bottom: none;
-            }
-
-            &:last-child {
-                color: lighten($vividColor, 30%);
-            }
-
-            &:hover {
-                color: $vividColor;
-            }
-        }
-
-        .iconsLink {
-            padding: 3rem 1rem;
-            fill: $thirdTextColor;
-            transition: all 0.2s ease;
-
-            &:hover {
-                fill: $vividColor;
-            }
-        }
+    @media screen and (max-width: 768px) {
+      width: 100vw;
     }
+
+    .sidebarMain {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.5rem 1.5rem;
+      border-bottom: 1px solid $glassBorder;
+      gap: 0.4rem;
+
+      .avatarBadge {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: $gradientBlue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 0.5rem;
+        box-shadow:
+          0 0 0 3px rgba($vividColor, 0.15),
+          0 0 24px rgba($vividColor, 0.2);
+        flex-shrink: 0;
+        letter-spacing: -0.02em;
+      }
+
+      .logo {
+        text-decoration: none;
+        color: $mainTextColor;
+      }
+
+      .name {
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: -0.02em;
+        cursor: pointer;
+        transition: $transition;
+        text-align: center;
+        color: $mainTextColor;
+
+        &:hover {
+          color: $vividColor;
+        }
+      }
+
+      .role {
+        font-size: 0.7rem;
+        color: $thirdTextColor;
+        text-align: center;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+
+      .availableBadge {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.68rem;
+        color: $greenColor;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        background: rgba($greenColor, 0.08);
+        border: 1px solid rgba($greenColor, 0.2);
+        padding: 0.25rem 0.7rem;
+        border-radius: $radiusFull;
+        margin-top: 0.25rem;
+
+        .dot {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: $greenColor;
+          box-shadow: 0 0 6px $greenColor;
+          animation: pulseDot 2s ease-in-out infinite;
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    .sidebarLinksContainer {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 1.25rem 0.75rem;
+      gap: 0.2rem;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .sidebarLinks {
+      display: flex;
+      align-items: center;
+      padding: 0.65rem 1rem;
+      border-radius: $radius;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: $thirdTextColor;
+      text-decoration: none;
+      transition: $transition;
+      position: relative;
+      border: 1px solid transparent;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 22%;
+        height: 56%;
+        width: 3px;
+        border-radius: 0 3px 3px 0;
+        background: $gradientBlue;
+        opacity: 0;
+        transition: $transition;
+      }
+
+      &:hover {
+        color: $mainTextColor;
+        background: rgba($vividColor, 0.07);
+        border-color: rgba($vividColor, 0.1);
+
+        &::before {
+          opacity: 0.5;
+        }
+      }
+
+      &.active {
+        color: $vividColor;
+        background: rgba($vividColor, 0.1);
+        border-color: rgba($vividColor, 0.15);
+        font-weight: 600;
+
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+
+    .iconsContainer {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1.25rem 1rem;
+      border-top: 1px solid $glassBorder;
+    }
+
+    .iconsLink {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: $radius;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid $glassBorder;
+      fill: $thirdTextColor;
+      transition: $transition;
+
+      &:hover {
+        fill: $vividColor;
+        border-color: rgba($vividColor, 0.35);
+        box-shadow: 0 0 16px rgba($vividColor, 0.2);
+        transform: translateY(-2px);
+      }
+    }
+  }
 }
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 6px $greenColor;
+  }
+  50% {
+    opacity: 0.5;
+    box-shadow: 0 0 10px $greenColor;
+  }
+}
+
+// ─── ROUTES CONTAINER ───────────────────────────────────────────────────────────
 
 .Routes {
-    width: 100vw;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
 
-    @media screen and (min-width: 768px) {
-        margin-left: 10rem;
-    }
+  @media screen and (min-width: 769px) {
+    padding-left: var(--sidebar-width);
+  }
 }
 
+// ─── PAGE BASE ──────────────────────────────────────────────────────────────────
+
 .pages {
-    margin: 3rem 1.5rem;
+  width: 100%;
+  padding: 3.5rem 1.75rem;
 
-    @media screen and (min-width: 768px) {
-        margin: 3rem 3rem;
-    }
-
-    h1 {
-        font-size: calc(1.5rem + 9px);
-    }
-
-    h2 {
-        font-size: calc(1.5rem + 9px);
-    }
+  @media screen and (min-width: 768px) {
+    padding: 4.5rem 3.5rem;
+  }
 }
 
 .main {
-    margin: 1rem;
-    color: $secondaryTextColor;
-    line-height: 2rem;
-}
-
-.Home {
-    h1 {
-        display: inline;
-        font-weight: 900;
-        color: $mainTextColor;
-    }
-
-    h2 {
-        display: inline;
-    }
-
-    .content {
-        display: inline;
-        margin-left: 0.4rem;
-        font-weight: 900;
-
-        h2 {
-            color: $vividColor;
-            font-size: calc(1.5rem + 9px);
-            position: absolute;
-            transform: translate(0%, -69%);
-            display: inline;
-            z-index: 0;
-        }
-
-        h2:nth-child(1) {
-            color: transparent;
-            -webkit-text-stroke: 0.1rem $vividColor;
-        }
-
-        h2:nth-child(2) {
-            color: $vividColor;
-            animation: animate 4s ease-in-out infinite;
-        }
-
-        span {
-            color: $mainTextColor;
-            -webkit-text-stroke: $mainTextColor;
-        }
-
-        @keyframes animate {
-
-            0%,
-            100% {
-                clip-path: polygon(0% 45%,
-                        16% 44%,
-                        33% 50%,
-                        54% 60%,
-                        70% 61%,
-                        84% 59%,
-                        100% 52%,
-                        100% 100%,
-                        0% 100%);
-            }
-
-            50% {
-                clip-path: polygon(0% 60%,
-                        15% 65%,
-                        34% 66%,
-                        51% 62%,
-                        67% 50%,
-                        84% 45%,
-                        100% 46%,
-                        100% 100%,
-                        0% 100%);
-            }
-        }
-    }
-
-    main {
-        .mainButton {
-            border: 0;
-            border-radius: 0.2rem;
-            padding: 0.3rem 0.5rem;
-            cursor: pointer;
-            background-color: darken($vividColor, 43%);
-            color: scale-color($secondaryTextColor, $lightness: 30%);
-            font-family: inherit;
-            font-weight: bold;
-            font-size: 1em;
-            text-decoration: none;
-            transition: all 0.2s ease;
-
-            &:hover {
-                background-color: darken($vividColor, 20%);
-            }
-        }
-    }
+  color: $secondaryTextColor;
+  line-height: 1.8;
+  font-size: 0.975rem;
 }
 
 .contactButton {
-    border: 0;
-    cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: $vividColor;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: $transition;
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    border-bottom-color: rgba($vividColor, 0.6);
+    color: $cyanColor;
+  }
+}
+
+// ─── HOME PAGE ──────────────────────────────────────────────────────────────────
+
+.Home {
+  min-height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  .homeAvailableBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.72rem;
+    color: $greenColor;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    background: rgba($greenColor, 0.07);
+    border: 1px solid rgba($greenColor, 0.2);
+    padding: 0.3rem 0.85rem;
+    border-radius: $radiusFull;
+    margin-bottom: 1.75rem;
+    width: fit-content;
+    text-transform: uppercase;
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: $greenColor;
+      box-shadow: 0 0 6px $greenColor;
+      animation: pulseDot 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+  }
+
+  .heroText {
+    margin-bottom: 0;
+    line-height: 1.05;
+  }
+
+  h1 {
+    display: inline;
+    font-weight: 800;
+    color: $mainTextColor;
+    font-size: clamp(2.5rem, 6.5vw, 4.5rem);
+    letter-spacing: -0.04em;
+  }
+
+  h2 {
+    display: inline;
+    font-size: clamp(2.5rem, 6.5vw, 4.5rem);
+    letter-spacing: -0.04em;
+  }
+
+  .content {
+    display: inline;
+    margin-left: 0.5rem;
+    font-weight: 800;
+
+    h2 {
+      position: absolute;
+      transform: translate(0%, -69%);
+      display: inline;
+      z-index: 0;
+    }
+
+    h2:nth-child(1) {
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba($vividColor, 0.3);
+    }
+
+    h2:nth-child(2) {
+      background: $gradientBlue;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: animateWave 4s ease-in-out infinite;
+    }
+
+    span {
+      color: $mainTextColor;
+      -webkit-text-stroke: 0px;
+      -webkit-text-fill-color: $mainTextColor;
+    }
+
+    @keyframes animateWave {
+      0%,
+      100% {
+        clip-path: polygon(
+          0% 45%,
+          16% 44%,
+          33% 50%,
+          54% 60%,
+          70% 61%,
+          84% 59%,
+          100% 52%,
+          100% 100%,
+          0% 100%
+        );
+      }
+      50% {
+        clip-path: polygon(
+          0% 60%,
+          15% 65%,
+          34% 66%,
+          51% 62%,
+          67% 50%,
+          84% 45%,
+          100% 46%,
+          100% 100%,
+          0% 100%
+        );
+      }
+    }
+  }
+
+  .subtitle {
+    color: $thirdTextColor;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 3.5rem 0 1.75rem;
+    font-weight: 400;
+  }
+
+  .techStack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 2rem;
+
+    .techChip {
+      padding: 0.3rem 0.75rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid $glassBorder;
+      border-radius: $radiusFull;
+      font-size: 0.75rem;
+      color: $thirdTextColor;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: $transition;
+
+      &:hover {
+        background: rgba($vividColor, 0.08);
+        border-color: rgba($vividColor, 0.2);
+        color: $secondaryTextColor;
+      }
+    }
+  }
+
+  .ctaContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+
+    .mainButton {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.6rem 1.3rem;
+      border-radius: $radiusFull;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: $transition;
+      background: rgba($vividColor, 0.08);
+      color: lighten($vividColor, 20%);
+      border: 1px solid rgba($vividColor, 0.2);
+      letter-spacing: 0.01em;
+
+      &:hover {
+        background: rgba($vividColor, 0.16);
+        border-color: rgba($vividColor, 0.4);
+        transform: translateY(-1px);
+      }
+    }
+  }
+
+  .homeCta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 500;
     color: $vividColor;
-    font-family: inherit;
-    font-size: 1em;
+    width: fit-content;
     text-decoration: none;
-    transition: all 0.2s ease;
+    cursor: pointer;
+    transition: $transition;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: $vividColor;
+      transition: width $transition;
+    }
+
+    .arrow {
+      display: inline-block;
+      transition: transform $transition;
+      font-style: normal;
+    }
 
     &:hover {
-        color: darken($vividColor, 20%);
+      &::after {
+        width: 100%;
+      }
+
+      .arrow {
+        transform: translateX(4px);
+      }
     }
+  }
 }
+
+// ─── ABOUT PAGE ─────────────────────────────────────────────────────────────────
+
+.About {
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    margin: 0 0 2.5rem;
+    background: linear-gradient(
+      135deg,
+      $mainTextColor 60%,
+      $thirdTextColor 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .aboutLayout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .aboutBio {
+    p {
+      color: $secondaryTextColor;
+      line-height: 1.8;
+      font-size: 0.975rem;
+      margin: 0 0 1rem;
+
+      &:last-of-type {
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+
+  .valueCards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    grid-column: 1 / -1;
+
+    @media screen and (min-width: 640px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .valueCard {
+      background: $glassBg;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid $glassBorder;
+      border-radius: $radiusLg;
+      padding: 1.5rem;
+      transition: $transition;
+
+      &:hover {
+        border-color: rgba($vividColor, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      }
+
+      .valueIcon {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+        display: block;
+      }
+
+      h3 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: $mainTextColor;
+        margin: 0 0 0.5rem;
+        letter-spacing: -0.01em;
+      }
+
+      p {
+        font-size: 0.825rem;
+        color: $thirdTextColor;
+        line-height: 1.65;
+        margin: 0;
+      }
+    }
+  }
+
+  .aboutCta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $vividColor;
+    width: fit-content;
+    text-decoration: none;
+    cursor: pointer;
+    transition: $transition;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: $vividColor;
+      transition: width $transition;
+    }
+
+    .arrow {
+      display: inline-block;
+      transition: transform $transition;
+      font-style: normal;
+    }
+
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+
+      .arrow {
+        transform: translateX(4px);
+      }
+    }
+  }
+}
+
+// ─── PROJECTS PAGE ──────────────────────────────────────────────────────────────
 
 .Projects {
-    max-width: 100vw;
+  h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    margin: 0 0 2.5rem;
+  }
 
-    .container {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: 1fr;
-        justify-items: center;
-        justify-content: center;
+  .container {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: 1fr;
 
-        @media screen and (min-width: 768px) {
-            grid-template-columns: auto auto;
-        }
+    @media screen and (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .project {
+    position: relative;
+    cursor: pointer;
+    border-radius: $radiusLg;
+    overflow: hidden;
+    border: 1px solid $glassBorder;
+    transition: $transition;
+    background: $mainBgColor;
+    height: 320px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: $radiusLg;
+      background: $gradientBlue;
+      opacity: 0;
+      transition: $transition;
+      z-index: -1;
     }
 
-    .project {
-        max-width: 600px;
-        height: 400px;
-        position: relative;
-        cursor: pointer;
+    &:hover {
+      transform: translateY(-6px);
+      border-color: transparent;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 
-        @media screen and (min-width: 768px) {
-            max-width: 400px;
-            height: 400px;
+      &::after {
+        opacity: 0.4;
+      }
 
-            &:hover .details {
-                opacity: 1;
-                transform: translateY(-1rem);
-            }
+      .details {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-            &:hover img {
-                filter: brightness(50%);
-            }
-        }
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 1rem;
-            filter: brightness(50%);
-            transition: all 0.4s ease;
-
-            @media screen and (min-width: 768px) {
-                filter: brightness(100%);
-            }
-        }
-
-        .details {
-            z-index: 0;
-            position: absolute;
-            bottom: 0;
-            color: $mainTextColor;
-            margin: 2rem;
-            line-height: 1rem;
-            transition: all 0.2s ease;
-
-            @media screen and (min-width: 768px) {
-                opacity: 0;
-                bottom: -1rem;
-            }
-
-            h3 {
-                font-size: 2rem;
-                padding: 0 0 0 0;
-                line-height: 0rem;
-            }
-
-            ul {
-                display: flex;
-                flex-flow: row wrap;
-                gap: 0.5rem;
-                font-size: 0.8rem;
-
-                li {
-                    padding: 0.5em 1em;
-                    background: linear-gradient(scale-color(white, $lightness: -70%),
-                            scale-color(white, $lightness: -80%));
-                    border-radius: 2rem;
-                }
-            }
-        }
+      img {
+        filter: brightness(28%) scale(1.06);
+      }
     }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(38%);
+      transition: $transition;
+    }
+
+    .details {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.75rem;
+      background: linear-gradient(
+        to top,
+        rgba(13, 16, 23, 0.97) 0%,
+        rgba(13, 16, 23, 0.5) 50%,
+        transparent 100%
+      );
+      transition: $transition;
+
+      @media screen and (min-width: 768px) {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      h3 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: $mainTextColor;
+        margin: 0 0 0.5rem;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+      }
+
+      p {
+        font-size: 0.825rem;
+        color: $secondaryTextColor;
+        margin: 0 0 0.85rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.5;
+      }
+
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+
+        li {
+          padding: 0.25rem 0.65rem;
+          background: rgba($vividColor, 0.14);
+          border: 1px solid rgba($vividColor, 0.22);
+          border-radius: $radiusFull;
+          font-size: 0.72rem;
+          color: lighten($vividColor, 25%);
+          font-weight: 600;
+          letter-spacing: 0.02em;
+        }
+      }
+    }
+  }
 }
 
+// ─── PROJECT INFO PANEL ─────────────────────────────────────────────────────────
+
 .backgroundProjectInfo {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.468);
-    position: fixed;
-    z-index: 2;
-    top: 0;
-    left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
 }
 
 .ProjectInfo {
+  position: fixed;
+  z-index: 101;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(11, 13, 18, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-left: 1px solid $glassBorder;
+  overflow-y: auto;
+
+  @media screen and (min-width: 768px) {
+    width: 420px;
+  }
+
+  // ── Hero ──────────────────────────────────────────────────────────────────
+
+  .piHero {
+    position: relative;
+    height: 210px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: $mainBgColor;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.4);
+      transition: $transition;
+    }
+
+    .piHeroOverlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem 1.25rem 1.25rem;
+      background: linear-gradient(
+        to top,
+        rgba(11, 13, 18, 0.97) 0%,
+        rgba(11, 13, 18, 0.15) 55%,
+        transparent 100%
+      );
+    }
+
+    .piBack {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.8rem 0.35rem 0.55rem;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border-radius: $radius !important;
+      color: $secondaryTextColor;
+      font-size: 0.78rem;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      transition: $transition;
+      width: fit-content;
+
+      svg {
+        font-size: 0.95rem;
+        flex-shrink: 0;
+      }
+
+      &:hover {
+        color: $mainTextColor;
+        border-color: rgba(255, 255, 255, 0.22) !important;
+        background: rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    .piHeroMeta {
+      h2 {
+        font-size: 1.45rem;
+        font-weight: 800;
+        color: $mainTextColor;
+        letter-spacing: -0.03em;
+        margin: 0 0 0.3rem;
+        line-height: 1.15;
+      }
+
+      p {
+        font-size: 0.8rem;
+        color: $secondaryTextColor;
+        margin: 0;
+        line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+  }
+
+  // ── Body ──────────────────────────────────────────────────────────────────
+
+  .piBody {
+    flex: 1;
+    padding: 1.5rem 1.25rem 5.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .piSection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+
+    p {
+      font-size: 0.875rem;
+      color: $secondaryTextColor;
+      line-height: 1.75;
+      margin: 0;
+    }
+  }
+
+  .piLabel {
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: $thirdTextColor;
+  }
+
+  .piTechs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+
+    .piTech {
+      padding: 0.25rem 0.65rem;
+      background: rgba($vividColor, 0.08);
+      border: 1px solid rgba($vividColor, 0.15);
+      border-radius: $radiusFull;
+      font-size: 0.72rem;
+      color: lighten($vividColor, 20%);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+  }
+
+  .piLinkRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .piLinkBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid $glassBorder;
+    border-radius: $radius;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: $thirdTextColor;
+    text-decoration: none;
+    transition: $transition;
+
+    svg {
+      font-size: 1rem;
+    }
+
+    &:hover {
+      border-color: rgba($vividColor, 0.35);
+      color: $vividColor;
+      transform: translateY(-1px);
+    }
+  }
+
+  // ── Footer ────────────────────────────────────────────────────────────────
+
+  .piFooter {
     position: fixed;
-    z-index: 3;
+    bottom: 0;
     right: 0;
-    top: 0;
-    background-color: $secondaryBgColor;
-    max-height: 100%;
     width: 100%;
-    overflow: auto;
+    padding: 0.85rem 1.25rem;
+    background: rgba(11, 13, 18, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid $glassBorder;
 
     @media screen and (min-width: 768px) {
-        width: 40%;
-        // right: -40%;
+      width: 420px;
     }
 
-    .projectMain {
-        margin: 2rem;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.75rem;
+      background: $gradientBlue;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.875rem;
+      border-radius: $radius;
+      text-decoration: none;
+      transition: $transition;
+      box-shadow: 0 4px 18px rgba($vividColor, 0.3);
+      letter-spacing: 0.01em;
 
-        .projectFooter {
-            position: fixed;
-            z-index: 2;
-            color: $mainTextColor;
-            bottom: 0;
-            right: 0;
-            padding: 1.5rem 0rem;
-            text-align: center;
-            width: 100%;
-            font-weight: 600;
-            background-color: $mainBgColor;
+      svg {
+        font-size: 1rem;
+        transition: transform $transition;
+      }
 
-            @media screen and (min-width: 768px) {
-                width: 40%;
-                // right: -40%;
-            }
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba($vividColor, 0.45);
+
+        svg {
+          transform: translateX(3px);
         }
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// ─── RESUME PAGE ────────────────────────────────────────────────────────────────
+
+.Resume {
+  h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    margin: 0 0 2rem;
+  }
+
+  a {
+    color: $vividColor;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover {
+      color: $cyanColor;
+    }
+  }
+
+  iframe {
+    width: 100%;
+    height: 27rem;
+    border-radius: $radius;
+    border: 1px solid $glassBorder;
+
+    @media screen and (min-width: 768px) {
+      width: 60vw;
+      height: 130vh;
+    }
+  }
+}
+
+// ─── CONTACT PAGE ───────────────────────────────────────────────────────────────
+
+.Contact {
+  .flexContact {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @media screen and (min-width: 1000px) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    margin: 0 0 2.5rem;
+  }
+
+  .main {
+    @media screen and (min-width: 1000px) {
+      min-width: 260px;
+      max-width: 300px;
     }
 
-    .header {
-        display: flex;
-        justify-content: space-between;
+    p {
+      color: $secondaryTextColor;
+      line-height: 1.75;
+      font-size: 0.925rem;
+      margin: 0 0 0.75rem;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1.75rem;
+
+      a,
+      button {
+        display: inline-flex;
         align-items: center;
+        gap: 0.75rem;
+        height: 2.5rem;
+        padding: 0 1.1rem;
+        border-radius: $radiusLg;
+        color: $secondaryTextColor;
+        font-weight: 500;
+        font-size: 0.875rem;
+        line-height: 1;
+        cursor: pointer;
+        transition: $transition;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid $glassBorder !important;
+        width: fit-content;
+        position: relative;
+        overflow: hidden;
 
-        button {
-            color: $mainTextColor;
-            cursor: pointer;
-            height: 1.5rem;
-            width: 1.5rem;
-            padding: 0;
+        .linkIcon {
+          display: block;
+          font-size: 1rem;
+          width: 1rem;
+          height: 1rem;
+          flex-shrink: 0;
+          transition: $transition;
+        }
 
-            .icon {
-                height: 1.5rem;
-                width: 1.5rem;
-            }
+        .linkIconTrail {
+          display: block;
+          font-size: 0.8rem;
+          width: 0.8rem;
+          height: 0.8rem;
+          margin-left: auto;
+          opacity: 0;
+          transform: scale(0.7);
+          transition: $transition;
+          flex-shrink: 0;
         }
 
         span {
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.9rem;
-
-            &:hover {
-                color: $vividColor;
-                transition: all 0.2s ease;
-            }
+          transition: $transition;
         }
+
+        &:hover {
+          background: rgba($vividColor, 0.08);
+          border-color: rgba($vividColor, 0.25) !important;
+          color: #fff;
+          box-shadow: 0 0 18px rgba($vividColor, 0.12);
+
+          .linkIcon {
+            color: $vividColor;
+          }
+
+          .linkIconTrail {
+            opacity: 0.5;
+            transform: scale(1);
+          }
+        }
+
+        &.copied {
+          border-color: rgba(34, 197, 94, 0.35) !important;
+          background: rgba(34, 197, 94, 0.07);
+          color: #4ade80;
+
+          .linkIcon {
+            color: #4ade80;
+          }
+        }
+      }
     }
-
-    .projectContent {
-        color: $secondaryTextColor;
-        padding-bottom: 4rem;
-
-        h2,
-        h3 {
-            color: $mainTextColor;
-            font-size: 1.2rem;
-        }
-
-        p {
-            font-size: 0.9rem;
-        }
-
-        img {
-            width: 100%;
-            height: 25rem;
-            border-radius: 1rem;
-            object-fit: cover;
-        }
-
-        ul {
-            display: flex;
-            gap: 0.5rem;
-
-            li {
-                color: $mainTextColor;
-                background-color: scale-color($vividColor, $lightness: -70%);
-                font-weight: bold;
-                font-size: 0.8rem;
-                padding: 0.3rem 0.5rem;
-                border-radius: 0.5rem;
-            }
-        }
-
-        .projectLinks {
-            color: #8b9094;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-    }
+  }
 }
 
-.Resume {
-    overflow-x: hidden;
+// ─── CONTACT FORM ───────────────────────────────────────────────────────────────
 
-    a {
+.ContactForm {
+  flex: 1;
+  background: $glassBg;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid $glassBorder;
+  border-radius: $radiusLg;
+  padding: 1.75rem;
+
+  .ContactFormGrid {
+    display: grid;
+    grid-template-areas: 'name email' 'subject subject' 'message message';
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+
+    .name {
+      grid-area: name;
+    }
+    .email {
+      grid-area: email;
+    }
+    .subject {
+      grid-area: subject;
+    }
+    .message {
+      grid-area: message;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.07) !important;
+      font-size: 0.875rem;
+      box-sizing: border-box;
+      font-family: inherit;
+      background: rgba(255, 255, 255, 0.03);
+      color: $mainTextColor;
+      border-radius: $radius;
+      transition: $transition;
+      padding: 0.75rem 1rem;
+
+      &::placeholder {
+        color: $thirdTextColor;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: rgba($vividColor, 0.5) !important;
+        background: rgba($vividColor, 0.04);
+        box-shadow: 0 0 0 3px rgba($vividColor, 0.08);
+      }
+    }
+
+    input {
+      height: 48px;
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+  }
+
+  .send {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.75rem;
+
+    button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: $radiusLg !important;
+      border: 1px solid $glassBorder !important;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.02em;
+      color: $thirdTextColor;
+      background: rgba(255, 255, 255, 0.04);
+      transition: $transition;
+      overflow: hidden;
+
+      &:hover {
+        border-color: rgba($vividColor, 0.35) !important;
         color: $vividColor;
-    }
+        box-shadow: 0 0 16px rgba($vividColor, 0.2);
+        transform: translateY(-2px);
 
-    iframe {
-        width: 100%;
-        height: 27rem;
-
-        @media screen and (min-width: 768px) {
-            width: 60vw;
-            height: 130vh;
+        .sendIcon {
+          transform: translate(3px, -2px);
         }
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      .sendIcon {
+        font-size: 0.85rem;
+        transition: transform $transition;
+        flex-shrink: 0;
+      }
     }
+  }
 }
 
-.Contact {
-    .flexContact {
-        display: flex;
-        flex-direction: column;
+// ─── SKILLS PAGE ────────────────────────────────────────────────────────────────
 
-        @media screen and (min-width: 768px) {
-            flex-direction: row;
-        }
+.Skills {
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    margin: 0 0 0.5rem;
+  }
 
-        @media screen and (max-width: 1000px) {
-            flex-direction: column;
-        }
+  .skillsSubtitle {
+    color: $thirdTextColor;
+    font-size: 0.925rem;
+    margin: 0 0 2.5rem;
+    font-weight: 400;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  // Bento grid
+  .techsContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @media screen and (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+
+      .frontEnd {
+        grid-column: span 2;
+      }
+      .backEnd {
+        grid-column: span 1;
+      }
+      .aiia {
+        grid-column: span 2;
+      }
+      .devops {
+        grid-column: span 1;
+      }
+    }
+  }
+
+  .techs {
+    background: $glassBg;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid $glassBorder;
+    border-top: 2px solid transparent;
+    border-radius: $radiusLg;
+    padding: 1.5rem;
+    transition: $transition;
+
+    &.frontEnd {
+      border-top-color: $vividColor;
+    }
+    &.backEnd {
+      border-top-color: $purpleColor;
+    }
+    &.aiia {
+      border-top-color: $cyanColor;
+    }
+    &.devops {
+      border-top-color: $greenColor;
+    }
+
+    &:hover {
+      border-left-color: rgba($vividColor, 0.15);
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
     }
 
     h2 {
-        font-size: calc(1.5rem + 9px);
+      font-size: 1rem;
+      font-weight: 700;
+      color: $mainTextColor;
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.01em;
+      text-align: left;
     }
 
-    .main {
-        .links {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+    p {
+      font-size: 0.825rem;
+      color: $thirdTextColor;
+      line-height: 1.65;
+      margin: 0 0 1rem;
+      text-align: left;
+    }
 
-            a,
-            button {
-                padding: 0;
-                margin: 0;
-                line-height: 2rem;
-                color: $vividColor;
-                cursor: pointer;
-                transition: all 0.2s ease;
+    h3 {
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: $vividColor;
+      font-weight: 700;
+      margin: 0 0 0.65rem;
+      text-align: left;
+    }
 
-                &:hover {
-                    padding-left: 1rem;
-                }
-            }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+
+      li {
+        padding: 0.28rem 0.7rem;
+        background: rgba($vividColor, 0.07);
+        border: 1px solid rgba($vividColor, 0.12);
+        border-radius: $radiusFull;
+        font-size: 0.75rem;
+        color: $secondaryTextColor;
+        font-weight: 500;
+        transition: $transitionFast;
+
+        &:hover {
+          background: rgba($vividColor, 0.14);
+          color: $mainTextColor;
+          border-color: rgba($vividColor, 0.25);
         }
+      }
     }
+  }
+
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .skillsContainer {
+      flex: 1;
+    }
+
+    .techs {
+      @media screen and (min-width: 768px) {
+        min-width: 200px;
+        max-width: 240px;
+      }
+    }
+  }
 }
 
-.ContactForm {
-    width: 100%;
-
-    .send {
-        display: flex;
-        justify-content: flex-end;
-        margin: 1rem;
-
-        input {
-            color: $mainTextColor;
-            background: $mainBgColor;
-            font-weight: bold;
-            font-size: 0.9rem;
-            padding: 0.7rem 1.5rem;
-            border: none;
-            border-radius: 0.3rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: 'Kdam Thmor Pro';
-
-            &:hover {
-                color: $mainBgColor;
-                background: $vividColor;
-                transform: scale(1.05);
-            }
-
-            &:active {
-                color: white;
-                background: red;
-            }
-        }
-    }
-
-    .ContactFormGrid {
-        display: grid;
-        grid: 'name email'auto 'subject subject'auto 'message message'auto / auto auto;
-        margin: 1rem;
-        gap: 1rem;
-        // width: 20rem;
-        max-width: 100%;
-
-        .name {
-            grid-area: name;
-        }
-
-        .email {
-            grid-area: email;
-        }
-
-        .subject {
-            grid-area: subject;
-        }
-
-        .message {
-            grid-area: message;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            border: 0;
-            font-size: 1rem;
-            height: 50px;
-            box-sizing: border-box;
-            font-family: inherit;
-            background: $mainBgColor;
-            color: $thirdTextColor;
-            border-radius: 0.3rem;
-
-            &:focus {
-                outline: none;
-                color: $vividColor;
-            }
-        }
-
-        input {
-            padding: 0 20px;
-        }
-
-        textarea {
-            padding: 20px;
-            min-height: 150px;
-            resize: vertical;
-        }
-    }
-}
-
-.Skills {
-    .main {
-        display: flex;
-        flex-direction: column;
-
-        .techsContainer {
-            background: $mainBgColor;
-            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            display: flex;
-            flex-direction: column;
-
-            @media screen and (min-width: 768px) {
-                font-size: 1rem;
-                line-height: 1.5rem;
-
-                h3 {
-                    font-size: 1rem;
-                }
-            }
-
-            @media screen and (min-width: 990px) {
-                flex-direction: row;
-                font-size: 12px;
-                line-height: 1.5rem;
-
-                .mobile {
-                    flex-basis: 30%;
-                }
-
-                .backEnd {
-                    flex-basis: 30%;
-                }
-
-                .frontEnd {
-                    flex-basis: 30%;
-                }
-            }
-
-            @media screen and (min-width: 1200px) {
-                font-size: 16px;
-                line-height: 2rem;
-            }
-
-
-        }
-
-        .techs {
-            padding: 25px 30px;
-
-            &:nth-child(1),
-            &:nth-child(2),
-            &:nth-child(3) {
-
-                border-bottom: 1rem $secondaryBgColor solid;
-
-                @media screen and (min-width: 990px) {
-                    border-bottom: none;
-                    border-left: 0.3rem $secondaryBgColor solid;
-                }
-
-            }
-
-            &:nth-child(1),
-            &:nth-child(2) {
-
-                @media screen and (min-width: 990px) {
-
-                    border-right: 0.8rem $secondaryBgColor solid;
-                }
-
-            }
-
-            p,
-            h2,
-            h3 {
-                text-align: center;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-                color: $mainTextColor;
-            }
-
-            h3 {
-                color: $vividColor;
-            }
-
-            ul {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-                li {
-
-                    line-height: 1.8rem;
-                }
-            }
-        }
-
-        .bottom {
-            display: flex;
-            gap: 1rem;
-
-            .skillsContainer {
-                flex-grow: 3;
-            }
-
-            .techs {
-                flex-grow: 0;
-                background: $mainBgColor;
-                box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
-                border-radius: 10px;
-                margin-bottom: 1rem;
-                width: 30%;
-                border: none;
-
-                @media screen and (min-width: 768px) {
-                    font-size: 1rem;
-                    line-height: 1.5rem;
-
-                    h3 {
-                        font-size: 1rem;
-                    }
-                }
-
-                @media screen and (min-width: 900px) {
-                    flex-direction: row;
-                    font-size: 12px;
-                    line-height: 1.5rem;
-
-                }
-
-                @media screen and (min-width: 1200px) {
-                    font-size: 16px;
-                    line-height: 2rem;
-                }
-            }
-        }
-    }
-}
+// ─── SKILL BARS ─────────────────────────────────────────────────────────────────
 
 .skill-bars {
-    padding: 25px 30px;
-    background: $mainBgColor;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+  padding: 1.5rem;
+  background: $glassBg;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid $glassBorder;
+  border-radius: $radiusLg;
 }
 
 .skill-bars .bar {
-    margin: 6px 0;
-}
+  margin: 1.1rem 0;
 
-.skill-bars .bar:first-child {
-    margin-top: 0px;
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .skill-bars .bar .info {
-    margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 }
 
 .skill-bars .bar .info span {
-    font-weight: 500;
-    font-size: 17px;
-    opacity: 0;
-    animation: showText 0.5s 1s linear forwards;
-}
-
-@keyframes showText {
-    100% {
-        opacity: 1;
-    }
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: $secondaryTextColor;
+  opacity: 0;
+  animation: showText 0.5s 1s linear forwards;
 }
 
 .skill-bars .bar .progress-line {
-    height: 20px;
-    width: 100%;
-    background: $thirdTextColor;
-    position: relative;
-    transform: scaleX(0);
-    transform-origin: left;
-    border-radius: 10px;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05),
-        0 1px rgba(255, 255, 255, 0.8);
-    animation: animateSkills 1s cubic-bezier(1, 0, 0.5, 1) forwards;
-}
-
-@keyframes animateSkills {
-    100% {
-        transform: scaleX(1);
-    }
+  height: 6px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  position: relative;
+  transform: scaleX(0);
+  transform-origin: left;
+  border-radius: $radius-sm;
+  animation: animateSkills 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 
 .bar .progress-line span {
-    height: 100%;
-    position: absolute;
-    border-radius: 10px;
-    transform: scaleX(0);
-    transform-origin: left;
-    background: $vividColor;
-    animation: animateSkills 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+  height: 100%;
+  position: absolute;
+  border-radius: $radius-sm;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: $gradientBlue;
+  box-shadow: 0 0 12px rgba($vividColor, 0.5);
+  animation: animateSkills 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 
 .progress-line span::before {
-    position: absolute;
-    content: "";
-    top: -0.625rem;
-    right: 0;
-    height: 0;
-    width: 0;
-    border: 0.4375rem solid transparent;
-    border-bottom-width: 0rem;
-    border-right-width: 0rem;
-    border-top-color: #000;
-    opacity: 0;
-    animation: showText2 0.5s 1.5s linear forwards;
+  display: none;
 }
 
 .progress-line span::after {
-    position: absolute;
-    top: -1.75rem;
-    right: 0;
-    font-weight: 500;
-    background: $secondaryBgColor;
-    color: $mainTextColor;
-    padding: 0.0625rem 0.5rem;
-    font-size: 12px;
-    border-radius: 1rem 1rem 0.1875rem 1rem;
-    opacity: 0;
-    animation: showText2 0.5s 1.5s linear forwards;
+  position: absolute;
+  top: -1.75rem;
+  right: 0;
+  font-weight: 700;
+  background: rgba($vividColor, 0.14);
+  color: lighten($vividColor, 20%);
+  padding: 0.1rem 0.5rem;
+  font-size: 0.68rem;
+  border-radius: $radius-full;
+  opacity: 0;
+  letter-spacing: 0.02em;
+  animation: showText2 0.5s 1.5s linear forwards;
+}
+
+@keyframes showText {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes animateSkills {
+  100% {
+    transform: scaleX(1);
+  }
 }
 
 @keyframes showText2 {
-    100% {
-        opacity: 1;
+  100% {
+    opacity: 1;
+  }
+}
+
+// ─── EXPERIENCE PAGE ─────────────────────────────────────────────────────────────
+
+.Experience {
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    margin: 0 0 3rem;
+    background: linear-gradient(135deg, $mainTextColor 60%, $thirdTextColor 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .sectionDivider {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $thirdTextColor;
+    margin: 3rem 0 2rem 2.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: $glassBorder;
     }
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    padding-left: 2.25rem;
+  }
+
+  .timelineItem {
+    position: relative;
+    padding-bottom: 2.5rem;
+
+    &:last-child {
+      padding-bottom: 0;
+
+      .timelineLine {
+        display: none;
+      }
+    }
+
+    .timelineLine {
+      position: absolute;
+      left: -1.525rem;
+      top: 0.6rem;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba($vividColor, 0.3), rgba($glassBorder, 0.3));
+    }
+
+    .timelineDot {
+      position: absolute;
+      left: -1.875rem;
+      top: 0.35rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: $glassBorder;
+      border: 2px solid rgba($thirdTextColor, 0.4);
+      transition: $transition;
+      z-index: 1;
+    }
+
+    &.current .timelineDot {
+      background: $gradientBlue;
+      border-color: transparent;
+      box-shadow: 0 0 0 3px rgba($vividColor, 0.15), 0 0 14px rgba($vividColor, 0.4);
+    }
+
+    &:hover .timelineDot {
+      border-color: rgba($vividColor, 0.6);
+    }
+  }
+
+  .timelineCard {
+    background: $glassBg;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid $glassBorder;
+    border-radius: $radiusLg;
+    padding: 1.5rem;
+    transition: $transition;
+
+    &:hover {
+      border-color: rgba($vividColor, 0.18);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  .current .timelineCard {
+    border-color: rgba($vividColor, 0.15);
+    border-top: 2px solid $vividColor;
+  }
+
+  .timelineHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+
+    @media screen and (min-width: 640px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  .timelineTitle {
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: $mainTextColor;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.2rem;
+    }
+
+    h3 {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: $vividColor;
+      margin: 0;
+    }
+  }
+
+  .timelineMeta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+
+    @media screen and (min-width: 640px) {
+      align-items: flex-end;
+    }
+  }
+
+  .currentBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $greenColor;
+    background: rgba($greenColor, 0.08);
+    border: 1px solid rgba($greenColor, 0.2);
+    padding: 0.2rem 0.6rem;
+    border-radius: $radiusFull;
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: $greenColor;
+      box-shadow: 0 0 6px $greenColor;
+      animation: pulseDot 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+  }
+
+  .timelinePeriod {
+    font-size: 0.78rem;
+    color: $thirdTextColor;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .timelineLocation {
+    font-size: 0.75rem;
+    color: rgba($thirdTextColor, 0.7);
+  }
+
+  .timelineBullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+
+    li {
+      font-size: 0.865rem;
+      color: $secondaryTextColor;
+      line-height: 1.65;
+      padding-left: 1rem;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.6em;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: rgba($vividColor, 0.6);
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .timelineTechs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.25rem;
+  }
+
+  .techTag {
+    padding: 0.22rem 0.65rem;
+    background: rgba($vividColor, 0.07);
+    border: 1px solid rgba($vividColor, 0.12);
+    border-radius: $radiusFull;
+    font-size: 0.72rem;
+    color: $secondaryTextColor;
+    font-weight: 500;
+    transition: $transitionFast;
+
+    &:hover {
+      background: rgba($vividColor, 0.14);
+      color: $mainTextColor;
+      border-color: rgba($vividColor, 0.25);
+    }
+  }
 }

@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
+import { IoSend } from 'react-icons/io5';
 
 import { useTranslation } from 'react-i18next';
 
@@ -43,7 +44,7 @@ const ContactForm = () => {
           type="text"
           name="name"
           required
-          placeholder={t('Nome')}
+          placeholder={t('contact.form.name')}
         />
         <input
           className="email"
@@ -57,17 +58,20 @@ const ContactForm = () => {
           type="subject"
           name="subject"
           required
-          placeholder={t('Assunto')}
+          placeholder={t('contact.form.subject')}
         />
         <textarea
           className="message"
           name="message"
-          placeholder={t('Mensagem')}
+          placeholder={t('contact.form.message')}
           required
         />
       </div>
       <div className="send">
-        <input type="submit" value={t('Enviar Mensagem!')} />
+        <button type="submit">
+          <span>{t('contact.form.submit')}</span>
+          <IoSend className="sendIcon" />
+        </button>
       </div>
     </form>
   );

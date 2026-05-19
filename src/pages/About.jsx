@@ -4,23 +4,48 @@ import { useTranslation } from 'react-i18next';
 
 function About() {
   const { t } = useTranslation();
+
+  const values = [
+    {
+      icon: '⚡',
+      title: t('about.values.fullstack.title'),
+      desc: t('about.values.fullstack.desc'),
+    },
+    {
+      icon: '🧩',
+      title: t('about.values.cleancode.title'),
+      desc: t('about.values.cleancode.desc'),
+    },
+    {
+      icon: '🚀',
+      title: t('about.values.impact.title'),
+      desc: t('about.values.impact.desc'),
+    },
+  ];
+
   return (
     <div className="About pages">
-      <h1>{t('Sobre Mim')}</h1>
-      <div className="main">
-        <p>
-          {t(
-            'Eu sou um Desenvolvedor Front-End apaixonado em React, Next e fazer Designs Responsivos'
-          )}
-        </p>
-        <p>
-          {t(
-            'Tento melhorar minhas habilidades em cada projeto, principalmente a organização e velocidade'
-          )}
-        </p>
-        <NavLink className="contactButton" to="/contact">
-          {t('Caso esteja interessado, entre em contato!')}
-        </NavLink>
+      <h1>{t('about.title')}</h1>
+
+      <div className="aboutLayout">
+        <div className="aboutBio">
+          <p>{t('about.bio.p1')}</p>
+          <p>{t('about.bio.p2')}</p>
+          <NavLink className="aboutCta" to="/contact">
+            {t('about.cta')}
+            <i className="arrow">→</i>
+          </NavLink>
+        </div>
+
+        <div className="valueCards">
+          {values.map((v) => (
+            <div key={v.title} className="valueCard">
+              <span className="valueIcon">{v.icon}</span>
+              <h3>{v.title}</h3>
+              <p>{v.desc}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

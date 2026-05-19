@@ -11,7 +11,7 @@ function Resume() {
   return (
     <div>
       <div className="Resume pages">
-        <h2>{t('Currículo')}</h2>
+        <h2>{t('resume.title')}</h2>
         <main className="main">
           <p>
             <Trans
@@ -32,7 +32,7 @@ function Resume() {
                 contactLink: <NavLink to="/contact" />,
               }}
             >
-              Entre em contato
+              resume.cta
             </Trans>
           </p>
 

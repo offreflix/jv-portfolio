@@ -2,12 +2,11 @@ import { skillsData } from '../data';
 import { SkillBarMap } from './index';
 
 function SkillBar() {
-  console.log(skillsData);
   return (
     <div className="skillsContainer">
-      <div class="skill-bars">
+      <div className="skill-bars">
         {skillsData.map((skill) => (
-          <SkillBarMap skillData={skill} />
+          <SkillBarMap key={skill.name} skillData={skill} />
         ))}
       </div>
     </div>
