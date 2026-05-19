@@ -41,6 +41,44 @@
     "Tecnologias/Linguagens": "Tecnologias/Linguagens",
     "Não sou muito fã de Backend, mas consigo lidar tão bem, quando é preciso eu faço o Backend mas realmente prefiro o Frontend": "Não sou muito fã de Backend, mas consigo lidar tão bem, quando é preciso eu faço o Backend mas realmente prefiro o Frontend.",
     "Estou iniciando no Desenvolvimento Mobile, porém com meus conhecimentos de Reactjs já aprendi o básico": "Estou iniciando no Desenvolvimento Mobile, porém com meus conhecimentos de React.js já aprendi o básico e estou estudando cada vez mais.",
-    "Fiz curso de Fullstack, apesar de não gostar de backend, eu lido bem e consigo trabalhar como Fullstack": "Fiz curso de Fullstack, apesar de não gostar de backend, eu lido bem e consigo trabalhar como Fullstack."
+    "Fiz curso de Fullstack, apesar de não gostar de backend, eu lido bem e consigo trabalhar como Fullstack": "Fiz curso de Fullstack, apesar de não gostar de backend, eu lido bem e consigo trabalhar como Fullstack.",
+
+    "about": {
+      "bio": {
+        "p1": "Engenheiro de Software Full Stack com foco em IA Generativa, arquiteturas RAG e Model Context Protocol (MCP). Atualmente na CI&T como Analista de Sistemas, liderando projetos de engenharia reversa e automação com IA para grandes empresas globais.",
+        "p2": "Tenho passagem por Fractal e Solinski Corp, onde atuei em modernização de sistemas legados, otimização de performance e DevOps. Estudante de Análise e Desenvolvimento de Sistemas na FIAP, com inglês avançado e experiência em ambientes ágeis."
+      },
+      "values": {
+        "fullstack": {
+          "title": "Full Stack & IA",
+          "desc": "Atuo em toda a stack — do front-end ao back-end — com foco crescente em IA Generativa, RAG e agentes autônomos."
+        },
+        "cleancode": {
+          "title": "Código Limpo",
+          "desc": "Código organizado, escalável e de fácil manutenção, com atenção a boas práticas e performance."
+        },
+        "impact": {
+          "title": "Alto Impacto",
+          "desc": "Experiência em projetos de alta exigência: redução de 13s para 5s em tempo de carga, sistemas em produção para grandes empresas globais."
+        }
+      }
+    },
+
+    "Habilidades": "Habilidades",
+    "Tecnologias e ferramentas que uso no dia a dia": "Tecnologias e ferramentas que uso no dia a dia",
+    "skills": {
+      "frontend": {
+        "desc": "Construo interfaces modernas e performáticas com React e Next.js. Trabalho com TypeScript desde o início, garantindo tipagem sólida e componentes reutilizáveis."
+      },
+      "backend": {
+        "desc": "Desenvolvo APIs e serviços robustos com Node.js e Python. Experiência com bancos relacionais e NoSQL, além de arquiteturas orientadas a eventos."
+      },
+      "ai": {
+        "desc": "Minha principal especialidade atual — construo soluções com LLMs, pipelines RAG, agentes autônomos e integração com Model Context Protocol (MCP). Experiência com Azure OpenAI em produção para grandes clientes globais."
+      },
+      "devops": {
+        "desc": "Containerização, CI/CD e ambientes de nuvem no dia a dia."
+      }
+    }
   }
 }

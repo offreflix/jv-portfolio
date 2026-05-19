@@ -1281,11 +1281,11 @@
       .backEnd {
         grid-column: span 1;
       }
-      .mobile {
-        grid-column: span 1;
-      }
-      .fullstack {
+      .aiia {
         grid-column: span 2;
+      }
+      .devops {
+        grid-column: span 1;
       }
     }
   }
@@ -1306,10 +1306,10 @@
     &.backEnd {
       border-top-color: $purpleColor;
     }
-    &.mobile {
+    &.aiia {
       border-top-color: $cyanColor;
     }
-    &.fullstack {
+    &.devops {
       border-top-color: $greenColor;
     }
 

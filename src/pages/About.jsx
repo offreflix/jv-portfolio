@@ -2,26 +2,26 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-const values = [
-  {
-    icon: '⚡',
-    title: 'Frontend First',
-    desc: 'Foco em experiência do usuário, interfaces modernas e design responsivo para qualquer dispositivo.',
-  },
-  {
-    icon: '🧩',
-    title: 'Código Limpo',
-    desc: 'Código organizado, escalável e de fácil manutenção com foco em boas práticas.',
-  },
-  {
-    icon: '🚀',
-    title: 'Sempre Evoluindo',
-    desc: 'Sempre buscando as últimas tecnologias e tendências para entregar soluções modernas.',
-  },
-];
-
 function About() {
   const { t } = useTranslation();
+
+  const values = [
+    {
+      icon: '⚡',
+      title: t('about.values.fullstack.title'),
+      desc: t('about.values.fullstack.desc'),
+    },
+    {
+      icon: '🧩',
+      title: t('about.values.cleancode.title'),
+      desc: t('about.values.cleancode.desc'),
+    },
+    {
+      icon: '🚀',
+      title: t('about.values.impact.title'),
+      desc: t('about.values.impact.desc'),
+    },
+  ];
 
   return (
     <div className="About pages">
@@ -29,16 +29,8 @@ function About() {
 
       <div className="aboutLayout">
         <div className="aboutBio">
-          <p>
-            {t(
-              'Eu sou um Desenvolvedor Front-End apaixonado em React, Next e fazer Designs Responsivos'
-            )}
-          </p>
-          <p>
-            {t(
-              'Tento melhorar minhas habilidades em cada projeto, principalmente a organização e velocidade'
-            )}
-          </p>
+          <p>{t('about.bio.p1')}</p>
+          <p>{t('about.bio.p2')}</p>
           <NavLink className="aboutCta" to="/contact">
             {t('Caso esteja interessado, entre em contato!')}
             <i className="arrow">→</i>
