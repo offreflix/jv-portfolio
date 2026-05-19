@@ -696,21 +696,41 @@
   .aboutCta {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.65rem 1.5rem;
-    border-radius: $radiusFull;
+    gap: 0.4rem;
     font-size: 0.875rem;
-    font-weight: 600;
-    background: $gradientBlue;
-    color: #fff;
+    font-weight: 500;
+    color: $vividColor;
+    width: fit-content;
     text-decoration: none;
     cursor: pointer;
     transition: $transition;
-    box-shadow: 0 4px 20px rgba($vividColor, 0.3);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: $vividColor;
+      transition: width $transition;
+    }
+
+    .arrow {
+      display: inline-block;
+      transition: transform $transition;
+      font-style: normal;
+    }
 
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba($vividColor, 0.4);
+      &::after {
+        width: 100%;
+      }
+
+      .arrow {
+        transform: translateX(4px);
+      }
     }
   }
 }

@@ -41,6 +41,7 @@ function About() {
           </p>
           <NavLink className="aboutCta" to="/contact">
             {t('Caso esteja interessado, entre em contato!')}
+            <i className="arrow">→</i>
           </NavLink>
         </div>
 
