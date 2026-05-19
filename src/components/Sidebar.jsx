@@ -25,10 +25,10 @@ function Sidebar() {
           <NavLink onClick={() => closeMenu()} className="logo" to="/">
             <span className="name">João Victor</span>
           </NavLink>
-          <span className="role">{t('Desenvolvedor Web')}</span>
+          <span className="role">{t('sidebar.role')}</span>
           <div className="availableBadge">
             <span className="dot" />
-            Disponível
+            {t('sidebar.available')}
           </div>
         </div>
 
@@ -38,35 +38,35 @@ function Sidebar() {
             className="sidebarLinks"
             to="/about"
           >
-            {t('Sobre')}
+            {t('nav.about')}
           </NavLink>
           <NavLink
             onClick={() => closeMenu()}
             className="sidebarLinks"
             to="/skills"
           >
-            {t('Habilidades')}
+            {t('nav.skills')}
           </NavLink>
           <NavLink
             onClick={() => closeMenu()}
             className="sidebarLinks"
             to="/projects"
           >
-            {t('Projetos')}
+            {t('nav.projects')}
           </NavLink>
           <NavLink
             onClick={() => closeMenu()}
             className="sidebarLinks"
             to="/resume"
           >
-            {t('Currículo')}
+            {t('nav.resume')}
           </NavLink>
           <NavLink
             onClick={() => closeMenu()}
             className="sidebarLinks"
             to="/contact"
           >
-            {t('Contato')}
+            {t('nav.contact')}
           </NavLink>
         </div>
 

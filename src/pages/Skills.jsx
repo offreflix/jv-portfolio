@@ -35,9 +35,9 @@ function Skills() {
 
   return (
     <div className="Skills pages">
-      <h1>{t('Habilidades')}</h1>
+      <h1>{t('skills.title')}</h1>
       <p className="skillsSubtitle">
-        {t('Tecnologias e ferramentas que uso no dia a dia')}
+        {t('skills.subtitle')}
       </p>
       <div className="main">
         <div className="techsContainer">
@@ -45,7 +45,7 @@ function Skills() {
             <div key={s.className} className={`${s.className} techs`}>
               <h2>{s.title}</h2>
               <p>{s.desc}</p>
-              <h3>{t('Tecnologias/Linguagens')}</h3>
+              <h3>{t('skills.techLabel')}</h3>
               <ul>
                 {s.techs.map((tech) => (
                   <li key={tech}>{tech}</li>

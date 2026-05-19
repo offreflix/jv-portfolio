@@ -16,7 +16,7 @@ function Projects() {
   return (
     <>
       <div className="Projects pages">
-        <h2>{t('Projetos')}</h2>
+        <h2>{t('projects.title')}</h2>
         <div className="container">
           {projects.map((project) => (
             <div

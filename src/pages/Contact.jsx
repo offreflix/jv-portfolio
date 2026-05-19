@@ -11,25 +11,21 @@ function Contact() {
 
   return (
     <div className="Contact pages">
-      <h2>{t('Entre em Contato')}</h2>
+      <h2>{t('contact.title')}</h2>
       <div className="flexContact">
         <div>
           <main className="main">
-            <p>
-              {t(
-                'Estou interessado em oportunidades de emprego Não só para trabalhar, mas também para adquirir experiencia e ajudar à resolver problemas'
-              )}
-            </p>
-            <p>{t('Também estou aceitando trabalhos como freelancer')}</p>
-            <p>{t('Pode entrar em contato por qualquer meio')}</p>
+            <p>{t('contact.intro')}</p>
+            <p>{t('contact.freelance')}</p>
+            <p>{t('contact.methods')}</p>
 
             <div className="links">
               <CopyToClipboard text="realjvictor@gmail.com">
                 <button
-                  onMouseOver={() => setEmailText(t('Copie para o Clipboard'))}
+                  onMouseOver={() => setEmailText(t('contact.clipboard.copy'))}
                   onMouseLeave={() => setEmailText(initialText)}
                   onClick={() => {
-                    setEmailText(t('Copiado'));
+                    setEmailText(t('contact.clipboard.copied'));
                     setTimeout(() => setEmailText(initialText), 1000);
                   }}
                 >

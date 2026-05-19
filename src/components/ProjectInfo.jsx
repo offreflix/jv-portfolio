@@ -34,7 +34,7 @@ function ProjectInfo({
             <IoChevronBackCircleOutline className="icon" />
           </button>
           <span onClick={() => showProjectFunction(false)}>
-            {t('Voltar aos Projetos')}
+            {t('projectInfo.back')}
           </span>
         </div>
         <div className="projectContent">
@@ -42,9 +42,9 @@ function ProjectInfo({
           {lngIsPt ? <p>{description}</p> : <p>{english.description}</p>}
 
           <img src={image} alt="" height="150px" />
-          <h3>{t('Sobre')}</h3>
+          <h3>{t('projectInfo.about')}</h3>
           {lngIsPt ? <p>{about}</p> : <p>{english.about}</p>}
-          <h3>{t('Tecnologias')}</h3>
+          <h3>{t('projectInfo.technologies')}</h3>
           <ul>
             {technologies.map((technology) => (
               <li>{technology}</li>
@@ -83,7 +83,7 @@ function ProjectInfo({
           target="_blank"
           rel="noreferrer"
         >
-          {t('Abrir Projeto')}
+          {t('projectInfo.open')}
         </a>
       </div>
     </aside>

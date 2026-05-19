@@ -11,11 +11,11 @@ function Home() {
     <div className="Home pages">
       <div className="homeAvailableBadge">
         <span className="dot" />
-        Disponível para trabalho
+        {t('home.available')}
       </div>
 
       <div className="heroText">
-        <h1>{t('Oi, sou o')}</h1>
+        <h1>{t('home.greeting')}</h1>
         <div className="content">
           <h2>
             Victor<span>,</span>
@@ -25,11 +25,11 @@ function Home() {
           </h2>
         </div>
         <br />
-        <h1>{t('Desenvolvedor Web')}</h1>
+        <h1>{t('home.role')}</h1>
       </div>
 
       <p className="subtitle">
-        {t('Desenvolvedor Front-End, atualmente estou focado em React Js')}
+        {t('home.description')}
       </p>
 
       <div className="techStack">
@@ -42,18 +42,18 @@ function Home() {
 
       <div className="ctaContainer">
         <NavLink className="mainButton" to="/projects">
-          {t('Projetos')}
+          {t('nav.projects')}
         </NavLink>
         <NavLink className="mainButton" to="/resume">
-          {t('Currículo')}
+          {t('nav.resume')}
         </NavLink>
         <NavLink className="mainButton" to="/about">
-          {t('Sobre Mim')}
+          {t('home.cta.about')}
         </NavLink>
       </div>
 
       <NavLink className="homeCta" to="/contact">
-        {t('Entre em contato comigo!')}
+        {t('home.cta.contact')}
         <i className="arrow">→</i>
       </NavLink>
     </div>

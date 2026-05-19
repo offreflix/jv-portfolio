@@ -1,49 +1,32 @@
 {
   "translation": {
-    "Desenvolvedor Web": "Desenvolvedor Web",
-    "Currículo": "Currículo",
-    "Projetos": "Projetos",
-    "Contato": "Contato",
-    "Sobre": "Sobre",
-    "Nome": "Nome",
-    "Assunto": "Assunto",
-    "Mensagem": "Mensagem",
+    "nav": {
+      "about": "Sobre",
+      "skills": "Habilidades",
+      "projects": "Projetos",
+      "resume": "Currículo",
+      "contact": "Contato"
+    },
 
-    "JunkBlog": "JunkBlog",
+    "sidebar": {
+      "role": "Desenvolvedor Web",
+      "available": "Disponível"
+    },
 
-    "Oi, sou o": "Oi, sou o",
-    "Desenvolvedor Front-End, atualmente estou focado em React Js": "Desenvolvedor Front-End, atualmente estou focado em React Js.",
-    "Veja meus": "Veja meus",
-    "e mais no": "e mais no",
-    "Entre em contato comigo!": "Entre em contato comigo!",
-
-    "Sobre Mim": "Sobre Mim",
-
-    "Eu sou um Desenvolvedor Front-End apaixonado em React, Next e fazer Designs Responsivos": "Eu sou um Desenvolvedor Front-End apaixonado em React, Next e fazer Designs Responsivos.",
-    "Tento melhorar minhas habilidades em cada projeto, principalmente a organização e velocidade": "Tento melhorar minhas habilidades em cada projeto, principalmente a organização e velocidade.",
-    "Caso esteja interessado, entre em contato!": "Caso esteja interessado, entre em contato!",
-
-    "Entre em contato": "Entre em <contactLink>Contato</contactLink> comigo. <linkView>Veja</linkView> ou <linkDownload>Baixe</linkDownload> meu currículo.",
-
-    "Entre em Contato": "Entre em Contato",
-    "Estou interessado em oportunidades de emprego Não só para trabalhar, mas também para adquirir experiencia e ajudar à resolver problemas": "Estou interessado em oportunidades de emprego. Não só para trabalhar, mas também para adquirir experiencia e ajudar à resolver problemas.",
-    "Também estou aceitando trabalhos como freelancer": "Também estou aceitando trabalhos como freelancer.",
-    "Pode entrar em contato por qualquer meio": "Pode entrar em contato por qualquer meio:",
-    "Copie para o Clipboard": "Copie pra o Clipboard",
-    "Copiado": "Copiado!",
-    "Enviar Mensagem!": "Enviar Mensagem!",
-
-    "Abrir Projeto": "Abrir Projeto",
-    "Voltar aos Projetos": "Voltar aos Projetos.",
-    "Tecnologias": "Tecnologias",
-
-    "Adoro o Frontend, eu gosto de criar códigos do zero, e transformar Designs em coisas funcionais": "Adoro o Frontend, eu gosto de criar códigos do zero, e transformar Designs em coisas funcionais.",
-    "Tecnologias/Linguagens": "Tecnologias/Linguagens",
-    "Não sou muito fã de Backend, mas consigo lidar tão bem, quando é preciso eu faço o Backend mas realmente prefiro o Frontend": "Não sou muito fã de Backend, mas consigo lidar tão bem, quando é preciso eu faço o Backend mas realmente prefiro o Frontend.",
-    "Estou iniciando no Desenvolvimento Mobile, porém com meus conhecimentos de Reactjs já aprendi o básico": "Estou iniciando no Desenvolvimento Mobile, porém com meus conhecimentos de React.js já aprendi o básico e estou estudando cada vez mais.",
-    "Fiz curso de Fullstack, apesar de não gostar de backend, eu lido bem e consigo trabalhar como Fullstack": "Fiz curso de Fullstack, apesar de não gostar de backend, eu lido bem e consigo trabalhar como Fullstack.",
+    "home": {
+      "greeting": "Oi, sou o",
+      "role": "Desenvolvedor Web",
+      "available": "Disponível para trabalho",
+      "description": "Desenvolvedor Front-End, atualmente estou focado em React Js.",
+      "cta": {
+        "about": "Sobre Mim",
+        "contact": "Entre em contato comigo!"
+      }
+    },
 
     "about": {
+      "title": "Sobre Mim",
+      "cta": "Caso esteja interessado, entre em contato!",
       "bio": {
         "p1": "Engenheiro de Software Full Stack com foco em IA Generativa, arquiteturas RAG e Model Context Protocol (MCP). Atualmente na CI&T como Analista de Sistemas, liderando projetos de engenharia reversa e automação com IA para grandes empresas globais.",
         "p2": "Tenho passagem por Fractal e Solinski Corp, onde atuei em modernização de sistemas legados, otimização de performance e DevOps. Estudante de Análise e Desenvolvimento de Sistemas na FIAP, com inglês avançado e experiência em ambientes ágeis."
@@ -64,9 +47,10 @@
       }
     },
 
-    "Habilidades": "Habilidades",
-    "Tecnologias e ferramentas que uso no dia a dia": "Tecnologias e ferramentas que uso no dia a dia",
     "skills": {
+      "title": "Habilidades",
+      "subtitle": "Tecnologias e ferramentas que uso no dia a dia",
+      "techLabel": "Tecnologias/Linguagens",
       "frontend": {
         "desc": "Construo interfaces modernas e performáticas com React e Next.js. Trabalho com TypeScript desde o início, garantindo tipagem sólida e componentes reutilizáveis."
       },
@@ -78,6 +62,39 @@
       },
       "devops": {
         "desc": "Containerização, CI/CD e ambientes de nuvem no dia a dia."
+      }
+    },
+
+    "resume": {
+      "title": "Currículo",
+      "cta": "Entre em <contactLink>Contato</contactLink> comigo. <linkView>Veja</linkView> ou <linkDownload>Baixe</linkDownload> meu currículo."
+    },
+
+    "projects": {
+      "title": "Projetos"
+    },
+
+    "projectInfo": {
+      "back": "Voltar aos Projetos.",
+      "about": "Sobre",
+      "technologies": "Tecnologias",
+      "open": "Abrir Projeto"
+    },
+
+    "contact": {
+      "title": "Entre em Contato",
+      "intro": "Estou interessado em oportunidades de emprego. Não só para trabalhar, mas também para adquirir experiencia e ajudar à resolver problemas.",
+      "freelance": "Também estou aceitando trabalhos como freelancer.",
+      "methods": "Pode entrar em contato por qualquer meio:",
+      "clipboard": {
+        "copy": "Copie pra o Clipboard",
+        "copied": "Copiado!"
+      },
+      "form": {
+        "name": "Nome",
+        "subject": "Assunto",
+        "message": "Mensagem",
+        "submit": "Enviar Mensagem!"
       }
     }
   }

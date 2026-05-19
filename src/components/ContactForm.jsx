@@ -43,7 +43,7 @@ const ContactForm = () => {
           type="text"
           name="name"
           required
-          placeholder={t('Nome')}
+          placeholder={t('contact.form.name')}
         />
         <input
           className="email"
@@ -57,17 +57,17 @@ const ContactForm = () => {
           type="subject"
           name="subject"
           required
-          placeholder={t('Assunto')}
+          placeholder={t('contact.form.subject')}
         />
         <textarea
           className="message"
           name="message"
-          placeholder={t('Mensagem')}
+          placeholder={t('contact.form.message')}
           required
         />
       </div>
       <div className="send">
-        <input type="submit" value={t('Enviar Mensagem!')} />
+        <input type="submit" value={t('contact.form.submit')} />
       </div>
     </form>
   );

@@ -25,14 +25,14 @@ function About() {
 
   return (
     <div className="About pages">
-      <h1>{t('Sobre Mim')}</h1>
+      <h1>{t('about.title')}</h1>
 
       <div className="aboutLayout">
         <div className="aboutBio">
           <p>{t('about.bio.p1')}</p>
           <p>{t('about.bio.p2')}</p>
           <NavLink className="aboutCta" to="/contact">
-            {t('Caso esteja interessado, entre em contato!')}
+            {t('about.cta')}
             <i className="arrow">→</i>
           </NavLink>
         </div>
