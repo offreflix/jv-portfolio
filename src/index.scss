@@ -7,8 +7,11 @@
   --glass-border: #{$glassBorder};
   --glow-blue: 0 0 24px rgba(0, 128, 255, 0.25);
   --transition: #{$transition};
-  --radius: #{$radius};
-  --radius-lg: #{$radiusLg};
+  --radius-sm:   #{$radius-sm};
+  --radius:      #{$radius-md};
+  --radius-lg:   #{$radius-lg};
+  --radius-xl:   #{$radius-xl};
+  --radius-full: #{$radius-full};
 }
 
 *, *::before, *::after {

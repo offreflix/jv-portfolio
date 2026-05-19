@@ -13,7 +13,11 @@ $purpleColor: #a78bfa;
 
 // Gradients
 $gradientBlue: linear-gradient(135deg, $vividColor 0%, $cyanColor 100%);
-$gradientBlueSoft: linear-gradient(135deg, rgba($vividColor, 0.15) 0%, rgba($cyanColor, 0.15) 100%);
+$gradientBlueSoft: linear-gradient(
+  135deg,
+  rgba($vividColor, 0.15) 0%,
+  rgba($cyanColor, 0.15) 100%
+);
 
 // Glass
 $glassBg: rgba(21, 27, 34, 0.6);
@@ -22,9 +26,21 @@ $glassBorder: rgba(255, 255, 255, 0.06);
 // Layout
 $sidebarWidth: 260px;
 $contentMaxWidth: 960px;
-$radius: 14px;
-$radiusLg: 22px;
-$radiusFull: 9999px;
+
+// ─── RADIUS ─────────────────────────────────────────────────────────────────
+// Mude apenas $radius-base para ajustar todos os arredondamentos do site
+$radius-base: 6px;
+
+$radius-sm: $radius-base - 6px; // 8px  — tags, badges, barras
+$radius-md: $radius-base; // 14px — cards, painéis
+$radius-lg: $radius-base + 8px; // 22px — modais, cards grandes
+$radius-xl: $radius-base + 14px; // 28px — áreas hero
+$radius-full: 9999px; //       — pills, avatares
+
+// Aliases de compatibilidade (usados no App.scss)
+$radius: $radius-md;
+$radiusLg: $radius-lg;
+$radiusFull: $radius-full;
 
 // Motion
 $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
