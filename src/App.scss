@@ -1,902 +1,1192 @@
 @import 'utilities/variables';
 
+// ─── APP WRAPPER ────────────────────────────────────────────────────────────────
+
 .App {
+  display: flex;
+  flex-direction: row;
+  background-color: $secondaryBgColor;
+  background-image:
+    radial-gradient(rgba($vividColor, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  width: 100%;
+  min-height: 100vh;
+  color: $mainTextColor;
+  font-family: 'Inter', system-ui, sans-serif;
+
+  .changeLngButton {
+    position: fixed;
+    top: 1.25rem;
+    left: 1.25rem;
+    z-index: 200;
+
+    @media screen and (min-width: 769px) {
+      left: unset;
+      right: 1.25rem;
+    }
+
+    button {
+      background: $glassBg;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid $glassBorder !important;
+      color: $thirdTextColor;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      padding: 0.35rem 0.8rem;
+      border-radius: $radiusFull;
+      cursor: pointer;
+      transition: $transition;
+      font-weight: 700;
+      text-transform: uppercase;
+
+      &:hover {
+        color: $vividColor;
+        border-color: rgba($vividColor, 0.4) !important;
+        box-shadow: var(--glow-blue);
+      }
+    }
+  }
+
+  .navButton {
+    position: fixed;
     display: flex;
-    flex-direction: row;
-    background-color: $secondaryBgColor;
-    width: 100%;
-    height: 100%;
-    color: $mainTextColor;
-    font-family: 'Roboto', sans-serif;
-    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    right: 1.25rem;
+    top: 1.25rem;
+    cursor: pointer;
+    z-index: 200;
+    background: $glassBg !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid $glassBorder !important;
+    border-radius: $radius;
+    padding: 0.5rem;
+    transition: $transition;
 
-    .changeLngButton {
-        position: fixed;
-        border: none;
-        text-decoration: none;
-        background: none;
-        top: 1rem;
-        left: 1rem;
-        z-index: 2;
-
-        @media screen and (min-width: 768px) {
-            left: inherit;
-            right: 1rem;
-        }
-
-        button {
-            background: rgba(30, 30, 30, 0.53);
-            // background-color: red;
-            color: white;
-            font-size: 1.2rem;
-            padding: 0.2rem;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-            height: 2rem;
-            width: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-transform: uppercase;
-            font-weight: bold;
-            transition: all 0.2s ease;
-
-            &:hover {
-                color: $vividColor;
-            }
-        }
+    &:hover {
+      border-color: rgba($vividColor, 0.35) !important;
+      box-shadow: var(--glow-blue);
     }
 
-    .navButton {
-        position: fixed;
-        display: flex;
-        border: none;
-        text-decoration: none;
-        background: none;
-        right: 1rem;
-        top: 1rem;
-
-        cursor: pointer;
-        z-index: 2;
-
-        .menuButton {
-            background: rgba(30, 30, 30, 0.53);
-            color: white;
-            font-size: 2rem;
-            padding: 0.2rem;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-
-            &:hover {
-                color: $vividColor;
-            }
-        }
+    .menuButton {
+      color: $mainTextColor;
+      font-size: 1.4rem;
+      display: block;
     }
+  }
 }
+
+// ─── SIDEBAR ────────────────────────────────────────────────────────────────────
 
 .sidebarContainer {
-    color: $mainTextColor;
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    width: var(--sidebar-width);
+    background: linear-gradient(
+      180deg,
+      rgba(21, 27, 34, 0.97) 0%,
+      rgba(13, 16, 23, 0.99) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid $glassBorder;
+    height: 100vh;
+    position: fixed;
+    z-index: 50;
+    overflow: hidden;
 
-    .sidebar {
+    @media screen and (max-width: 768px) {
+      width: 100vw;
+    }
+
+    .sidebarMain {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.5rem 1.75rem;
+      border-bottom: 1px solid $glassBorder;
+
+      .nameAndLogo {
         display: flex;
         flex-direction: column;
-        width: 10rem;
-        background-color: $mainBgColor;
         align-items: center;
-        height: 100vh;
-        position: fixed;
-        z-index: 1;
+        gap: 0.35rem;
+      }
 
-        @media screen and (max-width: 768px) {
-            width: 100vw;
+      .avatarBadge {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, $vividColor 0%, darken($vividColor, 20%) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 0.75rem;
+        box-shadow: 0 0 0 3px rgba($vividColor, 0.15), 0 0 20px rgba($vividColor, 0.2);
+        flex-shrink: 0;
+      }
+
+      .logo {
+        text-decoration: none;
+        color: $mainTextColor;
+      }
+
+      .name {
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: -0.01em;
+        cursor: pointer;
+        transition: $transition;
+        text-align: center;
+        color: $mainTextColor;
+
+        &:hover {
+          color: $vividColor;
         }
+      }
 
-        .sidebarMain {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 1rem;
-            padding-bottom: 3rem;
-            background-color: $secondaryBgColor;
-            width: 100%;
-
-            .nameAndLogo {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .logo {
-                text-decoration: none;
-                color: $mainTextColor;
-            }
-
-            .name {
-                font-weight: bold;
-                font-size: 1.5rem;
-                cursor: pointer;
-                transition: color 0.2s ease;
-                text-align: center;
-
-                &:hover {
-                    color: $vividColor;
-                }
-            }
-
-            .role {
-                font-size: 0.9rem;
-                color: $secondaryTextColor;
-                text-align: center;
-            }
-        }
-
-        .sidebarLinksContainer {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            text-align: center;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .sidebarLinks {
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            border-top: 1px solid darken($thirdTextColor, 40%);
-            border-bottom: 1px solid darken($thirdTextColor, 40%);
-            line-height: 3em;
-            color: $thirdTextColor;
-            text-decoration: none;
-            transition: color 0.2s ease;
-
-            &:nth-child(1),
-            &:nth-child(2),
-            &:nth-child(3),
-            &:nth-child(4) {
-                border-bottom: none;
-            }
-
-            &:last-child {
-                color: lighten($vividColor, 30%);
-            }
-
-            &:hover {
-                color: $vividColor;
-            }
-        }
-
-        .iconsLink {
-            padding: 3rem 1rem;
-            fill: $thirdTextColor;
-            transition: all 0.2s ease;
-
-            &:hover {
-                fill: $vividColor;
-            }
-        }
+      .role {
+        font-size: 0.72rem;
+        color: $thirdTextColor;
+        text-align: center;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 500;
+        margin-top: 0.15rem;
+      }
     }
+
+    .sidebarLinksContainer {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 1.25rem 0.75rem;
+      gap: 0.2rem;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .sidebarLinks {
+      display: flex;
+      align-items: center;
+      padding: 0.65rem 1rem;
+      border-radius: $radius;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: $thirdTextColor;
+      text-decoration: none;
+      transition: $transition;
+      letter-spacing: 0.01em;
+      position: relative;
+      border: 1px solid transparent;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 22%;
+        height: 56%;
+        width: 3px;
+        border-radius: 0 3px 3px 0;
+        background: $vividColor;
+        opacity: 0;
+        transition: $transition;
+        box-shadow: 0 0 8px rgba($vividColor, 0.6);
+      }
+
+      &:hover {
+        color: $mainTextColor;
+        background: rgba($vividColor, 0.07);
+        border-color: rgba($vividColor, 0.1);
+
+        &::before {
+          opacity: 0.6;
+        }
+      }
+
+      &.active {
+        color: $vividColor;
+        background: rgba($vividColor, 0.1);
+        border-color: rgba($vividColor, 0.15);
+
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+
+    .iconsContainer {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1.25rem 1rem;
+      border-top: 1px solid $glassBorder;
+    }
+
+    .iconsLink {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: $radius;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid $glassBorder;
+      fill: $thirdTextColor;
+      transition: $transition;
+
+      &:hover {
+        fill: $vividColor;
+        border-color: rgba($vividColor, 0.35);
+        box-shadow: 0 0 14px rgba($vividColor, 0.2);
+        transform: translateY(-2px);
+      }
+    }
+  }
 }
+
+// ─── ROUTES CONTAINER ───────────────────────────────────────────────────────────
 
 .Routes {
-    width: 100vw;
+  width: 100vw;
+  min-height: 100vh;
 
-    @media screen and (min-width: 768px) {
-        margin-left: 10rem;
-    }
+  @media screen and (min-width: 769px) {
+    margin-left: var(--sidebar-width);
+    width: calc(100vw - var(--sidebar-width));
+  }
 }
 
+// ─── PAGE BASE ──────────────────────────────────────────────────────────────────
+
 .pages {
-    margin: 3rem 1.5rem;
+  padding: 3.5rem 1.75rem;
+  max-width: $contentMaxWidth;
 
-    @media screen and (min-width: 768px) {
-        margin: 3rem 3rem;
-    }
+  @media screen and (min-width: 768px) {
+    padding: 4rem 3rem;
+  }
 
-    h1 {
-        font-size: calc(1.5rem + 9px);
-    }
+  h1,
+  h2 {
+    font-size: clamp(1.85rem, 4vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin: 0 0 0.25rem;
+  }
+}
 
-    h2 {
-        font-size: calc(1.5rem + 9px);
-    }
+.pageHeading {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2.5rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -0.6rem;
+    left: 0;
+    width: 2.5rem;
+    height: 2px;
+    background: linear-gradient(90deg, $vividColor, transparent);
+    border-radius: 2px;
+  }
 }
 
 .main {
-    margin: 1rem;
-    color: $secondaryTextColor;
-    line-height: 2rem;
+  color: $secondaryTextColor;
+  line-height: 1.8;
+  font-size: 0.975rem;
 }
 
-.Home {
-    h1 {
-        display: inline;
-        font-weight: 900;
-        color: $mainTextColor;
-    }
-
-    h2 {
-        display: inline;
-    }
-
-    .content {
-        display: inline;
-        margin-left: 0.4rem;
-        font-weight: 900;
-
-        h2 {
-            color: $vividColor;
-            font-size: calc(1.5rem + 9px);
-            position: absolute;
-            transform: translate(0%, -69%);
-            display: inline;
-            z-index: 0;
-        }
-
-        h2:nth-child(1) {
-            color: transparent;
-            -webkit-text-stroke: 0.1rem $vividColor;
-        }
-
-        h2:nth-child(2) {
-            color: $vividColor;
-            animation: animate 4s ease-in-out infinite;
-        }
-
-        span {
-            color: $mainTextColor;
-            -webkit-text-stroke: $mainTextColor;
-        }
-
-        @keyframes animate {
-
-            0%,
-            100% {
-                clip-path: polygon(0% 45%,
-                        16% 44%,
-                        33% 50%,
-                        54% 60%,
-                        70% 61%,
-                        84% 59%,
-                        100% 52%,
-                        100% 100%,
-                        0% 100%);
-            }
-
-            50% {
-                clip-path: polygon(0% 60%,
-                        15% 65%,
-                        34% 66%,
-                        51% 62%,
-                        67% 50%,
-                        84% 45%,
-                        100% 46%,
-                        100% 100%,
-                        0% 100%);
-            }
-        }
-    }
-
-    main {
-        .mainButton {
-            border: 0;
-            border-radius: 0.2rem;
-            padding: 0.3rem 0.5rem;
-            cursor: pointer;
-            background-color: darken($vividColor, 43%);
-            color: scale-color($secondaryTextColor, $lightness: 30%);
-            font-family: inherit;
-            font-weight: bold;
-            font-size: 1em;
-            text-decoration: none;
-            transition: all 0.2s ease;
-
-            &:hover {
-                background-color: darken($vividColor, 20%);
-            }
-        }
-    }
-}
+// ─── GLOBAL CONTACT BUTTON ──────────────────────────────────────────────────────
 
 .contactButton {
-    border: 0;
-    cursor: pointer;
-    color: $vividColor;
-    font-family: inherit;
-    font-size: 1em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: $vividColor;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: $transition;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    border-bottom-color: rgba($vividColor, 0.6);
+    color: $vividColorLight;
+  }
+}
+
+// ─── HOME PAGE ──────────────────────────────────────────────────────────────────
+
+.Home {
+  min-height: calc(100vh - 7rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .heroText {
+    margin-bottom: 0;
+  }
+
+  h1 {
+    display: inline;
+    font-weight: 800;
+    color: $mainTextColor;
+    font-size: clamp(2.25rem, 5.5vw, 4rem);
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    display: inline;
+    font-size: clamp(2.25rem, 5.5vw, 4rem);
+  }
+
+  .content {
+    display: inline;
+    margin-left: 0.5rem;
+    font-weight: 800;
+
+    h2 {
+      color: $vividColor;
+      position: absolute;
+      transform: translate(0%, -69%);
+      display: inline;
+      z-index: 0;
+    }
+
+    h2:nth-child(1) {
+      color: transparent;
+      -webkit-text-stroke: 0.08rem rgba($vividColor, 0.5);
+    }
+
+    h2:nth-child(2) {
+      color: $vividColor;
+      text-shadow: 0 0 40px rgba($vividColor, 0.35);
+      animation: animateWave 4s ease-in-out infinite;
+    }
+
+    span {
+      color: $mainTextColor;
+      -webkit-text-stroke: $mainTextColor;
+    }
+
+    @keyframes animateWave {
+      0%,
+      100% {
+        clip-path: polygon(
+          0% 45%,
+          16% 44%,
+          33% 50%,
+          54% 60%,
+          70% 61%,
+          84% 59%,
+          100% 52%,
+          100% 100%,
+          0% 100%
+        );
+      }
+      50% {
+        clip-path: polygon(
+          0% 60%,
+          15% 65%,
+          34% 66%,
+          51% 62%,
+          67% 50%,
+          84% 45%,
+          100% 46%,
+          100% 100%,
+          0% 100%
+        );
+      }
+    }
+  }
+
+  .subtitle {
+    color: $thirdTextColor;
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 460px;
+    margin: 3.25rem 0 2rem;
+    font-weight: 400;
+  }
+
+  .ctaContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+
+    .mainButton {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.55rem 1.2rem;
+      border-radius: $radiusFull;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: $transition;
+      background: rgba($vividColor, 0.09);
+      color: $vividColorLight;
+      border: 1px solid rgba($vividColor, 0.2);
+      letter-spacing: 0.01em;
+
+      &:hover {
+        background: rgba($vividColor, 0.18);
+        border-color: rgba($vividColor, 0.45);
+        box-shadow: 0 0 16px rgba($vividColor, 0.12);
+        transform: translateY(-1px);
+      }
+    }
+  }
+
+  .homeCta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.75rem;
+    border-radius: $radiusFull;
+    font-size: 0.9rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, $vividColor, darken($vividColor, 12%));
+    color: #fff;
     text-decoration: none;
-    transition: all 0.2s ease;
+    cursor: pointer;
+    transition: $transition;
+    box-shadow: 0 4px 18px rgba($vividColor, 0.3);
+    border: none;
 
     &:hover {
-        color: darken($vividColor, 20%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba($vividColor, 0.4);
     }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
 }
+
+// ─── PROJECTS PAGE ──────────────────────────────────────────────────────────────
 
 .Projects {
-    max-width: 100vw;
+  .container {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: 1fr;
+    margin-top: 2rem;
 
-    .container {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: 1fr;
-        justify-items: center;
-        justify-content: center;
+    @media screen and (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 
-        @media screen and (min-width: 768px) {
-            grid-template-columns: auto auto;
-        }
+  .project {
+    position: relative;
+    cursor: pointer;
+    border-radius: $radiusLg;
+    overflow: hidden;
+    border: 1px solid $glassBorder;
+    transition: $transition;
+    background: $mainBgColor;
+    height: 300px;
+
+    &:hover {
+      transform: translateY(-5px);
+      border-color: rgba($vividColor, 0.3);
+      box-shadow:
+        0 16px 48px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba($vividColor, 0.1),
+        var(--glow-blue);
+
+      .details {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      img {
+        filter: brightness(30%) scale(1.05);
+      }
     }
 
-    .project {
-        max-width: 600px;
-        height: 400px;
-        position: relative;
-        cursor: pointer;
-
-        @media screen and (min-width: 768px) {
-            max-width: 400px;
-            height: 400px;
-
-            &:hover .details {
-                opacity: 1;
-                transform: translateY(-1rem);
-            }
-
-            &:hover img {
-                filter: brightness(50%);
-            }
-        }
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 1rem;
-            filter: brightness(50%);
-            transition: all 0.4s ease;
-
-            @media screen and (min-width: 768px) {
-                filter: brightness(100%);
-            }
-        }
-
-        .details {
-            z-index: 0;
-            position: absolute;
-            bottom: 0;
-            color: $mainTextColor;
-            margin: 2rem;
-            line-height: 1rem;
-            transition: all 0.2s ease;
-
-            @media screen and (min-width: 768px) {
-                opacity: 0;
-                bottom: -1rem;
-            }
-
-            h3 {
-                font-size: 2rem;
-                padding: 0 0 0 0;
-                line-height: 0rem;
-            }
-
-            ul {
-                display: flex;
-                flex-flow: row wrap;
-                gap: 0.5rem;
-                font-size: 0.8rem;
-
-                li {
-                    padding: 0.5em 1em;
-                    background: linear-gradient(scale-color(white, $lightness: -70%),
-                            scale-color(white, $lightness: -80%));
-                    border-radius: 2rem;
-                }
-            }
-        }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(38%);
+      transition: $transition;
     }
+
+    .details {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      background: linear-gradient(
+        to top,
+        rgba(13, 16, 23, 0.96) 0%,
+        rgba(13, 16, 23, 0.5) 55%,
+        transparent 100%
+      );
+      transition: $transition;
+
+      @media screen and (min-width: 768px) {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      h3 {
+        font-size: 1.45rem;
+        font-weight: 700;
+        color: $mainTextColor;
+        margin: 0 0 0.5rem;
+        letter-spacing: -0.025em;
+        line-height: 1.2;
+      }
+
+      p {
+        font-size: 0.825rem;
+        color: $secondaryTextColor;
+        margin: 0 0 0.75rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.5;
+      }
+
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+
+        li {
+          padding: 0.25rem 0.65rem;
+          background: rgba($vividColor, 0.14);
+          border: 1px solid rgba($vividColor, 0.22);
+          border-radius: $radiusFull;
+          font-size: 0.72rem;
+          color: $vividColorLight;
+          font-weight: 600;
+          letter-spacing: 0.02em;
+        }
+      }
+    }
+  }
 }
 
+// ─── PROJECT INFO PANEL ─────────────────────────────────────────────────────────
+
 .backgroundProjectInfo {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.468);
-    position: fixed;
-    z-index: 2;
-    top: 0;
-    left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
 }
 
 .ProjectInfo {
-    position: fixed;
-    z-index: 3;
-    right: 0;
-    top: 0;
-    background-color: $secondaryBgColor;
-    max-height: 100%;
-    width: 100%;
-    overflow: auto;
+  position: fixed;
+  z-index: 101;
+  right: 0;
+  top: 0;
+  background: rgba(13, 16, 23, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-left: 1px solid $glassBorder;
+  max-height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
 
-    @media screen and (min-width: 768px) {
-        width: 40%;
-        // right: -40%;
-    }
+  @media screen and (min-width: 768px) {
+    width: 420px;
+  }
 
-    .projectMain {
-        margin: 2rem;
-
-        .projectFooter {
-            position: fixed;
-            z-index: 2;
-            color: $mainTextColor;
-            bottom: 0;
-            right: 0;
-            padding: 1.5rem 0rem;
-            text-align: center;
-            width: 100%;
-            font-weight: 600;
-            background-color: $mainBgColor;
-
-            @media screen and (min-width: 768px) {
-                width: 40%;
-                // right: -40%;
-            }
-        }
-    }
+  .projectMain {
+    padding: 1.5rem;
 
     .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid $glassBorder;
+
+      button {
+        color: $mainTextColor;
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        border-radius: $radius;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid $glassBorder !important;
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: center;
+        transition: $transition;
 
-        button {
-            color: $mainTextColor;
-            cursor: pointer;
-            height: 1.5rem;
-            width: 1.5rem;
-            padding: 0;
-
-            .icon {
-                height: 1.5rem;
-                width: 1.5rem;
-            }
+        &:hover {
+          background: rgba($vividColor, 0.1);
+          border-color: rgba($vividColor, 0.3) !important;
         }
 
-        span {
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.9rem;
-
-            &:hover {
-                color: $vividColor;
-                transition: all 0.2s ease;
-            }
+        .icon {
+          height: 1.2rem;
+          width: 1.2rem;
         }
+      }
+
+      span {
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.82rem;
+        color: $thirdTextColor;
+        letter-spacing: 0.02em;
+        transition: $transition;
+
+        &:hover {
+          color: $vividColor;
+        }
+      }
     }
 
     .projectContent {
-        color: $secondaryTextColor;
-        padding-bottom: 4rem;
+      color: $secondaryTextColor;
+      padding-bottom: 5rem;
 
-        h2,
-        h3 {
-            color: $mainTextColor;
-            font-size: 1.2rem;
+      h2 {
+        color: $mainTextColor;
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        margin: 0 0 0.75rem;
+      }
+
+      h3 {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: $thirdTextColor;
+        margin: 1.5rem 0 0.6rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+        line-height: 1.75;
+        margin: 0 0 0.75rem;
+      }
+
+      img {
+        width: 100%;
+        height: 200px;
+        border-radius: $radiusLg;
+        object-fit: cover;
+        border: 1px solid $glassBorder;
+        margin: 1rem 0;
+      }
+
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+
+        li {
+          color: $vividColorLight;
+          background: rgba($vividColor, 0.1);
+          border: 1px solid rgba($vividColor, 0.18);
+          font-weight: 600;
+          font-size: 0.72rem;
+          padding: 0.28rem 0.7rem;
+          border-radius: $radiusFull;
+          letter-spacing: 0.02em;
         }
+      }
 
-        p {
-            font-size: 0.9rem;
+      .projectLinks {
+        display: block;
+        color: $vividColor;
+        font-weight: 500;
+        font-size: 0.85rem;
+        word-break: break-all;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        margin-top: 0.25rem;
+
+        &:hover {
+          color: $vividColorLight;
         }
-
-        img {
-            width: 100%;
-            height: 25rem;
-            border-radius: 1rem;
-            object-fit: cover;
-        }
-
-        ul {
-            display: flex;
-            gap: 0.5rem;
-
-            li {
-                color: $mainTextColor;
-                background-color: scale-color($vividColor, $lightness: -70%);
-                font-weight: bold;
-                font-size: 0.8rem;
-                padding: 0.3rem 0.5rem;
-                border-radius: 0.5rem;
-            }
-        }
-
-        .projectLinks {
-            color: #8b9094;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
+      }
     }
+
+    .projectFooter {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      padding: 1rem 1.5rem;
+      background: rgba(13, 16, 23, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid $glassBorder;
+      display: flex;
+      justify-content: center;
+
+      @media screen and (min-width: 768px) {
+        width: 420px;
+      }
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.7rem 2rem;
+        background: linear-gradient(135deg, $vividColor, darken($vividColor, 14%));
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.875rem;
+        border-radius: $radiusFull;
+        text-decoration: none;
+        transition: $transition;
+        box-shadow: 0 4px 18px rgba($vividColor, 0.3);
+        letter-spacing: 0.01em;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 28px rgba($vividColor, 0.4);
+        }
+      }
+    }
+  }
 }
+
+// ─── RESUME PAGE ────────────────────────────────────────────────────────────────
 
 .Resume {
-    overflow-x: hidden;
+  overflow-x: hidden;
 
-    a {
-        color: $vividColor;
+  a {
+    color: $vividColor;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover {
+      color: $vividColorLight;
     }
+  }
 
-    iframe {
-        width: 100%;
-        height: 27rem;
+  iframe {
+    width: 100%;
+    height: 27rem;
+    border-radius: $radius;
+    border: 1px solid $glassBorder;
 
-        @media screen and (min-width: 768px) {
-            width: 60vw;
-            height: 130vh;
-        }
+    @media screen and (min-width: 768px) {
+      width: 60vw;
+      height: 130vh;
     }
+  }
 }
 
+// ─── CONTACT PAGE ───────────────────────────────────────────────────────────────
+
 .Contact {
-    .flexContact {
-        display: flex;
-        flex-direction: column;
+  .flexContact {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 
-        @media screen and (min-width: 768px) {
-            flex-direction: row;
-        }
+    @media screen and (min-width: 1000px) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
 
-        @media screen and (max-width: 1000px) {
-            flex-direction: column;
+  h2 {
+    font-size: clamp(1.85rem, 4vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin: 0 0 2rem;
+  }
+
+  .main {
+    @media screen and (min-width: 1000px) {
+      min-width: 260px;
+      max-width: 320px;
+    }
+
+    p {
+      color: $secondaryTextColor;
+      line-height: 1.75;
+      font-size: 0.925rem;
+      margin: 0 0 0.75rem;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-top: 1.5rem;
+
+      a,
+      button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: $radius;
+        color: $vividColor;
+        font-weight: 500;
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: $transition;
+        background: rgba($vividColor, 0.05);
+        border: 1px solid rgba($vividColor, 0.1) !important;
+        width: fit-content;
+
+        &:hover {
+          background: rgba($vividColor, 0.12);
+          border-color: rgba($vividColor, 0.3) !important;
+          transform: translateX(4px);
         }
+      }
+    }
+  }
+}
+
+// ─── CONTACT FORM ───────────────────────────────────────────────────────────────
+
+.ContactForm {
+  flex: 1;
+  background: $glassBg;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid $glassBorder;
+  border-radius: $radiusLg;
+  padding: 1.5rem;
+
+  .ContactFormGrid {
+    display: grid;
+    grid-template-areas:
+      'name email'
+      'subject subject'
+      'message message';
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+
+    .name {
+      grid-area: name;
+    }
+
+    .email {
+      grid-area: email;
+    }
+
+    .subject {
+      grid-area: subject;
+    }
+
+    .message {
+      grid-area: message;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid $glassBorder !important;
+      font-size: 0.875rem;
+      box-sizing: border-box;
+      font-family: inherit;
+      background: rgba(255, 255, 255, 0.03);
+      color: $mainTextColor;
+      border-radius: $radius;
+      transition: $transition;
+      padding: 0.75rem 1rem;
+
+      &::placeholder {
+        color: $thirdTextColor;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: rgba($vividColor, 0.45) !important;
+        background: rgba($vividColor, 0.04);
+        box-shadow: 0 0 0 3px rgba($vividColor, 0.08);
+      }
+    }
+
+    input {
+      height: 48px;
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+  }
+
+  .send {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.75rem;
+
+    input {
+      background: linear-gradient(135deg, $vividColor, darken($vividColor, 14%));
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.875rem;
+      padding: 0.7rem 2rem;
+      border: none !important;
+      border-radius: $radiusFull;
+      cursor: pointer;
+      transition: $transition;
+      font-family: inherit;
+      letter-spacing: 0.01em;
+      box-shadow: 0 4px 18px rgba($vividColor, 0.3);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba($vividColor, 0.4);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// ─── SKILLS PAGE ────────────────────────────────────────────────────────────────
+
+.Skills {
+  h1 {
+    margin-bottom: 0.4rem;
+  }
+
+  .skillsSubtitle {
+    color: $thirdTextColor;
+    font-size: 0.925rem;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .techsContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 0;
+
+    @media screen and (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .techs {
+    background: $glassBg;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid $glassBorder;
+    border-radius: $radiusLg;
+    padding: 1.5rem;
+    transition: $transition;
+
+    &:hover {
+      border-color: rgba($vividColor, 0.18);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
     }
 
     h2 {
-        font-size: calc(1.5rem + 9px);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: $mainTextColor;
+      margin: 0 0 0.6rem;
+      letter-spacing: -0.01em;
+      text-align: left;
     }
 
-    .main {
-        .links {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+    p {
+      font-size: 0.835rem;
+      color: $thirdTextColor;
+      line-height: 1.65;
+      margin: 0 0 1rem;
+      text-align: left;
+    }
 
-            a,
-            button {
-                padding: 0;
-                margin: 0;
-                line-height: 2rem;
-                color: $vividColor;
-                cursor: pointer;
-                transition: all 0.2s ease;
+    h3 {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: $vividColor;
+      font-weight: 700;
+      margin: 0 0 0.65rem;
+      text-align: left;
+    }
 
-                &:hover {
-                    padding-left: 1rem;
-                }
-            }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      li {
+        padding: 0.28rem 0.7rem;
+        background: rgba($vividColor, 0.07);
+        border: 1px solid rgba($vividColor, 0.12);
+        border-radius: $radiusFull;
+        font-size: 0.775rem;
+        color: $secondaryTextColor;
+        font-weight: 500;
+        transition: $transitionFast;
+
+        &:hover {
+          background: rgba($vividColor, 0.14);
+          color: $mainTextColor;
+          border-color: rgba($vividColor, 0.25);
         }
+      }
     }
+  }
+
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .skillsContainer {
+      flex: 1;
+    }
+
+    .techs {
+      @media screen and (min-width: 768px) {
+        min-width: 200px;
+        max-width: 240px;
+      }
+    }
+  }
 }
 
-.ContactForm {
-    width: 100%;
-
-    .send {
-        display: flex;
-        justify-content: flex-end;
-        margin: 1rem;
-
-        input {
-            color: $mainTextColor;
-            background: $mainBgColor;
-            font-weight: bold;
-            font-size: 0.9rem;
-            padding: 0.7rem 1.5rem;
-            border: none;
-            border-radius: 0.3rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: 'Kdam Thmor Pro';
-
-            &:hover {
-                color: $mainBgColor;
-                background: $vividColor;
-                transform: scale(1.05);
-            }
-
-            &:active {
-                color: white;
-                background: red;
-            }
-        }
-    }
-
-    .ContactFormGrid {
-        display: grid;
-        grid: 'name email'auto 'subject subject'auto 'message message'auto / auto auto;
-        margin: 1rem;
-        gap: 1rem;
-        // width: 20rem;
-        max-width: 100%;
-
-        .name {
-            grid-area: name;
-        }
-
-        .email {
-            grid-area: email;
-        }
-
-        .subject {
-            grid-area: subject;
-        }
-
-        .message {
-            grid-area: message;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            border: 0;
-            font-size: 1rem;
-            height: 50px;
-            box-sizing: border-box;
-            font-family: inherit;
-            background: $mainBgColor;
-            color: $thirdTextColor;
-            border-radius: 0.3rem;
-
-            &:focus {
-                outline: none;
-                color: $vividColor;
-            }
-        }
-
-        input {
-            padding: 0 20px;
-        }
-
-        textarea {
-            padding: 20px;
-            min-height: 150px;
-            resize: vertical;
-        }
-    }
-}
-
-.Skills {
-    .main {
-        display: flex;
-        flex-direction: column;
-
-        .techsContainer {
-            background: $mainBgColor;
-            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            display: flex;
-            flex-direction: column;
-
-            @media screen and (min-width: 768px) {
-                font-size: 1rem;
-                line-height: 1.5rem;
-
-                h3 {
-                    font-size: 1rem;
-                }
-            }
-
-            @media screen and (min-width: 990px) {
-                flex-direction: row;
-                font-size: 12px;
-                line-height: 1.5rem;
-
-                .mobile {
-                    flex-basis: 30%;
-                }
-
-                .backEnd {
-                    flex-basis: 30%;
-                }
-
-                .frontEnd {
-                    flex-basis: 30%;
-                }
-            }
-
-            @media screen and (min-width: 1200px) {
-                font-size: 16px;
-                line-height: 2rem;
-            }
-
-
-        }
-
-        .techs {
-            padding: 25px 30px;
-
-            &:nth-child(1),
-            &:nth-child(2),
-            &:nth-child(3) {
-
-                border-bottom: 1rem $secondaryBgColor solid;
-
-                @media screen and (min-width: 990px) {
-                    border-bottom: none;
-                    border-left: 0.3rem $secondaryBgColor solid;
-                }
-
-            }
-
-            &:nth-child(1),
-            &:nth-child(2) {
-
-                @media screen and (min-width: 990px) {
-
-                    border-right: 0.8rem $secondaryBgColor solid;
-                }
-
-            }
-
-            p,
-            h2,
-            h3 {
-                text-align: center;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-                color: $mainTextColor;
-            }
-
-            h3 {
-                color: $vividColor;
-            }
-
-            ul {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-                li {
-
-                    line-height: 1.8rem;
-                }
-            }
-        }
-
-        .bottom {
-            display: flex;
-            gap: 1rem;
-
-            .skillsContainer {
-                flex-grow: 3;
-            }
-
-            .techs {
-                flex-grow: 0;
-                background: $mainBgColor;
-                box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
-                border-radius: 10px;
-                margin-bottom: 1rem;
-                width: 30%;
-                border: none;
-
-                @media screen and (min-width: 768px) {
-                    font-size: 1rem;
-                    line-height: 1.5rem;
-
-                    h3 {
-                        font-size: 1rem;
-                    }
-                }
-
-                @media screen and (min-width: 900px) {
-                    flex-direction: row;
-                    font-size: 12px;
-                    line-height: 1.5rem;
-
-                }
-
-                @media screen and (min-width: 1200px) {
-                    font-size: 16px;
-                    line-height: 2rem;
-                }
-            }
-        }
-    }
-}
+// ─── SKILL BARS ─────────────────────────────────────────────────────────────────
 
 .skill-bars {
-    padding: 25px 30px;
-    background: $mainBgColor;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+  padding: 1.5rem;
+  background: $glassBg;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid $glassBorder;
+  border-radius: $radiusLg;
 }
 
 .skill-bars .bar {
-    margin: 6px 0;
-}
+  margin: 1.1rem 0;
 
-.skill-bars .bar:first-child {
-    margin-top: 0px;
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .skill-bars .bar .info {
-    margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 }
 
 .skill-bars .bar .info span {
-    font-weight: 500;
-    font-size: 17px;
-    opacity: 0;
-    animation: showText 0.5s 1s linear forwards;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: $secondaryTextColor;
+  opacity: 0;
+  animation: showText 0.5s 1s linear forwards;
 }
 
 @keyframes showText {
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
 .skill-bars .bar .progress-line {
-    height: 20px;
-    width: 100%;
-    background: $thirdTextColor;
-    position: relative;
-    transform: scaleX(0);
-    transform-origin: left;
-    border-radius: 10px;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05),
-        0 1px rgba(255, 255, 255, 0.8);
-    animation: animateSkills 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+  height: 6px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.07);
+  position: relative;
+  transform: scaleX(0);
+  transform-origin: left;
+  border-radius: 10px;
+  animation: animateSkills 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 
 @keyframes animateSkills {
-    100% {
-        transform: scaleX(1);
-    }
+  100% {
+    transform: scaleX(1);
+  }
 }
 
 .bar .progress-line span {
-    height: 100%;
-    position: absolute;
-    border-radius: 10px;
-    transform: scaleX(0);
-    transform-origin: left;
-    background: $vividColor;
-    animation: animateSkills 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+  height: 100%;
+  position: absolute;
+  border-radius: 10px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, $vividColor, lighten($vividColor, 18%));
+  box-shadow: 0 0 10px rgba($vividColor, 0.45);
+  animation: animateSkills 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 
 .progress-line span::before {
-    position: absolute;
-    content: "";
-    top: -0.625rem;
-    right: 0;
-    height: 0;
-    width: 0;
-    border: 0.4375rem solid transparent;
-    border-bottom-width: 0rem;
-    border-right-width: 0rem;
-    border-top-color: #000;
-    opacity: 0;
-    animation: showText2 0.5s 1.5s linear forwards;
+  display: none;
 }
 
 .progress-line span::after {
-    position: absolute;
-    top: -1.75rem;
-    right: 0;
-    font-weight: 500;
-    background: $secondaryBgColor;
-    color: $mainTextColor;
-    padding: 0.0625rem 0.5rem;
-    font-size: 12px;
-    border-radius: 1rem 1rem 0.1875rem 1rem;
-    opacity: 0;
-    animation: showText2 0.5s 1.5s linear forwards;
+  position: absolute;
+  top: -1.7rem;
+  right: 0;
+  font-weight: 700;
+  background: rgba($vividColor, 0.14);
+  color: $vividColorLight;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.68rem;
+  border-radius: 1rem;
+  opacity: 0;
+  letter-spacing: 0.02em;
+  animation: showText2 0.5s 1.5s linear forwards;
 }
 
 @keyframes showText2 {
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }

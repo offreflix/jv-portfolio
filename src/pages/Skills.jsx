@@ -11,6 +11,7 @@ function Skills() {
   return (
     <div className="Skills pages">
       <h1>{t('Habilidades')}</h1>
+      <p className="skillsSubtitle">{t('Tecnologias e ferramentas que uso no dia a dia')}</p>
       <div className="main">
         <div className="techsContainer">
           <div className="frontEnd techs">

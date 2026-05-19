@@ -7,7 +7,7 @@ function Home() {
 
   return (
     <div className="Home pages">
-      <div>
+      <div className="heroText">
         <h1>{t('Oi, sou o')}</h1>
         <div className="content">
           <h2>
@@ -20,30 +20,26 @@ function Home() {
         <br />
         <h1>{t('Desenvolvedor Web')}</h1>
       </div>
-      <main className="main">
-        <p>
-          {t('Desenvolvedor Front-End, atualmente estou focado em React Js')}
-        </p>
-        <p>
-          {t('Veja meus')}{' '}
-          <NavLink className="mainButton" to="/projects">
-            {t('Projetos')}
-          </NavLink>
-          ,{' '}
-          <NavLink className="mainButton" to="/cv">
-            {t('Currículo')}
-          </NavLink>{' '}
-          {t('e mais no')}{' '}
-          <NavLink className="mainButton" to="/about">
-            {t('Sobre Mim')}
-          </NavLink>
-          .
-        </p>
 
-        <NavLink className="contactButton" to="/contact">
-          {t('Entre em contato comigo!')}
+      <p className="subtitle">
+        {t('Desenvolvedor Front-End, atualmente estou focado em React Js')}
+      </p>
+
+      <div className="ctaContainer">
+        <NavLink className="mainButton" to="/projects">
+          {t('Projetos')}
         </NavLink>
-      </main>
+        <NavLink className="mainButton" to="/resume">
+          {t('Currículo')}
+        </NavLink>
+        <NavLink className="mainButton" to="/about">
+          {t('Sobre Mim')}
+        </NavLink>
+      </div>
+
+      <NavLink className="homeCta" to="/contact">
+        {t('Entre em contato comigo!')}
+      </NavLink>
     </div>
   );
 }
