@@ -7,20 +7,23 @@ $thirdTextColor: #8b949e;
 $vividColor: #0080ff;
 
 // Extended palette
-$vividColorLight: lighten($vividColor, 20%);
-$vividColorDim: rgba($vividColor, 0.1);
-$vividColorGlow: rgba($vividColor, 0.25);
+$cyanColor: #00d4ff;
+$greenColor: #4ade80;
+$purpleColor: #a78bfa;
+
+// Gradients
+$gradientBlue: linear-gradient(135deg, $vividColor 0%, $cyanColor 100%);
+$gradientBlueSoft: linear-gradient(135deg, rgba($vividColor, 0.15) 0%, rgba($cyanColor, 0.15) 100%);
 
 // Glass
-$glassBg: rgba(21, 27, 34, 0.65);
+$glassBg: rgba(21, 27, 34, 0.6);
 $glassBorder: rgba(255, 255, 255, 0.06);
-$glassShadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 
 // Layout
 $sidebarWidth: 260px;
-$contentMaxWidth: 920px;
-$radius: 12px;
-$radiusLg: 20px;
+$contentMaxWidth: 960px;
+$radius: 14px;
+$radiusLg: 22px;
 $radiusFull: 9999px;
 
 // Motion

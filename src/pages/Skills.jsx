@@ -2,16 +2,16 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { skillsData } from '../data';
 import { SkillBar } from '../components/index';
-import { useStateContext } from '../context/ContextProvider';
 
 function Skills() {
-  const { width } = useStateContext();
-
   const { t } = useTranslation();
+
   return (
     <div className="Skills pages">
-      <h1>{t('Habilidades')}</h1>
-      <p className="skillsSubtitle">{t('Tecnologias e ferramentas que uso no dia a dia')}</p>
+      <h1>Habilidades</h1>
+      <p className="skillsSubtitle">
+        Tecnologias e ferramentas que uso no dia a dia
+      </p>
       <div className="main">
         <div className="techsContainer">
           <div className="frontEnd techs">
@@ -24,18 +24,17 @@ function Skills() {
             <h3>{t('Tecnologias/Linguagens')}</h3>
             <ul>
               <li>React</li>
-              <li>HTML</li>
-              <li>CSS</li>
+              <li>Next.js</li>
+              <li>TypeScript</li>
               <li>JavaScript</li>
-              <li>Git/Github</li>
-              <li>SASS</li>
-              <li>React</li>
-              <li>Next</li>
+              <li>HTML</li>
+              <li>CSS / SASS</li>
+              <li>Tailwind CSS</li>
               <li>GraphQL</li>
-              <li>Typescript</li>
               <li>Styled-Components</li>
             </ul>
           </div>
+
           <div className="backEnd techs">
             <h2>Backend</h2>
             <p>
@@ -45,15 +44,14 @@ function Skills() {
             </p>
             <h3>{t('Tecnologias/Linguagens')}</h3>
             <ul>
-              <li>Javascript</li>
-              <li>Typescript</li>
-              <li>MongoDB</li>
-              <li>GraphQL</li>
-              <li>MySQL</li>
-              <li>NodeJS</li>
+              <li>Node.js</li>
               <li>Express.js</li>
+              <li>MongoDB</li>
+              <li>MySQL</li>
+              <li>GraphQL</li>
             </ul>
           </div>
+
           <div className="mobile techs">
             <h2>Mobile</h2>
             <p>
@@ -64,40 +62,24 @@ function Skills() {
             <h3>{t('Tecnologias/Linguagens')}</h3>
             <ul>
               <li>React Native</li>
-              <li>JavaScript</li>
-              <li>Git/Github</li>
-              <li>SASS</li>
+              <li>Expo</li>
+              <li>TypeScript</li>
               <li>Styled-Components</li>
-              <li>Typescript</li>
             </ul>
           </div>
-          {width <= 768 ? (
-            <div className="fullstack techs">
-              <h2>Fullstack</h2>
-              <p>
-                {t(
-                  'Fiz curso de Fullstack, apesar de não gostar de backend, eu lido bem e consigo trabalhar como Fullstack'
-                )}
-              </p>
-            </div>
-          ) : (
-            ''
-          )}
+
+          <div className="fullstack techs">
+            <h2>Fullstack</h2>
+            <p>
+              {t(
+                'Fiz curso de Fullstack, apesar de não gostar de backend, eu lido bem e consigo trabalhar como Fullstack'
+              )}
+            </p>
+          </div>
         </div>
+
         <div className="bottom">
           <SkillBar skills={skillsData} />
-          {width >= 768 ? (
-            <div className="fullstack techs">
-              <h2>Fullstack</h2>
-              <p>
-                {t(
-                  'Fiz curso de Fullstack, apesar de não gostar de backend, eu lido bem e consigo trabalhar como Fullstack'
-                )}
-              </p>
-            </div>
-          ) : (
-            ''
-          )}
         </div>
       </div>
     </div>

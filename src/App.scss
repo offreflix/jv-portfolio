@@ -1,18 +1,58 @@
 @import 'utilities/variables';
 
+:root {
+  --sidebar-width: #{$sidebarWidth};
+  --glass-bg: #{$glassBg};
+  --glass-border: #{$glassBorder};
+  --transition: #{$transition};
+}
+
 // ─── APP WRAPPER ────────────────────────────────────────────────────────────────
 
 .App {
   display: flex;
   flex-direction: row;
   background-color: $secondaryBgColor;
-  background-image:
-    radial-gradient(rgba($vividColor, 0.04) 1px, transparent 1px);
-  background-size: 28px 28px;
   width: 100%;
   min-height: 100vh;
   color: $mainTextColor;
   font-family: 'Inter', system-ui, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+
+  // Ambient orbs
+  &::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    right: 5%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle at center, rgba($vividColor, 0.1) 0%, transparent 65%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: orbFloat 9s ease-in-out infinite;
+  }
+
+  &::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    left: 15%;
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle at center, rgba($cyanColor, 0.07) 0%, transparent 65%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: orbFloat 12s ease-in-out infinite reverse;
+  }
+
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(25px, -35px) scale(1.06); }
+  }
 
   .changeLngButton {
     position: fixed;
@@ -26,14 +66,14 @@
     }
 
     button {
-      background: $glassBg;
+      background: rgba(13, 16, 23, 0.8);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid $glassBorder !important;
       color: $thirdTextColor;
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      padding: 0.35rem 0.8rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      padding: 0.35rem 0.85rem;
       border-radius: $radiusFull;
       cursor: pointer;
       transition: $transition;
@@ -43,7 +83,6 @@
       &:hover {
         color: $vividColor;
         border-color: rgba($vividColor, 0.4) !important;
-        box-shadow: var(--glow-blue);
       }
     }
   }
@@ -57,7 +96,7 @@
     top: 1.25rem;
     cursor: pointer;
     z-index: 200;
-    background: $glassBg !important;
+    background: rgba(13, 16, 23, 0.8) !important;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid $glassBorder !important;
@@ -67,7 +106,6 @@
 
     &:hover {
       border-color: rgba($vividColor, 0.35) !important;
-      box-shadow: var(--glow-blue);
     }
 
     .menuButton {
@@ -85,13 +123,9 @@
     display: flex;
     flex-direction: column;
     width: var(--sidebar-width);
-    background: linear-gradient(
-      180deg,
-      rgba(21, 27, 34, 0.97) 0%,
-      rgba(13, 16, 23, 0.99) 100%
-    );
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(11, 13, 18, 0.95);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border-right: 1px solid $glassBorder;
     height: 100vh;
     position: fixed;
@@ -106,30 +140,25 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2rem 1.5rem 1.75rem;
+      padding: 2rem 1.5rem 1.5rem;
       border-bottom: 1px solid $glassBorder;
-
-      .nameAndLogo {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.35rem;
-      }
+      gap: 0.4rem;
 
       .avatarBadge {
-        width: 52px;
-        height: 52px;
+        width: 56px;
+        height: 56px;
         border-radius: 50%;
-        background: linear-gradient(135deg, $vividColor 0%, darken($vividColor, 20%) 100%);
+        background: $gradientBlue;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         font-weight: 800;
         color: #fff;
-        margin-bottom: 0.75rem;
-        box-shadow: 0 0 0 3px rgba($vividColor, 0.15), 0 0 20px rgba($vividColor, 0.2);
+        margin-bottom: 0.5rem;
+        box-shadow: 0 0 0 3px rgba($vividColor, 0.15), 0 0 24px rgba($vividColor, 0.2);
         flex-shrink: 0;
+        letter-spacing: -0.02em;
       }
 
       .logo {
@@ -140,7 +169,7 @@
       .name {
         font-weight: 700;
         font-size: 1rem;
-        letter-spacing: -0.01em;
+        letter-spacing: -0.02em;
         cursor: pointer;
         transition: $transition;
         text-align: center;
@@ -152,13 +181,37 @@
       }
 
       .role {
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         color: $thirdTextColor;
         text-align: center;
         letter-spacing: 0.1em;
         text-transform: uppercase;
         font-weight: 500;
-        margin-top: 0.15rem;
+      }
+
+      .availableBadge {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.68rem;
+        color: $greenColor;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        background: rgba($greenColor, 0.08);
+        border: 1px solid rgba($greenColor, 0.2);
+        padding: 0.25rem 0.7rem;
+        border-radius: $radiusFull;
+        margin-top: 0.25rem;
+
+        .dot {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: $greenColor;
+          box-shadow: 0 0 6px $greenColor;
+          animation: pulseDot 2s ease-in-out infinite;
+          flex-shrink: 0;
+        }
       }
     }
 
@@ -177,12 +230,11 @@
       align-items: center;
       padding: 0.65rem 1rem;
       border-radius: $radius;
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       font-weight: 500;
       color: $thirdTextColor;
       text-decoration: none;
       transition: $transition;
-      letter-spacing: 0.01em;
       position: relative;
       border: 1px solid transparent;
 
@@ -194,10 +246,9 @@
         height: 56%;
         width: 3px;
         border-radius: 0 3px 3px 0;
-        background: $vividColor;
+        background: $gradientBlue;
         opacity: 0;
         transition: $transition;
-        box-shadow: 0 0 8px rgba($vividColor, 0.6);
       }
 
       &:hover {
@@ -205,19 +256,16 @@
         background: rgba($vividColor, 0.07);
         border-color: rgba($vividColor, 0.1);
 
-        &::before {
-          opacity: 0.6;
-        }
+        &::before { opacity: 0.5; }
       }
 
       &.active {
         color: $vividColor;
         background: rgba($vividColor, 0.1);
         border-color: rgba($vividColor, 0.15);
+        font-weight: 600;
 
-        &::before {
-          opacity: 1;
-        }
+        &::before { opacity: 1; }
       }
     }
 
@@ -244,11 +292,16 @@
       &:hover {
         fill: $vividColor;
         border-color: rgba($vividColor, 0.35);
-        box-shadow: 0 0 14px rgba($vividColor, 0.2);
+        box-shadow: 0 0 16px rgba($vividColor, 0.2);
         transform: translateY(-2px);
       }
     }
   }
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px $greenColor; }
+  50% { opacity: 0.5; box-shadow: 0 0 10px $greenColor; }
 }
 
 // ─── ROUTES CONTAINER ───────────────────────────────────────────────────────────
@@ -256,6 +309,8 @@
 .Routes {
   width: 100vw;
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 
   @media screen and (min-width: 769px) {
     margin-left: var(--sidebar-width);
@@ -270,33 +325,7 @@
   max-width: $contentMaxWidth;
 
   @media screen and (min-width: 768px) {
-    padding: 4rem 3rem;
-  }
-
-  h1,
-  h2 {
-    font-size: clamp(1.85rem, 4vw, 2.5rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.15;
-    margin: 0 0 0.25rem;
-  }
-}
-
-.pageHeading {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 2.5rem;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -0.6rem;
-    left: 0;
-    width: 2.5rem;
-    height: 2px;
-    background: linear-gradient(90deg, $vividColor, transparent);
-    border-radius: 2px;
+    padding: 4.5rem 3.5rem;
   }
 }
 
@@ -306,51 +335,78 @@
   font-size: 0.975rem;
 }
 
-// ─── GLOBAL CONTACT BUTTON ──────────────────────────────────────────────────────
-
 .contactButton {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
   color: $vividColor;
-  font-family: inherit;
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
   transition: $transition;
-  padding: 0.45rem 0;
   border-bottom: 1px solid transparent;
 
   &:hover {
     border-bottom-color: rgba($vividColor, 0.6);
-    color: $vividColorLight;
+    color: $cyanColor;
   }
 }
 
 // ─── HOME PAGE ──────────────────────────────────────────────────────────────────
 
 .Home {
-  min-height: calc(100vh - 7rem);
+  min-height: calc(100vh - 4rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  .homeAvailableBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.72rem;
+    color: $greenColor;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    background: rgba($greenColor, 0.07);
+    border: 1px solid rgba($greenColor, 0.2);
+    padding: 0.3rem 0.85rem;
+    border-radius: $radiusFull;
+    margin-bottom: 1.75rem;
+    width: fit-content;
+    text-transform: uppercase;
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: $greenColor;
+      box-shadow: 0 0 6px $greenColor;
+      animation: pulseDot 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+  }
 
   .heroText {
     margin-bottom: 0;
+    line-height: 1.05;
   }
 
   h1 {
     display: inline;
     font-weight: 800;
     color: $mainTextColor;
-    font-size: clamp(2.25rem, 5.5vw, 4rem);
-    letter-spacing: -0.03em;
+    font-size: clamp(2.5rem, 6.5vw, 4.5rem);
+    letter-spacing: -0.04em;
   }
 
   h2 {
     display: inline;
-    font-size: clamp(2.25rem, 5.5vw, 4rem);
+    font-size: clamp(2.5rem, 6.5vw, 4.5rem);
+    letter-spacing: -0.04em;
   }
 
   .content {
@@ -359,7 +415,6 @@
     font-weight: 800;
 
     h2 {
-      color: $vividColor;
       position: absolute;
       transform: translate(0%, -69%);
       display: inline;
@@ -368,85 +423,91 @@
 
     h2:nth-child(1) {
       color: transparent;
-      -webkit-text-stroke: 0.08rem rgba($vividColor, 0.5);
+      -webkit-text-stroke: 1.5px rgba($vividColor, 0.3);
     }
 
     h2:nth-child(2) {
-      color: $vividColor;
-      text-shadow: 0 0 40px rgba($vividColor, 0.35);
+      background: $gradientBlue;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       animation: animateWave 4s ease-in-out infinite;
     }
 
     span {
       color: $mainTextColor;
-      -webkit-text-stroke: $mainTextColor;
+      -webkit-text-stroke: 0px;
+      -webkit-text-fill-color: $mainTextColor;
     }
 
     @keyframes animateWave {
-      0%,
-      100% {
-        clip-path: polygon(
-          0% 45%,
-          16% 44%,
-          33% 50%,
-          54% 60%,
-          70% 61%,
-          84% 59%,
-          100% 52%,
-          100% 100%,
-          0% 100%
-        );
+      0%, 100% {
+        clip-path: polygon(0% 45%, 16% 44%, 33% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
       }
       50% {
-        clip-path: polygon(
-          0% 60%,
-          15% 65%,
-          34% 66%,
-          51% 62%,
-          67% 50%,
-          84% 45%,
-          100% 46%,
-          100% 100%,
-          0% 100%
-        );
+        clip-path: polygon(0% 60%, 15% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
       }
     }
   }
 
   .subtitle {
     color: $thirdTextColor;
-    font-size: 1rem;
+    font-size: 1.05rem;
     line-height: 1.7;
-    max-width: 460px;
-    margin: 3.25rem 0 2rem;
+    max-width: 480px;
+    margin: 3.5rem 0 1.75rem;
     font-weight: 400;
+  }
+
+  .techStack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 2rem;
+
+    .techChip {
+      padding: 0.3rem 0.75rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid $glassBorder;
+      border-radius: $radiusFull;
+      font-size: 0.75rem;
+      color: $thirdTextColor;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: $transition;
+
+      &:hover {
+        background: rgba($vividColor, 0.08);
+        border-color: rgba($vividColor, 0.2);
+        color: $secondaryTextColor;
+      }
+    }
   }
 
   .ctaContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
 
     .mainButton {
       display: inline-flex;
       align-items: center;
-      padding: 0.55rem 1.2rem;
+      padding: 0.6rem 1.3rem;
       border-radius: $radiusFull;
       font-size: 0.875rem;
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
       transition: $transition;
-      background: rgba($vividColor, 0.09);
-      color: $vividColorLight;
+      background: rgba($vividColor, 0.08);
+      color: lighten($vividColor, 20%);
       border: 1px solid rgba($vividColor, 0.2);
       letter-spacing: 0.01em;
 
       &:hover {
-        background: rgba($vividColor, 0.18);
-        border-color: rgba($vividColor, 0.45);
-        box-shadow: 0 0 16px rgba($vividColor, 0.12);
+        background: rgba($vividColor, 0.16);
+        border-color: rgba($vividColor, 0.4);
         transform: translateY(-1px);
       }
     }
@@ -456,25 +517,203 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.7rem 1.75rem;
+    padding: 0.75rem 2rem;
     border-radius: $radiusFull;
-    font-size: 0.9rem;
+    font-size: 0.925rem;
     font-weight: 700;
-    background: linear-gradient(135deg, $vividColor, darken($vividColor, 12%));
+    background: $gradientBlue;
     color: #fff;
     text-decoration: none;
     cursor: pointer;
     transition: $transition;
-    box-shadow: 0 4px 18px rgba($vividColor, 0.3);
+    box-shadow: 0 4px 24px rgba($vividColor, 0.35);
     border: none;
+    letter-spacing: 0.01em;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba($vividColor, 0.45);
+    }
+
+    &:active {
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// ─── ABOUT PAGE ─────────────────────────────────────────────────────────────────
+
+.About {
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    margin: 0 0 2.5rem;
+    background: linear-gradient(135deg, $mainTextColor 60%, $thirdTextColor 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .aboutLayout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+
+    @media screen and (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .aboutBio {
+    background: $glassBg;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid $glassBorder;
+    border-radius: $radiusLg;
+    padding: 2rem;
+    grid-column: 1 / -1;
+
+    @media screen and (min-width: 768px) {
+      grid-column: 1 / 2;
+      grid-row: 1;
+    }
+
+    p {
+      color: $secondaryTextColor;
+      line-height: 1.8;
+      font-size: 0.975rem;
+      margin: 0 0 1rem;
+
+      &:last-of-type { margin-bottom: 1.5rem; }
+    }
+  }
+
+  .aboutStats {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+
+    @media screen and (min-width: 768px) {
+      flex-direction: column;
+      grid-column: 2 / 3;
+      grid-row: 1;
+    }
+
+    .statCard {
+      flex: 1;
+      background: $glassBg;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid $glassBorder;
+      border-radius: $radiusLg;
+      padding: 1.25rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: $transition;
+      border-top: 2px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+
+      &:nth-child(1) { border-top-color: $vividColor; }
+      &:nth-child(2) { border-top-color: $cyanColor; }
+      &:nth-child(3) { border-top-color: $purpleColor; }
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+      }
+
+      .statNumber {
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        background: $gradientBlue;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1;
+        margin-bottom: 0.4rem;
+      }
+
+      .statLabel {
+        font-size: 0.72rem;
+        color: $thirdTextColor;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .valueCards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    grid-column: 1 / -1;
+
+    @media screen and (min-width: 640px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .valueCard {
+      background: $glassBg;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid $glassBorder;
+      border-radius: $radiusLg;
+      padding: 1.5rem;
+      transition: $transition;
+
+      &:hover {
+        border-color: rgba($vividColor, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      }
+
+      .valueIcon {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+        display: block;
+      }
+
+      h3 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: $mainTextColor;
+        margin: 0 0 0.5rem;
+        letter-spacing: -0.01em;
+      }
+
+      p {
+        font-size: 0.825rem;
+        color: $thirdTextColor;
+        line-height: 1.65;
+        margin: 0;
+      }
+    }
+  }
+
+  .aboutCta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: $radiusFull;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background: $gradientBlue;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: $transition;
+    box-shadow: 0 4px 20px rgba($vividColor, 0.3);
 
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 28px rgba($vividColor, 0.4);
-    }
-
-    &:active {
-      transform: translateY(0);
     }
   }
 }
@@ -482,11 +721,17 @@
 // ─── PROJECTS PAGE ──────────────────────────────────────────────────────────────
 
 .Projects {
+  h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    margin: 0 0 2.5rem;
+  }
+
   .container {
     display: grid;
     gap: 1.25rem;
     grid-template-columns: 1fr;
-    margin-top: 2rem;
 
     @media screen and (min-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
@@ -501,15 +746,25 @@
     border: 1px solid $glassBorder;
     transition: $transition;
     background: $mainBgColor;
-    height: 300px;
+    height: 320px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: $radiusLg;
+      background: $gradientBlue;
+      opacity: 0;
+      transition: $transition;
+      z-index: -1;
+    }
 
     &:hover {
-      transform: translateY(-5px);
-      border-color: rgba($vividColor, 0.3);
-      box-shadow:
-        0 16px 48px rgba(0, 0, 0, 0.45),
-        0 0 0 1px rgba($vividColor, 0.1),
-        var(--glow-blue);
+      transform: translateY(-6px);
+      border-color: transparent;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+
+      &::after { opacity: 0.4; }
 
       .details {
         opacity: 1;
@@ -517,7 +772,7 @@
       }
 
       img {
-        filter: brightness(30%) scale(1.05);
+        filter: brightness(28%) scale(1.06);
       }
     }
 
@@ -535,33 +790,33 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 1.5rem;
+      padding: 1.75rem;
       background: linear-gradient(
         to top,
-        rgba(13, 16, 23, 0.96) 0%,
-        rgba(13, 16, 23, 0.5) 55%,
+        rgba(13, 16, 23, 0.97) 0%,
+        rgba(13, 16, 23, 0.5) 50%,
         transparent 100%
       );
       transition: $transition;
 
       @media screen and (min-width: 768px) {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(12px);
       }
 
       h3 {
-        font-size: 1.45rem;
-        font-weight: 700;
+        font-size: 1.6rem;
+        font-weight: 800;
         color: $mainTextColor;
         margin: 0 0 0.5rem;
-        letter-spacing: -0.025em;
-        line-height: 1.2;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
       }
 
       p {
         font-size: 0.825rem;
         color: $secondaryTextColor;
-        margin: 0 0 0.75rem;
+        margin: 0 0 0.85rem;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
@@ -580,7 +835,7 @@
           border: 1px solid rgba($vividColor, 0.22);
           border-radius: $radiusFull;
           font-size: 0.72rem;
-          color: $vividColorLight;
+          color: lighten($vividColor, 25%);
           font-weight: 600;
           letter-spacing: 0.02em;
         }
@@ -594,7 +849,7 @@
 .backgroundProjectInfo {
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   position: fixed;
@@ -608,14 +863,13 @@
   z-index: 101;
   right: 0;
   top: 0;
-  background: rgba(13, 16, 23, 0.96);
+  background: rgba(11, 13, 18, 0.97);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-left: 1px solid $glassBorder;
   max-height: 100%;
   width: 100%;
   overflow-y: auto;
-  overflow-x: hidden;
 
   @media screen and (min-width: 768px) {
     width: 420px;
@@ -650,10 +904,7 @@
           border-color: rgba($vividColor, 0.3) !important;
         }
 
-        .icon {
-          height: 1.2rem;
-          width: 1.2rem;
-        }
+        .icon { height: 1.2rem; width: 1.2rem; }
       }
 
       span {
@@ -661,12 +912,9 @@
         font-weight: 600;
         font-size: 0.82rem;
         color: $thirdTextColor;
-        letter-spacing: 0.02em;
         transition: $transition;
 
-        &:hover {
-          color: $vividColor;
-        }
+        &:hover { color: $vividColor; }
       }
     }
 
@@ -683,9 +931,9 @@
       }
 
       h3 {
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         font-weight: 700;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
         color: $thirdTextColor;
         margin: 1.5rem 0 0.6rem;
@@ -712,30 +960,26 @@
         gap: 0.35rem;
 
         li {
-          color: $vividColorLight;
+          color: lighten($vividColor, 20%);
           background: rgba($vividColor, 0.1);
           border: 1px solid rgba($vividColor, 0.18);
           font-weight: 600;
           font-size: 0.72rem;
           padding: 0.28rem 0.7rem;
           border-radius: $radiusFull;
-          letter-spacing: 0.02em;
         }
       }
 
       .projectLinks {
         display: block;
         color: $vividColor;
-        font-weight: 500;
         font-size: 0.85rem;
         word-break: break-all;
         text-decoration: underline;
         text-underline-offset: 3px;
         margin-top: 0.25rem;
 
-        &:hover {
-          color: $vividColorLight;
-        }
+        &:hover { color: $cyanColor; }
       }
     }
 
@@ -745,9 +989,8 @@
       right: 0;
       width: 100%;
       padding: 1rem 1.5rem;
-      background: rgba(13, 16, 23, 0.95);
+      background: rgba(11, 13, 18, 0.95);
       backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
       border-top: 1px solid $glassBorder;
       display: flex;
       justify-content: center;
@@ -759,9 +1002,8 @@
       a {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
         padding: 0.7rem 2rem;
-        background: linear-gradient(135deg, $vividColor, darken($vividColor, 14%));
+        background: $gradientBlue;
         color: #fff;
         font-weight: 700;
         font-size: 0.875rem;
@@ -769,7 +1011,6 @@
         text-decoration: none;
         transition: $transition;
         box-shadow: 0 4px 18px rgba($vividColor, 0.3);
-        letter-spacing: 0.01em;
 
         &:hover {
           transform: translateY(-2px);
@@ -783,16 +1024,19 @@
 // ─── RESUME PAGE ────────────────────────────────────────────────────────────────
 
 .Resume {
-  overflow-x: hidden;
+  h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    margin: 0 0 2rem;
+  }
 
   a {
     color: $vividColor;
     text-decoration: underline;
     text-underline-offset: 3px;
 
-    &:hover {
-      color: $vividColorLight;
-    }
+    &:hover { color: $cyanColor; }
   }
 
   iframe {
@@ -823,16 +1067,16 @@
   }
 
   h2 {
-    font-size: clamp(1.85rem, 4vw, 2.5rem);
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 800;
-    letter-spacing: -0.03em;
-    margin: 0 0 2rem;
+    letter-spacing: -0.035em;
+    margin: 0 0 2.5rem;
   }
 
   .main {
     @media screen and (min-width: 1000px) {
       min-width: 260px;
-      max-width: 320px;
+      max-width: 300px;
     }
 
     p {
@@ -848,8 +1092,7 @@
       gap: 0.35rem;
       margin-top: 1.5rem;
 
-      a,
-      button {
+      a, button {
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
@@ -868,6 +1111,7 @@
           background: rgba($vividColor, 0.12);
           border-color: rgba($vividColor, 0.3) !important;
           transform: translateX(4px);
+          color: $cyanColor;
         }
       }
     }
@@ -883,37 +1127,22 @@
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid $glassBorder;
   border-radius: $radiusLg;
-  padding: 1.5rem;
+  padding: 1.75rem;
 
   .ContactFormGrid {
     display: grid;
-    grid-template-areas:
-      'name email'
-      'subject subject'
-      'message message';
+    grid-template-areas: 'name email' 'subject subject' 'message message';
     grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
 
-    .name {
-      grid-area: name;
-    }
+    .name    { grid-area: name; }
+    .email   { grid-area: email; }
+    .subject { grid-area: subject; }
+    .message { grid-area: message; }
 
-    .email {
-      grid-area: email;
-    }
-
-    .subject {
-      grid-area: subject;
-    }
-
-    .message {
-      grid-area: message;
-    }
-
-    input,
-    textarea {
+    input, textarea {
       width: 100%;
-      border: 1px solid $glassBorder !important;
+      border: 1px solid rgba(255, 255, 255, 0.07) !important;
       font-size: 0.875rem;
       box-sizing: border-box;
       font-family: inherit;
@@ -923,21 +1152,17 @@
       transition: $transition;
       padding: 0.75rem 1rem;
 
-      &::placeholder {
-        color: $thirdTextColor;
-      }
+      &::placeholder { color: $thirdTextColor; }
 
       &:focus {
         outline: none;
-        border-color: rgba($vividColor, 0.45) !important;
+        border-color: rgba($vividColor, 0.5) !important;
         background: rgba($vividColor, 0.04);
         box-shadow: 0 0 0 3px rgba($vividColor, 0.08);
       }
     }
 
-    input {
-      height: 48px;
-    }
+    input { height: 48px; }
 
     textarea {
       min-height: 140px;
@@ -951,7 +1176,7 @@
     margin-top: 0.75rem;
 
     input {
-      background: linear-gradient(135deg, $vividColor, darken($vividColor, 14%));
+      background: $gradientBlue;
       color: #fff;
       font-weight: 700;
       font-size: 0.875rem;
@@ -969,9 +1194,7 @@
         box-shadow: 0 8px 28px rgba($vividColor, 0.4);
       }
 
-      &:active {
-        transform: translateY(0);
-      }
+      &:active { transform: translateY(0); }
     }
   }
 }
@@ -980,13 +1203,16 @@
 
 .Skills {
   h1 {
-    margin-bottom: 0.4rem;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    margin: 0 0 0.5rem;
   }
 
   .skillsSubtitle {
     color: $thirdTextColor;
     font-size: 0.925rem;
-    margin-bottom: 2.5rem;
+    margin: 0 0 2.5rem;
     font-weight: 400;
   }
 
@@ -996,14 +1222,19 @@
     gap: 1.25rem;
   }
 
+  // Bento grid
   .techsContainer {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
-    margin-bottom: 0;
 
     @media screen and (min-width: 768px) {
       grid-template-columns: repeat(3, 1fr);
+
+      .frontEnd { grid-column: span 2; }
+      .backEnd   { grid-column: span 1; }
+      .mobile    { grid-column: span 1; }
+      .fullstack { grid-column: span 2; }
     }
   }
 
@@ -1012,26 +1243,33 @@
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid $glassBorder;
+    border-top: 2px solid transparent;
     border-radius: $radiusLg;
     padding: 1.5rem;
     transition: $transition;
 
+    &.frontEnd { border-top-color: $vividColor; }
+    &.backEnd   { border-top-color: $purpleColor; }
+    &.mobile    { border-top-color: $cyanColor; }
+    &.fullstack { border-top-color: $greenColor; }
+
     &:hover {
-      border-color: rgba($vividColor, 0.18);
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+      border-left-color: rgba($vividColor, 0.15);
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
     }
 
     h2 {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 700;
       color: $mainTextColor;
-      margin: 0 0 0.6rem;
+      margin: 0 0 0.5rem;
       letter-spacing: -0.01em;
       text-align: left;
     }
 
     p {
-      font-size: 0.835rem;
+      font-size: 0.825rem;
       color: $thirdTextColor;
       line-height: 1.65;
       margin: 0 0 1rem;
@@ -1039,7 +1277,7 @@
     }
 
     h3 {
-      font-size: 0.68rem;
+      font-size: 0.66rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: $vividColor;
@@ -1052,15 +1290,13 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.35rem;
-      align-items: flex-start;
-      justify-content: flex-start;
 
       li {
         padding: 0.28rem 0.7rem;
         background: rgba($vividColor, 0.07);
         border: 1px solid rgba($vividColor, 0.12);
         border-radius: $radiusFull;
-        font-size: 0.775rem;
+        font-size: 0.75rem;
         color: $secondaryTextColor;
         font-weight: 500;
         transition: $transitionFast;
@@ -1084,9 +1320,7 @@
       align-items: flex-start;
     }
 
-    .skillsContainer {
-      flex: 1;
-    }
+    .skillsContainer { flex: 1; }
 
     .techs {
       @media screen and (min-width: 768px) {
@@ -1111,13 +1345,8 @@
 .skill-bars .bar {
   margin: 1.1rem 0;
 
-  &:first-child {
-    margin-top: 0;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+  &:first-child { margin-top: 0; }
+  &:last-child  { margin-bottom: 0; }
 }
 
 .skill-bars .bar .info {
@@ -1132,27 +1361,15 @@
   animation: showText 0.5s 1s linear forwards;
 }
 
-@keyframes showText {
-  100% {
-    opacity: 1;
-  }
-}
-
 .skill-bars .bar .progress-line {
   height: 6px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.06);
   position: relative;
   transform: scaleX(0);
   transform-origin: left;
   border-radius: 10px;
   animation: animateSkills 1s cubic-bezier(1, 0, 0.5, 1) forwards;
-}
-
-@keyframes animateSkills {
-  100% {
-    transform: scaleX(1);
-  }
 }
 
 .bar .progress-line span {
@@ -1161,22 +1378,20 @@
   border-radius: 10px;
   transform: scaleX(0);
   transform-origin: left;
-  background: linear-gradient(90deg, $vividColor, lighten($vividColor, 18%));
-  box-shadow: 0 0 10px rgba($vividColor, 0.45);
+  background: $gradientBlue;
+  box-shadow: 0 0 12px rgba($vividColor, 0.5);
   animation: animateSkills 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 
-.progress-line span::before {
-  display: none;
-}
+.progress-line span::before { display: none; }
 
 .progress-line span::after {
   position: absolute;
-  top: -1.7rem;
+  top: -1.75rem;
   right: 0;
   font-weight: 700;
   background: rgba($vividColor, 0.14);
-  color: $vividColorLight;
+  color: lighten($vividColor, 20%);
   padding: 0.1rem 0.5rem;
   font-size: 0.68rem;
   border-radius: 1rem;
@@ -1185,8 +1400,14 @@
   animation: showText2 0.5s 1.5s linear forwards;
 }
 
+@keyframes showText {
+  100% { opacity: 1; }
+}
+
+@keyframes animateSkills {
+  100% { transform: scaleX(1); }
+}
+
 @keyframes showText2 {
-  100% {
-    opacity: 1;
-  }
+  100% { opacity: 1; }
 }
