@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from 'react';
-import './App.css';
+import './App.scss';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
