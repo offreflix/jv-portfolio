@@ -54,6 +54,7 @@ function Home() {
 
       <NavLink className="homeCta" to="/contact">
         {t('Entre em contato comigo!')}
+        <i className="arrow">→</i>
       </NavLink>
     </div>
   );
