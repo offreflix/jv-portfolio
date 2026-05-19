@@ -107,37 +107,51 @@ export const education = [
 
 export const projects = [
   {
+    name: 'JV Portfolio',
+    slug: null,
+    githubSlug: 'https://github.com/offreflix/jv-portfolio',
+    technologies: ['React', 'SCSS', 'i18next', 'React Router', 'EmailJS'],
+    description: 'Este portfólio — desenvolvido do zero com React, SCSS e suporte a dois idiomas.',
+    about:
+      'Site de portfólio pessoal construído com React e SCSS puro, sem frameworks de UI. Conta com internacionalização (PT/EN) via i18next, roteamento com React Router, formulário de contato integrado ao EmailJS e design responsivo com tema escuro. Cada seção — Home, About, Skills, Experience, Projects, Resume e Contact — foi desenvolvida com atenção a performance, acessibilidade e consistência visual.',
+    image: '/images/portfolio.png',
+    id: 1,
+    english: {
+      description: 'This portfolio — built from scratch with React, SCSS and bilingual support.',
+      about:
+        'Personal portfolio site built with React and plain SCSS, no UI frameworks. Features internationalization (PT/EN) via i18next, routing with React Router, contact form integrated with EmailJS, and responsive dark-theme design. Each section — Home, About, Skills, Experience, Projects, Resume and Contact — was crafted with attention to performance, accessibility and visual consistency.',
+    },
+  },
+  {
     name: 'JunkBlog',
     slug: 'https://graphql-nextjs-blog.vercel.app/',
     githubSlug: 'https://github.com/Reflixzinhu/graphql-nextjs-blog',
-    technologies: ['Next.Js', 'React.Js', 'GraphQl', 'Tailwind CSS'],
-    description:
-      'Um blog com posts recentes, categorias, comentários, informação do autor e artigos usando Markdown.',
-    about: 'Uma aplicação ',
-    image:
-      'https://media.discordapp.net/attachments/958055531774361630/989601811637895198/unknown.png',
-    id: 1,
+    technologies: ['Next.js', 'React', 'GraphQL', 'Tailwind CSS'],
+    description: 'Um blog com posts recentes, categorias, comentários e artigos em Markdown.',
+    about:
+      'Aplicação de blog construída com Next.js e GraphQL. Conta com posts recentes, categorias, comentários, informações do autor e artigos escritos em Markdown. Design responsivo com Tailwind CSS.',
+    image: '/images/junkblog.png',
+    id: 2,
     english: {
-      description:
-        'A blog with recent posts, categories, comments, author information and articles using Markdown.',
-      about: '',
+      description: 'A blog with recent posts, categories, comments, and Markdown articles.',
+      about:
+        'Blog application built with Next.js and GraphQL. Features recent posts, categories, comments, author information and Markdown articles. Responsive design with Tailwind CSS.',
     },
   },
   {
     name: 'JM Store',
     slug: 'https://jm-store.vercel.app/',
     githubSlug: 'https://github.com/Reflixzinhu/ecommerce-stripe',
-    technologies: ['Next.Js', 'React.Js', 'Sanity', 'Stripe', 'ContextAPI'],
-    description: 'Um aplicação de E-commerce com pagamentos utilizando Stripe.',
+    technologies: ['Next.js', 'React', 'Sanity', 'Stripe', 'Context API'],
+    description: 'E-commerce com pagamento funcional via Stripe.',
     about:
-      'Um site de E-commerce com pagamento funcional utilizando Stripe. O projeto foi feito com Next.Js, para estilizar utilizei Tailwind e é totalmente responsivo, funcionando em todas os tamanhos de tela. Rotas para os produtos, showcase de produtos relacionados, função de adicionar um ou vários e carrinho de compras que calcula os preços e envia automaticamente para o Stripe e assim proceder com o pagamento.',
-    image:
-      'https://cdn.discordapp.com/attachments/958055531774361630/989563861315248218/unknown.png',
-    id: 2,
+      'E-commerce com pagamento funcional via Stripe, feito com Next.js e totalmente responsivo. Inclui rotas por produto, showcase de itens relacionados, carrinho de compras com cálculo de preços e integração direta com o checkout do Stripe.',
+    image: '/images/jmstore.png',
+    id: 3,
     english: {
-      description: 'An E-commerce application with payments using Stripe.',
+      description: 'E-commerce with functional payments via Stripe.',
       about:
-        'An E-commerce site with functional payment using Stripe. The project was made with Next.Js, for styling I used Tailwind to style it and make it fully responsive, working on all screen sizes. Routes to products, showcase of related products, function to add one or several products and shopping cart that calculates prices and automatically sends them to Stripe to proceed with the payment.',
+        'E-commerce site with functional Stripe payments, built with Next.js and fully responsive. Includes product routes, related items showcase, shopping cart with price calculation and direct Stripe checkout integration.',
     },
   },
 ];

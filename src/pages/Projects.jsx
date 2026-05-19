@@ -27,7 +27,7 @@ function Projects() {
                 showProjectFunction(true);
               }}
             >
-              <img src={project.image} alt={project.name} />
+              <img src={project.image} alt={project.name} onError={(e) => { e.target.style.opacity = '0' }} />
               {localStorage.getItem('lng') === 'pt' ? (
                 <div className="details">
                   <h3>{project.name}</h3>
